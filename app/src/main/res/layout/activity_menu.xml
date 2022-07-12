@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFDFD"
+    android:backgroundTint="#FFFFFF"
+    tools:context=".Menu">
+`
+    <Button
+        android:id="@+id/preset_data"
+        android:theme="@android:style/Theme.Black"
+        android:layout_width="372dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/daily_activation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="38dp"
+        android:background="#E91E63"
+        android:backgroundTint="#E91E63"
+        android:text="Preset Data"
+        android:textColor="@color/white"
+        app:strokeColor="#E91E63"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="151dp" />
+
+    <Button
+        android:id="@+id/daily_activation"
+        android:layout_width="375dp"
+        android:layout_height="62dp"
+        android:layout_above="@+id/diagnose_illness"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="38dp"
+        android:text="Daily Activation"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="235dp" />
+
+    <Button
+        android:id="@+id/diagnose_illness"
+        android:layout_width="375dp"
+        android:layout_height="62dp"
+        android:layout_above="@+id/Patient_Registration"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="38dp"
+        android:text="Diagnose Illness"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="334dp" />
+
+    <Button
+        android:id="@+id/Patient_Registration"
+        android:layout_width="375dp"
+        android:layout_height="62dp"
+        android:layout_above="@+id/sign_out"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        android:text="Patient Registration"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <Button
+        android:id="@+id/sign_out"
+        android:layout_width="129dp"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:text="Sign Out"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="575dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="serif"
+        android:text="Menu"
+        android:textSize="34sp" />
+</RelativeLayout>
