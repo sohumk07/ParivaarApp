@@ -1,21 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PresetData">
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/associated_doctor"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginBottom="417dp"
+        android:ems="10"
+        android:hint="Associated Doctor:"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/medical_attendant"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginBottom="337dp"
+        android:ems="10"
+        android:hint="Medical Attendant:"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/name_of_clinic"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginBottom="495dp"
+        android:ems="10"
+        android:hint="Clinic Name:"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#000000" />
+
+
+    <EditText
+        android:id="@+id/driver"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginBottom="262dp"
+        android:ems="10"
+        android:hint="Driver:"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#000000" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:fontFamily="serif"
         android:text="Preset Data"
+        android:textSize="34sp" />
+
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="34sp"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="36dp" />
+        android:layout_marginStart="142dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="174dp"
+        android:text="Upload to Database" />
+
+    <Button
+        android:id="@+id/gotomenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="163dp"
+        android:layout_marginEnd="154dp"
+        android:layout_marginBottom="55dp"
+        android:text="Menu" />
+
+
 </RelativeLayout>
