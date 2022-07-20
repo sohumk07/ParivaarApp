@@ -18,7 +18,7 @@ public class ClinicLogin extends AppCompatActivity {
     private Button Login;
 
 
-    @Override
+    @Override //
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic_login);

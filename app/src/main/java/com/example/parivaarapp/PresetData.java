@@ -128,6 +128,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class PresetData extends AppCompatActivity {
     public static final String TAG = "TAG";
@@ -197,7 +204,7 @@ public class PresetData extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(clinicname)){
-                    mEmail.setError("Name is Required.");
+                    mFullName.setError("Name is Required.");
                     return;
                 }
 
@@ -207,12 +214,12 @@ public class PresetData extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(medicalattendant)){
-                    mEmail.setError("Medical Attendant is Required.");
+                    mPassword.setError("Medical Attendant is Required.");
                     return;
                 }
 
                 if(TextUtils.isEmpty(driver)){
-                    mEmail.setError("Driver is Required.");
+                    mPhone.setError("Driver is Required.");
                     return;
                 }
 
@@ -226,18 +233,22 @@ public class PresetData extends AppCompatActivity {
                 PresetData.put("Medical Attendant", mPassword.getText().toString().trim());
                 PresetData.put("Driver", mPhone.getText().toString().trim());
 
+
+                //documents and collections
                 db.collection("Preset Data").document(mFullName.getText().toString())
                         .set(PresetData)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
+                                Toast.makeText(PresetData.this, "Preset Data Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error writing document", e);
+                                Toast.makeText(PresetData.this, "Error Uploading Preset Data to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
 
