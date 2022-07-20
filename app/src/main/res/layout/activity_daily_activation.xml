@@ -14,7 +14,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="80dp"
             android:text="Daily Activation"
-            android:textSize="25dp"
+            android:textSize="34dp"
             android:textStyle="bold" />
 
         <EditText android:id="@+id/fstTxt"
@@ -24,15 +24,15 @@
             android:hint="Clinic Name:"
             android:layout_gravity="center"/>
 
-
-
-        <DatePicker
-            android:layout_width="match_parent"
+        <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Button One"
+            android:hint="Choose Date in This Format: (dd-mm-yyyy)"
             android:id="@+id/date"/>
+
+
+
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -88,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Update"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white" />
 
 
     </LinearLayout>

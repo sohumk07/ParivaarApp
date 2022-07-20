@@ -161,6 +161,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,6 +173,9 @@ public class DailyActivation extends AppCompatActivity {
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
+
+
+        date = findViewById(R.id.date);
         clinicname1 = findViewById(R.id.fstTxt);
         doctor = findViewById(R.id.daily_activation_doctor);
         medattendant = findViewById(R.id.daily_activation_medical_attendant);
@@ -192,11 +196,17 @@ public class DailyActivation extends AppCompatActivity {
             finish();
         }
 
+        Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
 
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
+                final String date1 = date.getText().toString();
                 final String clinicname2 = clinicname1.getText().toString();
                 final String doctor1 = doctor.getText().toString();
                 final String medattendant1 = medattendant.getText().toString();
@@ -210,6 +220,11 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
+
+                if(TextUtils.isEmpty(date1)){
+                    date.setError("Date is Required.");
+                    return;
+                }
 
 
                 if(TextUtils.isEmpty(doctor1)){
@@ -264,8 +279,13 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
+                //DocumentReference document =
+                       // db.collection("Daily Activation").document("roomA").collection("messages").document("message1");
+
+
+
                 //documents and collections
-                db.collection("Daily Activation").document(clinicname1.getText().toString())
+                db.collection("Daily Activation").document(date.getText().toString()).collection(clinicname1.getText().toString()).document("info")
                         .set(DailyActivation)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -281,6 +301,9 @@ public class DailyActivation extends AppCompatActivity {
                                 Toast.makeText(DailyActivation.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
+
+
+
 
             }
         });
