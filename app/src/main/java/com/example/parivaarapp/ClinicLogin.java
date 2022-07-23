@@ -1,5 +1,6 @@
 package com.example.parivaarapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,6 +23,14 @@ public class ClinicLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic_login);
+
+
+//Code to change text of the toolbar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setSubtitle("App Name");
+        actionBar.setTitle("Clinic Login Screen");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         Username = (EditText) findViewById(R.id.username);
         Password = (EditText) findViewById(R.id.password);

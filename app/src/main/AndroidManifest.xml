@@ -32,8 +32,13 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".ClinicLogin"
-            android:exported="false" />
+            android:name=".ClinicLogin">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                android:exported="false" />
+        </activity>
+
+
         <activity
             android:name=".MasterLogin"
             android:exported="false" />

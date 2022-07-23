@@ -1,20 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NewPatientRegistration">
 
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="34sp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="Patient Registration" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="           Patient Registration"
+            android:textSize="34sp"
+            />
 
 
-</RelativeLayout>
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Full Name"
+            android:id="@+id/full_name"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Photo"
+            android:id="@+id/patient_registration_photo"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Father/Husband Name"
+            android:id="@+id/patient_registration_husband_name"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Age"
+            android:id="@+id/patient_registration_age"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Identification Number (phone # OR aadhar # or ayushman #)"
+            android:id="@+id/patient_registration_identification"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Blood Pressure"
+            android:id="@+id/patient_registration_bp"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Weight (kg)"
+            android:id="@+id/patient_registration_weight"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Body Temperature"
+            android:id="@+id/patient_registration_body_temperature"/>
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Blood Sugar"
+            android:id="@+id/patient_registration_blood_sugar"/>
+
+        <Button
+            android:id="@+id/patient_registration_button"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:text="Upload"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</ScrollView>
