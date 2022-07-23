@@ -206,6 +206,8 @@ public class DailyActivation extends AppCompatActivity {
             public void onClick(View view) {
 
 
+
+
                 final String date1 = date.getText().toString();
                 final String clinicname2 = clinicname1.getText().toString();
                 final String doctor1 = doctor.getText().toString();
@@ -270,22 +272,29 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 Map<String, Object> DailyActivation = new HashMap<>();
-                DailyActivation.put("Associated Doctor", doctor.getText().toString().trim());
-                DailyActivation.put("Medical Attendant", medattendant.getText().toString().trim());
-                DailyActivation.put("Driver", driver.getText().toString().trim());
-                DailyActivation.put("Vehicle Start Mileage", vehiclestartmileage.getText().toString().trim());
-                DailyActivation.put("Vehicle End Mileage", vehicleendmileage.getText().toString().trim());
-                DailyActivation.put("Total Distance", totaldistance.getText().toString().trim());
+                // nothing in here
+
+
+                Map<String, Object> nestedData = new HashMap<>();
+                nestedData.put("Associated Doctor", doctor.getText().toString().trim());
+                nestedData.put("Medical Attendant", medattendant.getText().toString().trim());
+                nestedData.put("Driver", driver.getText().toString().trim());
+                nestedData.put("Vehicle Start Mileage", vehiclestartmileage.getText().toString().trim());
+                nestedData.put("Vehicle End Mileage", vehicleendmileage.getText().toString().trim());
+                nestedData.put("Total Distance", totaldistance.getText().toString().trim());
+
+
+                DailyActivation.put(clinicname1.getText().toString(), nestedData);
 
 
 
-                //DocumentReference document =
-                       // db.collection("Daily Activation").document("roomA").collection("messages").document("message1");
+
+
 
 
 
                 //documents and collections
-                db.collection("Daily Activation").document(date.getText().toString()).collection(clinicname1.getText().toString()).document("info --->")
+                db.collection("Daily Activation").document(date.getText().toString())
                         .set(DailyActivation)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
