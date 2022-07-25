@@ -42,6 +42,7 @@ public class MasterLogin extends AppCompatActivity {
         if ((userName.equals("master")) && (userPassword.equals("parivaar"))){
             //correct password
             Toast.makeText(this, "CORRECT", Toast.LENGTH_SHORT).show();
+
         }else{
             //wrong password
             Toast.makeText(this, "INCORRECT", Toast.LENGTH_SHORT).show();

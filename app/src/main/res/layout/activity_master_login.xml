@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:fontFamily="serif"
-        android:text="Master Login"
+        android:text="Admin Login"
         android:textSize="34sp" />
 
     <Button
