@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "671632561048",
+    "project_id": "parivaarapp-b8730",
+    "storage_bucket": "parivaarapp-b8730.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671632561048:android:ea4222ac644cc623e411ed",
+        "android_client_info": {
+          "package_name": "com.company.parivaarapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671632561048-qf97qegd0ivk9f71tspkpo4ghd7peads.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1oqEUNyPg04AD5b4FDO4FeJ485-oAEg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671632561048-qf97qegd0ivk9f71tspkpo4ghd7peads.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671632561048:android:e0e6a9a2216508b6e411ed",
+        "android_client_info": {
+          "package_name": "com.example.parivaarapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671632561048-qf97qegd0ivk9f71tspkpo4ghd7peads.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1oqEUNyPg04AD5b4FDO4FeJ485-oAEg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671632561048-qf97qegd0ivk9f71tspkpo4ghd7peads.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
