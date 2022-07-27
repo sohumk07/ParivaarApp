@@ -161,8 +161,8 @@ public class AdminPresetData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_preset_data);
 
+        mFirestoreList = findViewById(R.id.firestore_list); //the actual recycler view
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mFirestoreList = findViewById(R.id.firestore_list);
 
         //Query
         Query query = firebaseFirestore.collection("Preset Data");
