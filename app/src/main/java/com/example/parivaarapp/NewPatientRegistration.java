@@ -145,6 +145,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+//RYAN CHANGE
 public class NewPatientRegistration extends AppCompatActivity {
 
     public static final String TAG = "TAG";
