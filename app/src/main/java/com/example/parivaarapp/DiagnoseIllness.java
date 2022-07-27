@@ -256,11 +256,6 @@ public class DiagnoseIllness extends AppCompatActivity {
 
 
 
-                db.collection("users").document("frank")
-                        .update(
-                                "favorites.Doctor's Description Of Illness", doctorsnote.getText().toString().trim(),
-                                "favorites.Doctor's Advice", doctorsadvice.getText().toString().trim()
-                        );
 
 
 

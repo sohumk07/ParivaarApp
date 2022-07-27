@@ -248,6 +248,9 @@ public class NewPatientRegistration extends AppCompatActivity {
 
 
                 Map<String, Object> NewPatientRegistration = new HashMap<>();
+
+
+                Map<String, Object> nestedData = new HashMap<>();
                 NewPatientRegistration.put("Father/Husband Name",patientregistrationhusbandname.getText().toString().trim());
                 NewPatientRegistration.put("Age",patientregistrationage.getText().toString().trim());
                 NewPatientRegistration.put("Identification Number",patientregistrationidentification.getText().toString().trim());
@@ -256,7 +259,7 @@ public class NewPatientRegistration extends AppCompatActivity {
                 NewPatientRegistration.put("Body Temperature",patientregistrationbodytemperature.getText().toString().trim());
                 NewPatientRegistration.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
 
-                Map<String, Object> nestedData = new HashMap<>();
+                NewPatientRegistration.put("Patient Registration Info", nestedData);
 
 
                 db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim())
