@@ -189,7 +189,7 @@ public class AdminPresetData extends AppCompatActivity {
     }
 
     private class PresetDataViewHolder extends RecyclerView.ViewHolder {
-        private RecyclerView
+        // private RecyclerView
 
         public PresetDataViewHolder(@NonNull View itemView) {
             super(itemView);
