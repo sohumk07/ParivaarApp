@@ -256,6 +256,9 @@ public class NewPatientRegistration extends AppCompatActivity {
                 NewPatientRegistration.put("Body Temperature",patientregistrationbodytemperature.getText().toString().trim());
                 NewPatientRegistration.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
 
+                Map<String, Object> nestedData = new HashMap<>();
+
+
                 db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim())
                         .set(NewPatientRegistration)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
