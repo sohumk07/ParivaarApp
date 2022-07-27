@@ -33,6 +33,7 @@ public class MasterLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 validate(Username.getText().toString(), Password.getText().toString());
+
             }
         });
 
