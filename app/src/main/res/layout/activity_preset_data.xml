@@ -22,7 +22,6 @@
         android:layout_marginBottom="417dp"
         android:ems="10"
         android:hint="Associated Doctor:"
-        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#000000" />
 
@@ -40,7 +39,6 @@
         android:layout_marginBottom="337dp"
         android:ems="10"
         android:hint="Medical Attendant:"
-        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#000000" />
 
@@ -60,7 +58,6 @@
         android:layout_marginBottom="495dp"
         android:ems="10"
         android:hint="Clinic Name:"
-        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#000000" />
 
@@ -81,7 +78,6 @@
         android:layout_marginBottom="262dp"
         android:ems="10"
         android:hint="Driver:"
-        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#000000" />
 
