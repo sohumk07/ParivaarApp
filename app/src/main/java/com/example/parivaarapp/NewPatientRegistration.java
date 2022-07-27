@@ -251,13 +251,13 @@ public class NewPatientRegistration extends AppCompatActivity {
 
 
                 Map<String, Object> nestedData = new HashMap<>();
-                NewPatientRegistration.put("Father/Husband Name",patientregistrationhusbandname.getText().toString().trim());
-                NewPatientRegistration.put("Age",patientregistrationage.getText().toString().trim());
-                NewPatientRegistration.put("Identification Number",patientregistrationidentification.getText().toString().trim());
-                NewPatientRegistration.put("Blood Pressure",patientregistrationbp.getText().toString().trim());
-                NewPatientRegistration.put("Weight",patientregistrationweight.getText().toString().trim());
-                NewPatientRegistration.put("Body Temperature",patientregistrationbodytemperature.getText().toString().trim());
-                NewPatientRegistration.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
+                nestedData.put("Father/Husband Name",patientregistrationhusbandname.getText().toString().trim());
+                nestedData.put("Age",patientregistrationage.getText().toString().trim());
+                nestedData.put("Identification Number",patientregistrationidentification.getText().toString().trim());
+                nestedData.put("Blood Pressure",patientregistrationbp.getText().toString().trim());
+                nestedData.put("Weight",patientregistrationweight.getText().toString().trim());
+                nestedData.put("Body Temperature",patientregistrationbodytemperature.getText().toString().trim());
+                nestedData.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
 
                 NewPatientRegistration.put("Patient Registration Info", nestedData);
 
