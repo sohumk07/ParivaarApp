@@ -138,6 +138,8 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.SetOptions;
+
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -263,17 +265,19 @@ public class NewPatientRegistration extends AppCompatActivity {
 
 
                 db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim())
-                        .set(NewPatientRegistration)
+                        .set(NewPatientRegistration, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
+                                Toast.makeText(NewPatientRegistration.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error writing document", e);
+                                Toast.makeText(NewPatientRegistration.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
 
