@@ -253,6 +253,7 @@ public class NewPatientRegistration extends AppCompatActivity {
 
 
                 Map<String, Object> nestedData = new HashMap<>();
+                nestedData.put("Full Name",fullname.getText().toString().trim());
                 nestedData.put("Father/Husband Name",patientregistrationhusbandname.getText().toString().trim());
                 nestedData.put("Age",patientregistrationage.getText().toString().trim());
                 nestedData.put("Identification Number",patientregistrationidentification.getText().toString().trim());
