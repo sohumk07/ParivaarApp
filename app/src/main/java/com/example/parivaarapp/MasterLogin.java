@@ -40,7 +40,7 @@ public class MasterLogin extends AppCompatActivity {
     }
 
     private void validate(String userName, String userPassword){
-        if ((userName.equals("master")) && (userPassword.equals("parivaar"))){
+        if ((userName.equals("admin")) && (userPassword.equals("parivaar"))){
             //correct password
             Toast.makeText(this, "CORRECT", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MasterLogin.this, AdminMenu.class);

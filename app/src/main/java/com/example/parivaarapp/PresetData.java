@@ -230,7 +230,7 @@ public class PresetData extends AppCompatActivity {
 
 
                 Map<String, Object> Data = new HashMap<>();
-               // Data.put("clinicName", mFullName.getText().toString());
+                // Data.put("clinicName", mFullName.getText().toString());
                 Data.put("doctorName", mEmail.getText().toString().trim());
                 Data.put("attendantName", mPassword.getText().toString().trim());
                 Data.put("driverName", mPhone.getText().toString().trim());
