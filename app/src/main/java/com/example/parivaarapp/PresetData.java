@@ -228,21 +228,18 @@ public class PresetData extends AppCompatActivity {
 
 
 
-                Map<String, Object> PresetData = new HashMap<>();
-
 
                 Map<String, Object> Data = new HashMap<>();
-                //PresetData.put("Clinic Name", mFullName.getText().toString());
+                Data.put("Clinic Name", mFullName.getText().toString());
                 Data.put("Doctor's Name", mEmail.getText().toString().trim());
                 Data.put("Medical Attendant", mPassword.getText().toString().trim());
                 Data.put("Driver", mPhone.getText().toString().trim());
 
-                PresetData.put(mFullName.getText().toString(), Data);
 
 
                 //documents and collections
                 db.collection("Preset Data").document()
-                        .set(PresetData)
+                        .set(Data)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
