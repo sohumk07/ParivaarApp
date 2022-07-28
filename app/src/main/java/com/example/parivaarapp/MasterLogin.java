@@ -23,8 +23,8 @@ public class MasterLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_login);
 
-        Username = (EditText) findViewById(R.id.username);
-        Password = (EditText) findViewById(R.id.password);
+        Username = (EditText) findViewById(R.id.username_editText);
+        Password = (EditText) findViewById(R.id.password_editText);
         Login = (Button) findViewById(R.id.login);
 
 
