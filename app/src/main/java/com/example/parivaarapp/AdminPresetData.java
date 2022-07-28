@@ -186,7 +186,7 @@ public class AdminPresetData extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull PresetDataViewHolder holder, int position, @NonNull AdminPresetModel model) {
-               // holder.clinicName.setText(model.getClinicName());
+                //holder.clinicName.setText(model.getClinicName());
                 holder.doctorName.setText(model.getDoctorName());
                 holder.driverName.setText(model.getDriverName());
                 holder.attendantName.setText(model.getAttendantName());
