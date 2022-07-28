@@ -276,6 +276,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 Map<String, Object> nestedData = new HashMap<>();
+                nestedData.put("Date", date.getText().toString().trim());
                 nestedData.put("Associated Doctor", doctor.getText().toString().trim());
                 nestedData.put("Medical Attendant", medattendant.getText().toString().trim());
                 nestedData.put("Driver", driver.getText().toString().trim());
