@@ -186,7 +186,7 @@ public class AdminPresetData extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull PresetDataViewHolder holder, int position, @NonNull AdminPresetModel model) {
-                holder.clinicName.setText(model.getClinicName());
+               // holder.clinicName.setText(model.getClinicName());
                 holder.doctorName.setText(model.getDoctorName());
                 holder.driverName.setText(model.getDriverName());
                 holder.attendantName.setText(model.getAttendantName());
@@ -204,7 +204,7 @@ public class AdminPresetData extends AppCompatActivity {
 
     private class PresetDataViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView clinicName;
+       // private TextView clinicName;
         private TextView doctorName;
         private TextView driverName;
         private TextView attendantName;
@@ -213,7 +213,7 @@ public class AdminPresetData extends AppCompatActivity {
         public PresetDataViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            clinicName = itemView.findViewById(R.id.clinicName);
+            //clinicName = itemView.findViewById(R.id.clinicName);
             doctorName = itemView.findViewById(R.id.doctorName);
             driverName = itemView.findViewById(R.id.driverName);
             attendantName = itemView.findViewById(R.id.attendantName);

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_admin_daily_activation.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/activity_admin_doctors_note.xml" value="0.2494934143870314" />
         <entry key="app/src/main/res/layout/activity_admin_menu.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_admin_preset_data.xml" value="0.215625" />
         <entry key="app/src/main/res/layout/activity_choose_clinic.xml" value="0.182518115942029" />
