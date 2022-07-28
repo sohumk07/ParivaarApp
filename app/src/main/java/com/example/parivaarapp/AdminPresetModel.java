@@ -2,7 +2,7 @@ package com.example.parivaarapp;
 
 public class AdminPresetModel {
 
-  //  private String clinicName;
+    private String clinicName;
     private String doctorName;
     private String driverName;
     private String attendantName;
@@ -18,9 +18,9 @@ public class AdminPresetModel {
     }
 
     //getters
-//    public String getClinicName() {
-//        return clinicName;
-//    }
+    public String getClinicName() {
+        return clinicName;
+    }
 
     public String getDoctorName() {
         return doctorName;
@@ -34,10 +34,10 @@ public class AdminPresetModel {
         return attendantName;
     }
 
-    //setters
-  //  public void setClinicName(String clinicName) {
-//        this.clinicName = clinicName;
-//    }
+   // setters
+    public void setClinicName(String clinicName) {
+        this.clinicName = clinicName;
+    }
 
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
