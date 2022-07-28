@@ -138,6 +138,8 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.SetOptions;
+
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -248,26 +250,34 @@ public class NewPatientRegistration extends AppCompatActivity {
 
 
                 Map<String, Object> NewPatientRegistration = new HashMap<>();
-                NewPatientRegistration.put("Father/Husband Name",patientregistrationhusbandname.getText().toString().trim());
-                NewPatientRegistration.put("Age",patientregistrationage.getText().toString().trim());
-                NewPatientRegistration.put("Identification Number",patientregistrationidentification.getText().toString().trim());
-                NewPatientRegistration.put("Blood Pressure",patientregistrationbp.getText().toString().trim());
-                NewPatientRegistration.put("Weight",patientregistrationweight.getText().toString().trim());
-                NewPatientRegistration.put("Body Temperature",patientregistrationbodytemperature.getText().toString().trim());
-                NewPatientRegistration.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
+
+
+                Map<String, Object> nestedData = new HashMap<>();
+                nestedData.put("Father/Husband Name",patientregistrationhusbandname.getText().toString().trim());
+                nestedData.put("Age",patientregistrationage.getText().toString().trim());
+                nestedData.put("Identification Number",patientregistrationidentification.getText().toString().trim());
+                nestedData.put("Blood Pressure",patientregistrationbp.getText().toString().trim());
+                nestedData.put("Weight (kg)",patientregistrationweight.getText().toString().trim());
+                nestedData.put("Body Temperature",patientregistrationbodytemperature.getText().toString().trim());
+                nestedData.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
+
+                NewPatientRegistration.put("Patient Registration Info", nestedData);
+
 
                 db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim())
-                        .set(NewPatientRegistration)
+                        .set(NewPatientRegistration, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
+                                Toast.makeText(NewPatientRegistration.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error writing document", e);
+                                Toast.makeText(NewPatientRegistration.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
 

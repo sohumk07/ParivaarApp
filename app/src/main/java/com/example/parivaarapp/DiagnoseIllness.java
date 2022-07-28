@@ -140,6 +140,8 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.SetOptions;
+
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -218,35 +220,45 @@ public class DiagnoseIllness extends AppCompatActivity {
                     return;
                 }
 
-                Map<String, Object> DailyActivation = new HashMap<>();
-                // nothing in here
+                Map<String, Object> DiagnoseIllness = new HashMap<>();
+
+                Map<String, Object> Data = new HashMap<>();
+                Data.put("Doctor's Description Of Illness", doctorsnote.getText().toString().trim());
+                Data.put("Doctor's Advice", doctorsadvice.getText().toString().trim());
+                Data.put("Medicines Used", medicinesused.getText().toString().trim());
+                Data.put("Follow Up Needed?", followup.getText().toString().trim());
+                Data.put("Need Of Referral To Higher Center?", referral.getText().toString().trim());
+
+                DiagnoseIllness.put("Doctor's Note", Data);
 
 
-                Map<String, Object> nestedData = new HashMap<>();
-                nestedData.put("Doctor's Description Of Illness", doctorsnote.getText().toString().trim());
-                nestedData.put("Doctor's Advice", doctorsadvice.getText().toString().trim());
-                nestedData.put("Medicines Used", medicinesused.getText().toString().trim());
-                nestedData.put("Follow Up Needed?", followup.getText().toString().trim());
-                nestedData.put("Need Of Referral To Higher Center?", referral.getText().toString().trim());
+
+
 
 
                 //documents and collections
                 db.collection("Patient Registration and-or Doctor's Notes").document(doctorsnotefullname.getText().toString().trim())
-                        .update(DailyActivation)
+                        .set(DiagnoseIllness, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DiagnoseIllness.this, "Medical Assesment Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error writing document", e);
-                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
+
+
+
+
+
+
 
 
 
