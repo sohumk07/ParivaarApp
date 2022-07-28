@@ -138,6 +138,8 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.SetOptions;
+
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -296,7 +298,7 @@ public class DailyActivation extends AppCompatActivity {
 
                 //documents and collections
                 db.collection("Daily Activation").document(date.getText().toString())
-                        .set(DailyActivation)
+                        .set(DailyActivation, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {

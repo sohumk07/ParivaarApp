@@ -129,6 +129,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
 import android.widget.Toast;
 import android.content.Intent;
 import android.os.Bundle;
@@ -239,7 +241,7 @@ public class PresetData extends AppCompatActivity {
 
                 //documents and collections
                 db.collection("Preset Data").document()
-                        .set(Data)
+                        .set(Data, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
