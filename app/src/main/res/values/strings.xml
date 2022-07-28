@@ -3,4 +3,5 @@
     <string name="to_diagnose_report_a_patient_s_illness_you_first_must_go_register_them">To diagnose/report a patient\'s illness, you first must go register them ⬇</string>
     <string name="button">Button</string>
     <string name="ok">ok</string>
+    <string name="view_preset_data">View Preset Data</string>
 </resources>
