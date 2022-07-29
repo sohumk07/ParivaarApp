@@ -1,5 +1,6 @@
 package com.example.parivaarapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,10 +13,14 @@ public class AdminMenu extends AppCompatActivity {
 
     private Button presetDataButton;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Admin Navigation Menu");
+        actionBar.setSubtitle("App Name");
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu);
 

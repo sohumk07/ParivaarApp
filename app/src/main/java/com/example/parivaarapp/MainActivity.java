@@ -69,27 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-
-        return super.onCreateOptionsMenu(menu);
 
 
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //Code to change text of the toolbar
-
-        switch(item.getItemId()){
-            case R.id.Menu:
-                startActivity(new Intent(MainActivity.this, Menu.class));
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
 
 

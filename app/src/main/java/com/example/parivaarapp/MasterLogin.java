@@ -1,5 +1,6 @@
 package com.example.parivaarapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -26,6 +27,12 @@ public class MasterLogin extends AppCompatActivity {
         Username = (EditText) findViewById(R.id.username_editText);
         Password = (EditText) findViewById(R.id.password_editText);
         Login = (Button) findViewById(R.id.login);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Admin Login Screen");
+        actionBar.setSubtitle("App Name");
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
 
 

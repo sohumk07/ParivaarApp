@@ -1,10 +1,13 @@
 package com.example.parivaarapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
@@ -165,6 +168,15 @@ public class DailyActivation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Daily Activation");
+        actionBar.setSubtitle("App Name");
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_activation);
 
@@ -327,6 +339,25 @@ public class DailyActivation extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.Menu:
+                startActivity(new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
 
 
 

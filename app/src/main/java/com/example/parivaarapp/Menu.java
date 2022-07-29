@@ -1,5 +1,6 @@
 package com.example.parivaarapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,10 @@ private Button button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Navigation Menu");
+        actionBar.setSubtitle("App Name");
 
 
         // go to preset data
