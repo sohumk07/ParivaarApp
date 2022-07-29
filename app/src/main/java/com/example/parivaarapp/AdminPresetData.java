@@ -1,12 +1,13 @@
 package com.example.parivaarapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,8 +24,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -148,92 +147,16 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Calendar;
-
-import android.os.Bundle;
-import com.google.firebase.firestore.Query;
-
 public class AdminPresetData extends AppCompatActivity {
 
-    private FirebaseFirestore firebaseFirestore;
-    private RecyclerView mFirestoreList;
 
-    private FirestoreRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_preset_data);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        mFirestoreList = findViewById(R.id.firestore_list); //the actual recycler view
-
-        //Query
-        Query query = firebaseFirestore.collection("Preset Data");
-        //RecyclerOptions
-        FirestoreRecyclerOptions<AdminPresetModel> options = new FirestoreRecyclerOptions.Builder<AdminPresetModel>()
-                .setQuery(query, AdminPresetModel.class)
-                .build();
 
 
-        adapter = new FirestoreRecyclerAdapter<AdminPresetModel, PresetDataViewHolder>(options) {
-            @NonNull
-            @Override
-            public PresetDataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
-                return new PresetDataViewHolder(view);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull PresetDataViewHolder holder, int position, @NonNull AdminPresetModel model) {
-                holder.clinicName.setText(model.getClinicName());
-                holder.doctorName.setText("Doctor: " + model.getDoctorName());
-                holder.driverName.setText("Driver: " + model.getDriverName());
-                holder.attendantName.setText("Medical Attendant: " + model.getAttendantName());
-
-            }
-        };
-
-        mFirestoreList.setHasFixedSize(true);
-        mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
-        mFirestoreList.setAdapter(adapter);
-
-
-    }
-
-
-    private class PresetDataViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView clinicName;
-        private TextView doctorName;
-        private TextView driverName;
-        private TextView attendantName;
-
-
-        public PresetDataViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            clinicName = itemView.findViewById(R.id.clinicName);
-            doctorName = itemView.findViewById(R.id.doctorName);
-            driverName = itemView.findViewById(R.id.driverName);
-            attendantName = itemView.findViewById(R.id.attendantName);
-
-
-
-        }
-
-    }
-
-
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
     }
 }

@@ -153,6 +153,8 @@ import java.util.Calendar;
 import android.os.Bundle;
 import com.google.firebase.firestore.Query;
 
+import org.w3c.dom.Text;
+
 public class AdminDailyActivation extends AppCompatActivity {
 
     private FirebaseFirestore firebaseFirestore;
@@ -163,33 +165,42 @@ public class AdminDailyActivation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_preset_data);
+        setContentView(R.layout.activity_admin_daily_activation);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         mFirestoreList = findViewById(R.id.firestore_list); //the actual recycler view
 
         //Query
-        Query query = firebaseFirestore.collection("Preset Data");
+        Query query = firebaseFirestore.collection("Daily Activation");
         //RecyclerOptions
-        FirestoreRecyclerOptions<AdminPresetModel> options = new FirestoreRecyclerOptions.Builder<AdminPresetModel>()
-                .setQuery(query, AdminPresetModel.class)
+        FirestoreRecyclerOptions<AdminDailyActivationModel> options = new FirestoreRecyclerOptions.Builder<AdminDailyActivationModel>()
+                .setQuery(query, AdminDailyActivationModel.class)
                 .build();
 
 
-        adapter = new FirestoreRecyclerAdapter<AdminPresetModel, PresetDataViewHolder>(options) {
+        adapter = new FirestoreRecyclerAdapter<AdminDailyActivationModel, DailyActivationViewHolder>(options) {
             @NonNull
             @Override
-            public PresetDataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public DailyActivationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
-                return new PresetDataViewHolder(view);
+                return new DailyActivationViewHolder(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull PresetDataViewHolder holder, int position, @NonNull AdminPresetModel model) {
-                holder.clinicName.setText(model.getClinicName());
+            protected void onBindViewHolder(@NonNull DailyActivationViewHolder holder, int position, @NonNull AdminDailyActivationModel model) {
+                holder.clinicName.setText("Clinic Name: " + model.getClinicName());
+                holder.date.setText("Date: " + model.getDate());
                 holder.doctorName.setText("Doctor: " + model.getDoctorName());
-                holder.driverName.setText("Driver: " + model.getDriverName());
                 holder.attendantName.setText("Medical Attendant: " + model.getAttendantName());
+
+                holder.driverName.setText("Driver: " + model.getDriverName());
+                holder.districtsVisited.setText("Districts Visited " + model.getDistrictsVisited());
+                holder.startMileage.setText("Vehicle started at " + model.getStartMileage() + " miles");
+                holder.endMileage.setText("Vehicle ended at " + model.getEndMileage() + " miles");
+                holder.endMileage.setText("Total Distance Traveled " + model.getDistanceTraveled() + " miles");
+
+
+
 
             }
         };
@@ -202,21 +213,34 @@ public class AdminDailyActivation extends AppCompatActivity {
     }
 
 
-    private class PresetDataViewHolder extends RecyclerView.ViewHolder {
+    private class DailyActivationViewHolder extends RecyclerView.ViewHolder {
 
         private TextView clinicName;
+        private TextView date;
         private TextView doctorName;
-        private TextView driverName;
         private TextView attendantName;
+        private TextView driverName;
+        private TextView districtsVisited;
+        private TextView startMileage;
+        private TextView endMileage;
+        private TextView distanceTraveled;
 
 
-        public PresetDataViewHolder(@NonNull View itemView) {
+
+        public DailyActivationViewHolder(@NonNull View itemView) {
             super(itemView);
 
             clinicName = itemView.findViewById(R.id.clinicName);
+            date = itemView.findViewById(R.id.date);
             doctorName = itemView.findViewById(R.id.doctorName);
-            driverName = itemView.findViewById(R.id.driverName);
             attendantName = itemView.findViewById(R.id.attendantName);
+
+            driverName = itemView.findViewById(R.id.driverName);
+            districtsVisited = itemView.findViewById(R.id.districtsVisited);
+            startMileage = itemView.findViewById(R.id.startMileage);
+            endMileage = itemView.findViewById(R.id.endMileage);
+            distanceTraveled = itemView.findViewById(R.id.distanceTraveled);
+
 
 
 
