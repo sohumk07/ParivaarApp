@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class AdminMenu extends AppCompatActivity {
 
-    private Button presetDataButton;
+    private Button presetDataButton, dailyactivationButton, patientregistrationButton, doctorsnoteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,11 @@ public class AdminMenu extends AppCompatActivity {
         setContentView(R.layout.activity_admin_menu);
 
         presetDataButton = (Button) findViewById(R.id.admin_presetData);
+        dailyactivationButton = (Button) findViewById(R.id.button2);
+        patientregistrationButton = (Button) findViewById(R.id.button3);
+        doctorsnoteButton = (Button) findViewById(R.id.button4);
+
+
 
 
 
@@ -33,6 +38,30 @@ public class AdminMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminMenu.this, AdminPresetData.class);
+                startActivity(intent);
+            }
+        });
+
+        dailyactivationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminMenu.this, AdminDailyActivation.class);
+                startActivity(intent);
+            }
+        });
+
+        patientregistrationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminMenu.this, AdminPatientRegistration.class);
+                startActivity(intent);
+            }
+        });
+
+        doctorsnoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminMenu.this, AdminDoctorsNote.class);
                 startActivity(intent);
             }
         });
