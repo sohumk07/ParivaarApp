@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -156,11 +157,9 @@ public class DailyActivation extends AppCompatActivity {
     FirebaseFirestore fStore;
     Button RegisterBtn;
 
-    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, districtsvisited, totaldistance, addphoto, clinicname1, date;
+    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, districtsvisited, totaldistance, clinicname1, date;
+    ImageView addphoto;
     Button update;
-
-
-
 
 
 
@@ -201,6 +200,9 @@ public class DailyActivation extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
+
+
+
 
 
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
