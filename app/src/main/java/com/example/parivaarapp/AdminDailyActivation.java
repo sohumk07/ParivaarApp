@@ -182,7 +182,7 @@ public class AdminDailyActivation extends AppCompatActivity {
         mFirestoreList = findViewById(R.id.firestore_list); //the actual recycler view
 
         //Query
-        Query query = firebaseFirestore.collection("Daily Activation");
+        Query query = firebaseFirestore.collection("Daily Activation").orderBy("clinicName");
         //RecyclerOptions
         FirestoreRecyclerOptions<AdminDailyActivationModel> options = new FirestoreRecyclerOptions.Builder<AdminDailyActivationModel>()
                 .setQuery(query, AdminDailyActivationModel.class)
