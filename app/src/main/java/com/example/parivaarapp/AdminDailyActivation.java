@@ -197,7 +197,7 @@ public class AdminDailyActivation extends AppCompatActivity {
                 holder.districtsVisited.setText("Districts Visited " + model.getDistrictsVisited());
                 holder.startMileage.setText("Vehicle started at " + model.getStartMileage() + " miles");
                 holder.endMileage.setText("Vehicle ended at " + model.getEndMileage() + " miles");
-                holder.endMileage.setText("Total Distance Traveled " + model.getDistanceTraveled() + " miles");
+                holder.distanceTraveled.setText("Total Distance Traveled " + model.getDistanceTraveled() + " miles");
 
 
 
@@ -240,6 +240,9 @@ public class AdminDailyActivation extends AppCompatActivity {
             startMileage = itemView.findViewById(R.id.startMileage);
             endMileage = itemView.findViewById(R.id.endMileage);
             distanceTraveled = itemView.findViewById(R.id.distanceTraveled);
+
+
+
 
 
 
