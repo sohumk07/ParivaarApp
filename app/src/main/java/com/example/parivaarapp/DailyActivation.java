@@ -301,7 +301,7 @@ public class DailyActivation extends AppCompatActivity {
                 nestedData.put("distanceTraveled", totaldistance.getText().toString().trim());
 
 
-                DailyActivation.put(clinicname1.getText().toString(), nestedData);
+                // DailyActivation.put(clinicname1.getText().toString(), nestedData);
 
 
 
