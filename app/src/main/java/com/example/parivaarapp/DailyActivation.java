@@ -292,6 +292,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 Map<String, Object> nestedData = new HashMap<>();
+                nestedData.put("clinicName", clinicname1.getText().toString().trim());
                 nestedData.put("date", date.getText().toString().trim());
                 nestedData.put("doctorName", doctor.getText().toString().trim());
                 nestedData.put("attendantName", medattendant.getText().toString().trim());
@@ -311,7 +312,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 //documents and collections
-                db.collection("Daily Activation").document(date.getText().toString())
+                db.collection("Daily Activation").document(date.getText().toString().trim())
                         .set(DailyActivation, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
