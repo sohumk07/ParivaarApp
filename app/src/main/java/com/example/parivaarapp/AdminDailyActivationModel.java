@@ -12,14 +12,22 @@ public class AdminDailyActivationModel {
     private String endMileage;
     private String distanceTraveled;
 
+
     private AdminDailyActivationModel() {
 
     }
 
-    private AdminDailyActivationModel(String doctorName, String driverName, String attendantName) {
+    public AdminDailyActivationModel(String clinicName, String date, String doctorName, String attendantName, String driverName, String districtsVisited, String startMileage, String endMileage, String distanceTraveled, String getDistanceTraveled) {
+        this.clinicName = clinicName;
+        this.date = date;
         this.doctorName = doctorName;
-        this.driverName = driverName;
         this.attendantName = attendantName;
+        this.driverName = driverName;
+        this.districtsVisited = districtsVisited;
+        this.startMileage = startMileage;
+        this.endMileage = endMileage;
+        this.distanceTraveled = distanceTraveled;
+        this.distanceTraveled = getDistanceTraveled;
     }
 
     //getters
@@ -55,9 +63,9 @@ public class AdminDailyActivationModel {
         return endMileage;
     }
 
-    public String getDistanceTraveled() {
-        return distanceTraveled;
-    }
+
+    public String getDistanceTraveled() {return distanceTraveled;}
+
     // setters
 
 
