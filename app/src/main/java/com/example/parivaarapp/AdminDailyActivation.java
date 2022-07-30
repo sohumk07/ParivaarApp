@@ -1,9 +1,12 @@
 package com.example.parivaarapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +39,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -160,12 +164,19 @@ public class AdminDailyActivation extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
 
+
     private FirestoreRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_daily_activation);
+
+
+
+
+
+
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         mFirestoreList = findViewById(R.id.firestore_list); //the actual recycler view
@@ -202,6 +213,8 @@ public class AdminDailyActivation extends AppCompatActivity {
 
 
 
+
+
             }
         };
 
@@ -210,7 +223,18 @@ public class AdminDailyActivation extends AppCompatActivity {
         mFirestoreList.setAdapter(adapter);
 
 
+
+
+
+
+
+
+
+
+
     }
+
+
 
 
     private class DailyActivationViewHolder extends RecyclerView.ViewHolder {
@@ -245,6 +269,8 @@ public class AdminDailyActivation extends AppCompatActivity {
 
 
         }
+
+
 
     }
 
