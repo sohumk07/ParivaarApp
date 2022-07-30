@@ -288,18 +288,18 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 Map<String, Object> DailyActivation = new HashMap<>();
-                // nothing in here
+                DailyActivation.put("clinicName", clinicname1.getText().toString().trim());
+                DailyActivation.put("date", date.getText().toString().trim());
+                DailyActivation.put("doctorName", doctor.getText().toString().trim());
+                DailyActivation.put("attendantName", medattendant.getText().toString().trim());
+                DailyActivation.put("driverName", driver.getText().toString().trim());
+                DailyActivation.put("startMileage", vehiclestartmileage.getText().toString().trim());
+                DailyActivation.put("endMileage", vehicleendmileage.getText().toString().trim());
+                DailyActivation.put("distanceTraveled", totaldistance.getText().toString().trim());
 
 
                 Map<String, Object> nestedData = new HashMap<>();
-                nestedData.put("clinicName", clinicname1.getText().toString().trim());
-                nestedData.put("date", date.getText().toString().trim());
-                nestedData.put("doctorName", doctor.getText().toString().trim());
-                nestedData.put("attendantName", medattendant.getText().toString().trim());
-                nestedData.put("driverName", driver.getText().toString().trim());
-                nestedData.put("startMileage", vehiclestartmileage.getText().toString().trim());
-                nestedData.put("endMileage", vehicleendmileage.getText().toString().trim());
-                nestedData.put("distanceTraveled", totaldistance.getText().toString().trim());
+
 
 
                 // DailyActivation.put(clinicname1.getText().toString(), nestedData);
