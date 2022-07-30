@@ -300,6 +300,7 @@ public class DailyActivation extends AppCompatActivity {
                 nestedData.put("endMileage", vehicleendmileage.getText().toString().trim());
                 nestedData.put("distanceTraveled", totaldistance.getText().toString().trim());
 
+
                 DailyActivation.put(clinicname1.getText().toString(), nestedData);
 
 
@@ -310,7 +311,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 //documents and collections
-                db.collection("Daily Activation").document()
+                db.collection("Daily Activation").document(date.getText().toString())
                         .set(DailyActivation, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
