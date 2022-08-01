@@ -266,10 +266,10 @@ public class NewPatientRegistration extends AppCompatActivity {
                 NewPatientRegistration.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
 
 
-                Map<String, Object> nestedData = new HashMap<>();
+                //Map<String, Object> nestedData = new HashMap<>();
 
 
-                NewPatientRegistration.put("Patient Registration Info", nestedData);
+                //NewPatientRegistration.put("Patient Registration Info", nestedData);
 
 
                 db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim())

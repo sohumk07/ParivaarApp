@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:textStyle="bold"
+    >
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/fatherHusbandName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/fatherHusbandName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/identificationNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/age"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/bloodPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/identificationNum"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/bloodPressure"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/bodyTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/weight"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/bloodSugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/bodyTemp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/doctorsNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/bloodSugar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/doctorAdvice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/doctorsNote"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/medicinesUsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/doctorAdvice"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/followUpNeeded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/medicinesUsed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/referralNeeded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/followUpNeeded"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
