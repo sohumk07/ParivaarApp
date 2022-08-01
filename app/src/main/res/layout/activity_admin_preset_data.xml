@@ -15,11 +15,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="View Preset Data"
+            android:text="View Medical Assessment"
             android:textSize="34sp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/firestore_list"
+            android:id="@+id/doctors_list"
             android:layout_width="409dp"
             android:layout_height="660dp"
             android:layout_marginTop="3dp"
