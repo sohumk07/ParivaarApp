@@ -221,13 +221,15 @@ public class DiagnoseIllness extends AppCompatActivity {
                 }
 
                 Map<String, Object> DiagnoseIllness = new HashMap<>();
+                DiagnoseIllness.put("DOCTOR'S NOTE FOR:", doctorsnotefullname.getText().toString().trim());
+                DiagnoseIllness.put("Doctor's Description Of Illness", doctorsnote.getText().toString().trim());
+                DiagnoseIllness.put("Doctor's Advice", doctorsadvice.getText().toString().trim());
+                DiagnoseIllness.put("Medicines Used", medicinesused.getText().toString().trim());
+                DiagnoseIllness.put("Follow Up Needed?", followup.getText().toString().trim());
+                DiagnoseIllness.put("Need Of Referral To Higher Center?", referral.getText().toString().trim());
 
                 Map<String, Object> Data = new HashMap<>();
-                Data.put("Doctor's Description Of Illness", doctorsnote.getText().toString().trim());
-                Data.put("Doctor's Advice", doctorsadvice.getText().toString().trim());
-                Data.put("Medicines Used", medicinesused.getText().toString().trim());
-                Data.put("Follow Up Needed?", followup.getText().toString().trim());
-                Data.put("Need Of Referral To Higher Center?", referral.getText().toString().trim());
+
 
                 DiagnoseIllness.put("Doctor's Note", Data);
 
