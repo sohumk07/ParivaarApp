@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_admin_daily_activation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_admin_daily_activation.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_admin_doctors_note.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_admin_menu.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_admin_patient_registration.xml" value="0.2296875" />
@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_new_patient_registration.xml" value="0.182518115942029" />
         <entry key="app/src/main/res/layout/activity_preset_data.xml" value="0.15254237288135594" />
+        <entry key="app/src/main/res/layout/drop_down_item.xml" value="0.2489868287740628" />
         <entry key="app/src/main/res/layout/list_item_single.xml" value="0.1816123188405797" />
         <entry key="app/src/main/res/menu/main.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1165" />
