@@ -4,4 +4,11 @@
     <string name="button">Button</string>
     <string name="ok">ok</string>
     <string name="view_preset_data">View Preset Data</string>
+    
+    
+    <string-array name="sortOptions">
+        <item>Most Recent</item>
+        <item>Oldest</item>
+        <item>Group Clinics</item>
+    </string-array>
 </resources>

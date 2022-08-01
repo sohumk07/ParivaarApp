@@ -10,6 +10,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.content.Intent;
 import android.os.Bundle;
@@ -167,10 +170,32 @@ public class AdminDailyActivation extends AppCompatActivity {
 
     private FirestoreRecyclerAdapter adapter;
 
+
+    private String[] sortOptions = {"Most Recent", "Oldest", "By clinic"};
+
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> adapterItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_daily_activation);
+
+
+//        autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+//
+//        adapterItems = new ArrayAdapter<String>(this, R.layout.drop_down_item, sortOptions);
+//        autoCompleteTextView.setAdapter(adapterItems);
+//
+//        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+//                String item = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(getApplicationContext(), "Item: " + item, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
 
 
 
@@ -183,6 +208,10 @@ public class AdminDailyActivation extends AppCompatActivity {
 
         //Query
         Query query = firebaseFirestore.collection("Daily Activation").orderBy("clinicName");
+
+
+
+
         //RecyclerOptions
         FirestoreRecyclerOptions<AdminDailyActivationModel> options = new FirestoreRecyclerOptions.Builder<AdminDailyActivationModel>()
                 .setQuery(query, AdminDailyActivationModel.class)

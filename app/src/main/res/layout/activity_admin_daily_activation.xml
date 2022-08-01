@@ -5,42 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminPresetData">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="View Daily Activation"
-            android:textSize="34sp" />
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="32dp"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:layout_marginEnd="32dp"-->
+<!--            android:layout_marginBottom="66dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/firestore_list"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-        <EditText
-            android:id="@+id/edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:minHeight="48dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+<!--            <AutoCompleteTextView-->
+<!--                android:id="@+id/autoCompleteTextView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="68dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:inputType="none"-->
+<!--                android:text="Sort By" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/firestore_list"
             android:layout_width="409dp"
             android:layout_height="660dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="90dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.0"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
