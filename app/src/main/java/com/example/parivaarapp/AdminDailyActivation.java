@@ -197,6 +197,8 @@ public class AdminDailyActivation extends AppCompatActivity {
                 return new DailyActivationViewHolder(view);
             }
 
+
+
             @Override
             protected void onBindViewHolder(@NonNull DailyActivationViewHolder holder, int position, @NonNull AdminDailyActivationModel model) {
                 holder.clinicName.setText("Clinic Name: " + model.getClinicName());
