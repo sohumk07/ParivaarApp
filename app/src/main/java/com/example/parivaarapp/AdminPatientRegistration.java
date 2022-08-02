@@ -243,7 +243,7 @@ public class AdminPatientRegistration extends AppCompatActivity {
                 holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
 
                 //Doctor notes attributes
-
+                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getName());
                 holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
                 holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
                 holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());
@@ -290,6 +290,7 @@ public class AdminPatientRegistration extends AppCompatActivity {
         private TextView weight;
         private TextView bodyTemp;
         private TextView bloodSugar;
+        private TextView doctorNoteHeader;
         private TextView doctorNote;
         private TextView doctorAdvice;
         private TextView medicinesUsed;
@@ -317,6 +318,7 @@ public class AdminPatientRegistration extends AppCompatActivity {
             medicinesUsed = itemView.findViewById(R.id.medicinesUsed);
             followUpNeeded = itemView.findViewById(R.id.followUpNeeded);
             needOfReferral = itemView.findViewById(R.id.referralNeeded);
+            doctorNoteHeader = itemView.findViewById(R.id.doctorNoteHeader);
 
 
 
