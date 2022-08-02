@@ -256,14 +256,14 @@ public class NewPatientRegistration extends AppCompatActivity {
 
 
                 Map<String, Object> NewPatientRegistration = new HashMap<>();
-                NewPatientRegistration.put("PATIENT REGISTRATION INFO FOR:", fullname.getText().toString().trim());
-                NewPatientRegistration.put("Father/Husband Name",patientregistrationhusbandname.getText().toString().trim());
-                NewPatientRegistration.put("Age",patientregistrationage.getText().toString().trim());
-                NewPatientRegistration.put("Identification Number",patientregistrationidentification.getText().toString().trim());
-                NewPatientRegistration.put("Blood Pressure",patientregistrationbp.getText().toString().trim());
-                NewPatientRegistration.put("Weight (kg)",patientregistrationweight.getText().toString().trim());
-                NewPatientRegistration.put("Body Temperature",patientregistrationbodytemperature.getText().toString().trim());
-                NewPatientRegistration.put("Blood Sugar",patientregistrationbloodsugar.getText().toString().trim());
+                NewPatientRegistration.put("name", fullname.getText().toString().trim().toUpperCase());
+                NewPatientRegistration.put("father_HusbandName",patientregistrationhusbandname.getText().toString().trim());
+                NewPatientRegistration.put("age",patientregistrationage.getText().toString().trim());
+                NewPatientRegistration.put("identificationNum",patientregistrationidentification.getText().toString().trim());
+                NewPatientRegistration.put("bloodPressure",patientregistrationbp.getText().toString().trim());
+                NewPatientRegistration.put("weight (kg)",patientregistrationweight.getText().toString().trim());
+                NewPatientRegistration.put("bodyTemp",patientregistrationbodytemperature.getText().toString().trim());
+                NewPatientRegistration.put("bloodSugar",patientregistrationbloodsugar.getText().toString().trim());
 
 
                 //Map<String, Object> nestedData = new HashMap<>();
@@ -272,7 +272,7 @@ public class NewPatientRegistration extends AppCompatActivity {
                 //NewPatientRegistration.put("Patient Registration Info", nestedData);
 
 
-                db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim())
+                db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim().toUpperCase())
                         .set(NewPatientRegistration, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
