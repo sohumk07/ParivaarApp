@@ -6,7 +6,7 @@ public class PatientDataModel {
     private String name;
     private String father_HusbandName;
     private int age;
-    private int identificationNum;
+    private long identificationNum;
     private int bloodPressure;
     private int weight;
     private int bodyTemp;
@@ -66,11 +66,11 @@ public class PatientDataModel {
         this.age = age;
     }
 
-    public int getIdentificationNum() {
+    public long getIdentificationNum() {
         return identificationNum;
     }
 
-    public void setIdentificationNum(int identificationNum) {
+    public void setIdentificationNum(long identificationNum) {
         this.identificationNum = identificationNum;
     }
 

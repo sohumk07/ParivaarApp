@@ -238,8 +238,8 @@ public class AdminPatientRegistration extends AppCompatActivity {
                 holder.age.setText("Age: " + model.getAge());
                 holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
                 holder.bloodPressure.setText("Blood Pressure: " + model.getBloodPressure());
-                holder.weight.setText("Weight " + model.getWeight());
-                holder.bodyTemp.setText("Body Temperature " + model.getBodyTemp());
+                holder.weight.setText("Weight: " + model.getWeight());
+                holder.bodyTemp.setText("Body Temperature: " + model.getBodyTemp());
                 holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
 
                 //Doctor notes attributes

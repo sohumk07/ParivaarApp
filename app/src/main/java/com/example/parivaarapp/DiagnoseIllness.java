@@ -222,8 +222,8 @@ public class DiagnoseIllness extends AppCompatActivity {
 
                 Map<String, Object> DiagnoseIllness = new HashMap<>();
                 //DiagnoseIllness.put("name", doctorsnotefullname.getText().toString().trim());
-                DiagnoseIllness.put("DoctorNote", doctorsnote.getText().toString().trim());
-                DiagnoseIllness.put("DoctorAdvice", doctorsadvice.getText().toString().trim());
+                DiagnoseIllness.put("doctorNote", doctorsnote.getText().toString().trim());
+                DiagnoseIllness.put("doctorAdvice", doctorsadvice.getText().toString().trim());
                 DiagnoseIllness.put("medicinesUsed", medicinesused.getText().toString().trim());
                 DiagnoseIllness.put("followUpNeeded", followup.getText().toString().trim());
                 DiagnoseIllness.put("needOfReferral", referral.getText().toString().trim());
