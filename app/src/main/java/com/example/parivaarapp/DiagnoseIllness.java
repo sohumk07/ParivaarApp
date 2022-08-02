@@ -221,25 +221,22 @@ public class DiagnoseIllness extends AppCompatActivity {
                 }
 
                 Map<String, Object> DiagnoseIllness = new HashMap<>();
-                DiagnoseIllness.put("DOCTOR'S NOTE FOR:", doctorsnotefullname.getText().toString().trim());
-                DiagnoseIllness.put("Doctor's Description Of Illness", doctorsnote.getText().toString().trim());
-                DiagnoseIllness.put("Doctor's Advice", doctorsadvice.getText().toString().trim());
-                DiagnoseIllness.put("Medicines Used", medicinesused.getText().toString().trim());
-                DiagnoseIllness.put("Follow Up Needed?", followup.getText().toString().trim());
-                DiagnoseIllness.put("Need Of Referral To Higher Center?", referral.getText().toString().trim());
+                //DiagnoseIllness.put("name", doctorsnotefullname.getText().toString().trim());
+                DiagnoseIllness.put("doctorNote", doctorsnote.getText().toString().trim());
+                DiagnoseIllness.put("doctorAdvice", doctorsadvice.getText().toString().trim());
+                DiagnoseIllness.put("medicinesUsed", medicinesused.getText().toString().trim());
+                DiagnoseIllness.put("followUpNeeded", followup.getText().toString().trim());
+                DiagnoseIllness.put("needOfReferral", referral.getText().toString().trim());
 
-                Map<String, Object> Data = new HashMap<>();
-
-
-                DiagnoseIllness.put("Doctor's Note", Data);
+                //Map<String, Object> Data = new HashMap<>();
 
 
-
+                //DiagnoseIllness.put("Doctor's Note", Data);
 
 
 
                 //documents and collections
-                db.collection("Patient Registration and-or Doctor's Notes").document(doctorsnotefullname.getText().toString().trim())
+                db.collection("Patient Registration and-or Doctor's Notes").document(doctorsnotefullname.getText().toString().trim().toUpperCase())
                         .set(DiagnoseIllness, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -268,3 +265,4 @@ public class DiagnoseIllness extends AppCompatActivity {
         });
     }
 }
+
