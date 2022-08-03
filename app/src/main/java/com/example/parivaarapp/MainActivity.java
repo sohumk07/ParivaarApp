@@ -41,16 +41,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button=findViewById(R.id.district_login);
+        // button=findViewById(R.id.district_login);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+       // button.setOnClickListener(new View.OnClickListener() {
+            // @Override
+            //public void onClick(View view) {
                 //code
-                Intent intent = new Intent(MainActivity.this,DistrictLogin.class);
-                startActivity(intent);
-            }
-        });
+               // Intent intent = new Intent(MainActivity.this,DistrictLogin.class);
+              //  startActivity(intent);
+           // }
+      //  });
 
 
         button=findViewById(R.id.master_login);

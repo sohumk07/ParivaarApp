@@ -212,7 +212,7 @@ public class AdminPatientRegistration extends AppCompatActivity {
         mFirestoreList = findViewById(R.id.patient_list); //the actual recycler view
 
         //Query
-        Query query = firebaseFirestore.collection("/Patient Registration and-or Doctor's Notes");
+        Query query = firebaseFirestore.collection("Patient Registration and-or Doctor's Notes");
 
 
 
