@@ -6,6 +6,7 @@
 
 package com.example.parivaarapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -184,6 +186,9 @@ public class AdminPatientRegistration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setSubtitle("App Name");
+        actionBar.setTitle("Admin View Patient Data");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_patient_registration);
 
@@ -345,6 +350,24 @@ public class AdminPatientRegistration extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         adapter.startListening();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.Menu:
+                startActivity(new Intent(AdminPatientRegistration.this, AdminMenu.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }
 

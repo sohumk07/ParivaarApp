@@ -4,6 +4,7 @@
 
 package com.example.parivaarapp;
 
+        import androidx.appcompat.app.ActionBar;
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.appcompat.widget.SearchView;
         import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ package com.example.parivaarapp;
         import android.text.Editable;
         import android.text.TextWatcher;
         import android.view.LayoutInflater;
+        import android.view.MenuItem;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.AdapterView;
@@ -173,5 +175,27 @@ public class AdminDoctorsNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_doctors_note);
     }
+
+
+        @Override
+        public boolean onCreateOptionsMenu(android.view.Menu menu) {
+                getMenuInflater().inflate(R.menu.main, menu);
+                ActionBar actionBar = getSupportActionBar();
+                actionBar.setSubtitle("App Name");
+                actionBar.setTitle("Admin View Patient Data");
+
+                return super.onCreateOptionsMenu(menu);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                        case R.id.Menu:
+                                startActivity(new Intent(AdminDoctorsNote.this, AdminMenu.class));
+                                break;
+                }
+                return super.onOptionsItemSelected(item);
+
+        }
 
 }

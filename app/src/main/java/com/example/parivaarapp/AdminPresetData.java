@@ -157,6 +157,5 @@ public class AdminPresetData extends AppCompatActivity {
         setContentView(R.layout.activity_admin_preset_data);
 
 
-
     }
 }
