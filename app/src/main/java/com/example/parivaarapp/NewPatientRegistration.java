@@ -319,3 +319,4 @@ public class NewPatientRegistration extends AppCompatActivity {
 
     }
 }
+
