@@ -90,6 +90,13 @@
             android:text="Upload"
             android:textColor="@color/white" />
 
+        <Button
+            android:id="@+id/patient_registration_button2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Go To Medical Assesment"
+            android:textColor="@color/white" />
+
 
     </LinearLayout>
 

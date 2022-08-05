@@ -72,23 +72,23 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Districts Visited"
+            android:hint="Total Distance"
             android:id="@+id/total_distance"/>
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Total Distance:"
-            android:id="@+id/districts_visited"/>
+            android:hint="Villages Visited:"
+            android:id="@+id/villages_visited"/>
 
-        <ImageView
+
+        <EditText
+            android:id="@+id/remarks"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars"
-            android:hint="Add Photo"
-            android:id="@+id/add_photo"/>
-
-
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Remarks:" />
 
         <Button
             android:id="@+id/update"

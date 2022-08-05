@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -148,8 +149,13 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 
-public class DiagnoseIllness extends AppCompatActivity {
+
+
+public class DiagnoseIllness extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Button button;
     public static final String TAG = "TAG";
@@ -158,6 +164,7 @@ public class DiagnoseIllness extends AppCompatActivity {
     private Button upload;
 
     EditText doctorsnotefullname, doctorsnote, doctorsadvice, medicinesused, referral, followup;
+    String[] users = { "Fever", "Skin", "Chronic Disease", "Bp/Sugar", "Eye", "Other" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,10 +172,13 @@ public class DiagnoseIllness extends AppCompatActivity {
         setContentView(R.layout.activity_diagnose_illness);
 
 
+
+
+
+
         upload =findViewById(R.id.dn_upload);
 
-        doctorsnotefullname = findViewById(R.id.dn_full_name);
-        doctorsnote = findViewById(R.id.dn_doctors_note);
+        doctorsnotefullname = findViewById(R.id.dn_full_name2);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.dn_medicines_uses);
         followup = findViewById(R.id.dn_follow_up);
@@ -188,7 +198,6 @@ public class DiagnoseIllness extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String doctorsnotefullname1 = doctorsnotefullname.getText().toString().trim();
-                final String doctorsnote1 = doctorsnote.getText().toString().trim();
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesused1 = medicinesused.getText().toString().trim();
                 final String followup1 = followup.getText().toString().trim();
@@ -197,10 +206,6 @@ public class DiagnoseIllness extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(doctorsnotefullname1)){
                     doctorsnotefullname.setError("Cannot Be Empty");
-                    return;
-                }
-                if(TextUtils.isEmpty(doctorsnote1)){
-                    doctorsnote.setError("Cannot Be Empty");
                     return;
                 }
                 if(TextUtils.isEmpty(doctorsadvice1)){
@@ -222,7 +227,7 @@ public class DiagnoseIllness extends AppCompatActivity {
 
                 Map<String, Object> DiagnoseIllness = new HashMap<>();
                 //DiagnoseIllness.put("name", doctorsnotefullname.getText().toString().trim());
-                DiagnoseIllness.put("doctorNote", doctorsnote.getText().toString().trim());
+                // DiagnoseIllness.put("doctorNote", doctorsnote.getText().toString().trim());
                 DiagnoseIllness.put("doctorAdvice", doctorsadvice.getText().toString().trim());
                 DiagnoseIllness.put("medicinesUsed", medicinesused.getText().toString().trim());
                 DiagnoseIllness.put("followUpNeeded", followup.getText().toString().trim());
@@ -263,6 +268,41 @@ public class DiagnoseIllness extends AppCompatActivity {
 
             }
         });
+
+
+        //spinner code
+
+
+        Spinner spin = (Spinner) findViewById(R.id.spinner2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, users);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
+        spin.setOnItemSelectedListener(this);
+
+
+
+
+
+
+
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(), "Select Problem: "+users[position] ,Toast.LENGTH_SHORT).show();
+        // add
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
+
+
+
+
 

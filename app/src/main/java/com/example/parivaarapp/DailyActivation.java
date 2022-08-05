@@ -160,7 +160,7 @@ public class DailyActivation extends AppCompatActivity {
     FirebaseFirestore fStore;
     Button RegisterBtn;
 
-    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, districtsvisited, totaldistance, clinicname1, date;
+    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks;
     ImageView addphoto;
     Button update;
 
@@ -188,6 +188,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
+        remarks = findViewById(R.id.remarks);
         date = findViewById(R.id.date);
         clinicname1 = findViewById(R.id.fstTxt);
         doctor = findViewById(R.id.daily_activation_doctor);
@@ -196,8 +197,7 @@ public class DailyActivation extends AppCompatActivity {
         totaldistance = findViewById(R.id.total_distance);
         driver = findViewById(R.id.daily_activation_driver);
         vehiclestartmileage = findViewById(R.id.daily_activation_medical_attendant);
-        districtsvisited = findViewById(R.id.districts_visited);
-        addphoto = findViewById(R.id.add_photo);
+        villagesvisited = findViewById(R.id.villages_visited);
         RegisterBtn= findViewById(R.id.update);
 
         fAuth = FirebaseAuth.getInstance();
@@ -230,7 +230,7 @@ public class DailyActivation extends AppCompatActivity {
                 final String medattendant1 = medattendant.getText().toString();
                 final String driver1 = driver.getText().toString();
                 final String vehiclestartmileage1 = vehiclestartmileage.getText().toString();
-                final String districtsvisited1 = districtsvisited.getText().toString();
+                final String districtsvisited1 = villagesvisited.getText().toString();
                 final String vehicleendmileage1 = vehicleendmileage.getText().toString();
                 final String totaldistance1 = totaldistance.getText().toString();
 
@@ -266,7 +266,7 @@ public class DailyActivation extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(districtsvisited1)){
-                    districtsvisited.setError("Driver is Required.");
+                    villagesvisited.setError("Driver is Required.");
                     return;
                 }
 
@@ -298,7 +298,8 @@ public class DailyActivation extends AppCompatActivity {
                 DailyActivation.put("startMileage", vehiclestartmileage.getText().toString().trim());
                 DailyActivation.put("endMileage", vehicleendmileage.getText().toString().trim());
                 DailyActivation.put("distanceTraveled", totaldistance.getText().toString().trim());
-                DailyActivation.put("districtsVisited", districtsvisited.getText().toString().trim());
+                DailyActivation.put("districtsVisited", villagesvisited.getText().toString().trim());
+                DailyActivation.put("districtsVisited", remarks.getText().toString().trim());
 
 
                 // Map<String, Object> nestedData = new HashMap<>();

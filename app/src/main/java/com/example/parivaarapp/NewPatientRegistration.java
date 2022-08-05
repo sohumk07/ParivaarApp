@@ -155,7 +155,7 @@ public class NewPatientRegistration extends AppCompatActivity {
     public static final String TAG = "TAG";
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    private Button upload;
+    private Button upload, patientreg;
 
 
     public EditText fullname, patientregistrationphoto, patientregistrationhusbandname, patientregistrationage, patientregistrationidentification,patientregistrationbp, patientregistrationweight, patientregistrationbodytemperature, patientregistrationbloodsugar;
@@ -169,6 +169,9 @@ public class NewPatientRegistration extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setSubtitle("App Name");
         actionBar.setTitle("Patient Registration");
+
+
+        patientreg = findViewById(R.id.patient_registration_button2);
 
 
         fullname = findViewById(R.id.full_name);
@@ -191,6 +194,14 @@ public class NewPatientRegistration extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(),DailyActivation.class));
             finish();
         }
+
+        patientreg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewPatientRegistration.this,DiagnoseIllness.class);
+                startActivity(intent);
+            }
+        });
 
 
 

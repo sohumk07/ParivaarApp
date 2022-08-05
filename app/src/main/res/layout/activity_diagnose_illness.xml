@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ECC2C2"
+    android:backgroundTint="#FFFFFF"
     tools:context=".NewPatientRegistration">
 
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView7"
@@ -16,51 +20,73 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="          Medical Assessment"
-            android:textSize="34sp"
+            android:textSize="34sp" />
+
+
+        <EditText
+            android:id="@+id/clinic_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Clinic Name" />
+
+        <EditText
+            android:id="@+id/dn_full_name2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Patient Full Name (must match name on patient registry)" />
+
+        <TextView
+            android:id="@+id/dn_doctors_note"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:inputType="none"
+            android:text="Select Type Of Issue"
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="Type Of Problem"
             />
 
-
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/dn_doctors_advice"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Full Name (must match name on patient registry)"
-            android:id="@+id/dn_full_name"/>
+            android:hint="Doctor's Advice" />
 
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/dn_medicines_uses"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Doctor's Notes About Issue"
-            android:id="@+id/dn_doctors_note"/>
+            android:hint="Medicines Used" />
 
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/dn_follow_up"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Doctor's Advice"
-            android:id="@+id/dn_doctors_advice"/>
+            android:hint="Follow Up Needed? (yes or no)" />
 
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/dn_referral"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Medicines Used"
-            android:id="@+id/dn_medicines_uses"/>
-
-        <EditText android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Follow Up Needed? (yes or no)"
-            android:id="@+id/dn_follow_up"/>
-
-        <EditText android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Need Of Referral? (yes or no)"
-            android:id="@+id/dn_referral"/>
+            android:hint="Need Of Referral? (yes or no)" />
 
         <Button
             android:id="@+id/dn_upload"
@@ -71,9 +97,6 @@
 
 
     </LinearLayout>
-
-
-
 
 
 </ScrollView>
