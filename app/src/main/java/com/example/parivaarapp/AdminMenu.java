@@ -71,7 +71,7 @@ public class AdminMenu extends AppCompatActivity {
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminMenu.this, Menu.class);
+                Intent intent = new Intent(AdminMenu.this, MainActivity.class);
                 startActivity(intent);
             }
         });
