@@ -25,7 +25,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:hint="Clinic Name:"
+            android:hint="Mobile Clinic Number::"
+            android:minHeight="48dp" />
+
+        <EditText
+            android:id="@+id/fstTxt2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:hint="District Name:"
             android:minHeight="48dp" />
 
         <EditText android:layout_width="match_parent"
@@ -74,11 +83,28 @@
             android:layout_marginTop="60dp"
             android:hint="Total Distance"
             android:id="@+id/total_distance"/>
+
+        <EditText
+            android:id="@+id/start_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Starting Time" />
+
+        <EditText
+            android:id="@+id/end_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Ending Time" />
+
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Villages Visited:"
+            android:hint="Villages (Cluster) Visited:"
             android:id="@+id/villages_visited"/>
 
 

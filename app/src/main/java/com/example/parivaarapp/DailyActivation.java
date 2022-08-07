@@ -160,7 +160,7 @@ public class DailyActivation extends AppCompatActivity {
     FirebaseFirestore fStore;
     Button RegisterBtn;
 
-    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks;
+    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks, districtname, starttime, endtime;
     ImageView addphoto;
     Button update;
 
@@ -187,7 +187,9 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
-
+        districtname = findViewById(R.id.fstTxt2);
+        starttime = findViewById(R.id.start_time);
+        endtime = findViewById(R.id.end_time);
         remarks = findViewById(R.id.remarks);
         date = findViewById(R.id.date);
         clinicname1 = findViewById(R.id.fstTxt);
@@ -308,6 +310,14 @@ public class DailyActivation extends AppCompatActivity {
 
                 // DailyActivation.put(clinicname1.getText().toString(), nestedData);
 
+                Map<String, Object> DailyActivationData = new HashMap<>();
+                DailyActivationData.put("Villages Visited", villagesvisited.getText().toString());
+                DailyActivationData.put("Distance Covered (KM)", totaldistance.getText().toString().trim());
+                DailyActivationData.put("Starting Time", starttime.getText().toString());
+                DailyActivationData.put("Leaving Time",endtime.getText().toString());
+                DailyActivationData.put("Remarks", remarks.getText().toString().trim());
+
+
 
 
 
@@ -318,6 +328,25 @@ public class DailyActivation extends AppCompatActivity {
                 //documents and collections
                 db.collection("Daily Activation").document( date.getText().toString().trim() + " " + clinicname1.getText().toString().trim().toUpperCase())
                         .set(DailyActivation)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "DocumentSnapshot successfully written!");
+                                Toast.makeText(DailyActivation.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error writing document", e);
+                                Toast.makeText(DailyActivation.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                // new collection
+                db.collection("data").document(districtname.getText().toString()).collection(clinicname1.getText().toString()).document(date.getText().toString())
+                        .set(DailyActivationData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
