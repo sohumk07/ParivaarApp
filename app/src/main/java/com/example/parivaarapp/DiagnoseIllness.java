@@ -270,7 +270,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-                db.collection(districtname.getText().toString()).document("Mobile Clinic #" + clinicname.getText().toString() + " " + date.getText().toString())                        .set(DiagnoseIllnessData,SetOptions.merge())
+                db.collection(districtname.getText().toString()).document("Mobile Clinic #" + clinicname.getText().toString() + "  Date:" + date.getText().toString())
+                        .set(DiagnoseIllnessData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
