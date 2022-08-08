@@ -32,6 +32,22 @@
             android:hint="Clinic Name" />
 
         <EditText
+            android:id="@+id/district_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="District Name" />
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Date (dd-mm-yy)" />
+
+        <EditText
             android:id="@+id/dn_full_name2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

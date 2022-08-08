@@ -163,7 +163,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     FirebaseFirestore fStore;
     private Button upload;
 
-    EditText doctorsnotefullname, doctorsnote, doctorsadvice, medicinesused, referral, followup;
+    EditText doctorsnotefullname, doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp/Sugar", "Eye", "Other" };
 
     @Override
@@ -178,6 +178,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
         upload =findViewById(R.id.dn_upload);
 
+        districtname = findViewById(R.id.district_name);
+        date = findViewById(R.id.date);
+        clinicname = findViewById(R.id.clinic_name);
         doctorsnotefullname = findViewById(R.id.dn_full_name2);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.dn_medicines_uses);
@@ -197,6 +200,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final int numberofcases = 0;
+
+
                 final String doctorsnotefullname1 = doctorsnotefullname.getText().toString().trim();
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesused1 = medicinesused.getText().toString().trim();
@@ -257,6 +263,32 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
+
+                //new collection
+                Map<String, Object> DiagnoseIllnessData = new HashMap<>();
+                DiagnoseIllnessData.put("Number Of Cases", numberofcases + 1);
+
+
+
+                db.collection(districtname.getText().toString()).document("Mobile Clinic #" + clinicname.getText().toString() + " " + date.getText().toString())                        .set(DiagnoseIllnessData,SetOptions.merge())
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "DocumentSnapshot successfully written!");
+                                Toast.makeText(DiagnoseIllness.this, "Medical Assesment Uploaded to Database", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error writing document", e);
+                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+
+
 
 
 

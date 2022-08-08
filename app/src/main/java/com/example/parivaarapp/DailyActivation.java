@@ -345,7 +345,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 // new collection
-                db.collection("data").document(districtname.getText().toString()).collection(clinicname1.getText().toString()).document(date.getText().toString())
+                db.collection(districtname.getText().toString()).document("Mobile Clinic #" + clinicname1.getText().toString() + "  Date:" + date.getText().toString())
                         .set(DailyActivationData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
