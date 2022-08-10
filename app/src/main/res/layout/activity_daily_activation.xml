@@ -123,7 +123,14 @@
             android:id="@+id/update"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Update"
+            android:text="Update"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/update2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Go To Medical Assesment"
             android:textColor="@color/white" />
 
 

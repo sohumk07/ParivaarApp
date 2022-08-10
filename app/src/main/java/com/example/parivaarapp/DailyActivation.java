@@ -162,7 +162,7 @@ public class DailyActivation extends AppCompatActivity {
 
     EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks, districtname, starttime, endtime;
     ImageView addphoto;
-    Button update;
+    Button update, update2;
 
 
 
@@ -175,6 +175,19 @@ public class DailyActivation extends AppCompatActivity {
         actionBar.setSubtitle("App Name");
 
 
+        //Go To Daily Activation
+        update2=findViewById(R.id.preset_data);
+
+        update2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //code
+                Intent intent = new Intent(DailyActivation.this,DiagnoseIllness.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
         super.onCreate(savedInstanceState);
@@ -184,6 +197,7 @@ public class DailyActivation extends AppCompatActivity {
         //final int year = calendar.get(Calendar.YEAR);
         //final int month = calendar.get(Calendar.MONTH);
         //final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
 
 
 
@@ -214,6 +228,8 @@ public class DailyActivation extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
+
+
 
 
 
