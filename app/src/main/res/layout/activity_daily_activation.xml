@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:hint="Mobile Clinic Number::"
+            android:hint="Mobile Clinic Number:"
+            android:inputType="number"
             android:minHeight="48dp" />
 
         <EditText
@@ -69,19 +70,21 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Vehicle Start Mileage"
+            android:hint="Vehicle Start Mileage (KM)"
+            android:inputType="number"
             android:id="@+id/vehicle_start_mileage"/>
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Vehicle End Mileage"
+            android:hint="Vehicle End Mileage (KM)"
             android:id="@+id/vehicle_end_mileage"/>
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Total Distance"
+            android:hint="Total Distance (KM)"
+            android:inputType="number"
             android:id="@+id/total_distance"/>
 
         <EditText

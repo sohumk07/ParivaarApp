@@ -162,6 +162,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     private Button upload;
+    private int numberofcases = 0;
 
     EditText doctorsnotefullname, doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp/Sugar", "Eye", "Other" };
@@ -188,6 +189,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         referral = findViewById(R.id.dn_referral);
         upload = findViewById(R.id.dn_upload);
 
+
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -200,7 +202,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final int numberofcases = 0;
+
+
+
+
+
 
 
                 final String doctorsnotefullname1 = doctorsnotefullname.getText().toString().trim();
@@ -210,24 +216,46 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 final String referral1 = referral.getText().toString().trim();
 
 
+
+
+
+
+
+
+                if(TextUtils.isEmpty(clinicname.getText().toString())){
+                    clinicname.setError("Cannot Be Empty");
+                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(TextUtils.isEmpty(doctorsnotefullname1)){
                     doctorsnotefullname.setError("Cannot Be Empty");
+                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
                 if(TextUtils.isEmpty(doctorsadvice1)){
                     doctorsadvice.setError("Cannot Be Empty");
+                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
                 if(TextUtils.isEmpty(medicinesused1)){
                     medicinesused.setError("Cannot Be Empty");
+                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
                 if(TextUtils.isEmpty(followup1)){
                     followup.setError("Cannot Be Empty");
+                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
                 if(TextUtils.isEmpty(referral1)){
                     referral.setError("Cannot Be Empty");
+                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
 
@@ -264,13 +292,29 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             }
                         });
 
+
+
+
+
+
                 //new collection
                 Map<String, Object> DiagnoseIllnessData = new HashMap<>();
-                DiagnoseIllnessData.put("Number Of Cases", numberofcases + 1);
+                DiagnoseIllnessData.put("Number Of Cases", numberofcases += 1);
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                DocumentReference washingtonRef = db.collection("Sheopur").document("Mobile Clinic #3 Date:05-27-2021");
 
 
 
-                db.collection(districtname.getText().toString()).document("Mobile Clinic #" + clinicname.getText().toString() + "  Date:" + date.getText().toString())
+
+
+
+
+
+
+
+                db.collection(districtname.getText().toString().toUpperCase()).document("Mobile Clinic #" + clinicname.getText().toString() + "  Date:" + date.getText().toString())
                         .set(DiagnoseIllnessData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -286,6 +330,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
+
+
+
 
 
 

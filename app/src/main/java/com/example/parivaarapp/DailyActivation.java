@@ -243,47 +243,56 @@ public class DailyActivation extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(date1)){
                     date.setError("Date is Required.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
                 if(TextUtils.isEmpty(doctor1)){
                     doctor.setError("Name is Required.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(medattendant1)){
                     medattendant.setError("Doctor is Required.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(driver1)){
                     driver.setError("Medical Attendant is Required.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(vehiclestartmileage1)){
                     vehiclestartmileage.setError("Driver is Required.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(districtsvisited1)){
                     villagesvisited.setError("Driver is Required.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(vehicleendmileage1)){
                     vehicleendmileage.setError("Cannot Be Empty.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(totaldistance1)){
                     totaldistance.setError("Cannot Be Empty.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(clinicname2)){
                     clinicname1.setError("Cannot Be Empty.");
+                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -345,7 +354,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 // new collection
-                db.collection(districtname.getText().toString()).document("Mobile Clinic #" + clinicname1.getText().toString() + "  Date:" + date.getText().toString())
+                db.collection(districtname.getText().toString().toUpperCase()).document("Mobile Clinic #" + clinicname1.getText().toString() + "  Date:" + date.getText().toString())
                         .set(DailyActivationData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
