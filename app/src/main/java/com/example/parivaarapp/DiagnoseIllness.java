@@ -33,6 +33,8 @@ import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
@@ -142,6 +144,7 @@ import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firestore.v1.WriteResult;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -203,11 +206,22 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View view) {
 
-
-
-
-
-
+//                DocumentReference docIdRef = rootRef.collection(clinicname.getText().toString().trim()).document();
+//                docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            DocumentSnapshot document = task.getResult();
+//                            if (document.exists()) {
+//                                Log.d(TAG, "Document exists!");
+//                            } else {
+//                                Log.d(TAG, "Document does not exist!");
+//                            }
+//                        } else {
+//                            Log.d(TAG, "Failed with: ", task.getException());
+//                        }
+//                    }
+//                });
 
                 final String doctorsnotefullname1 = doctorsnotefullname.getText().toString().trim();
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
@@ -280,6 +294,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+
+
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
                                 Toast.makeText(DiagnoseIllness.this, "Medical Assesment Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
@@ -299,11 +315,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                 //new collection
                 Map<String, Object> DiagnoseIllnessData = new HashMap<>();
-                DiagnoseIllnessData.put("Number Of Cases", numberofcases += 1);
+                //DiagnoseIllnessData.put("Number Of Cases", numberofcases += 1);
 
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                DocumentReference washingtonRef = db.collection("Sheopur").document("Mobile Clinic #3 Date:05-27-2021");
 
 
 
@@ -373,6 +387,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
         Toast.makeText(getApplicationContext(), "Select Problem: "+users[position] ,Toast.LENGTH_SHORT).show();
         // add
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        DocumentReference testCount = db.collection("Sheopur").document("Test");
+        testCount.update("counter", FieldValue.increment(1));
 
     }
 
