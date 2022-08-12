@@ -162,7 +162,7 @@ public class DailyActivation extends AppCompatActivity {
 
     EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks, districtname, starttime, endtime;
     ImageView addphoto;
-    Button update, update2;
+    Button update, menubtn;
 
 
 
@@ -175,17 +175,11 @@ public class DailyActivation extends AppCompatActivity {
         actionBar.setSubtitle("App Name");
 
 
-        //Go To Daily Activation
-        update2=findViewById(R.id.preset_data);
 
-        update2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //code
-                Intent intent = new Intent(DailyActivation.this,DiagnoseIllness.class);
-                startActivity(intent);
-            }
-        });
+
+
+
+
 
 
 
@@ -215,6 +209,7 @@ public class DailyActivation extends AppCompatActivity {
         vehiclestartmileage = findViewById(R.id.daily_activation_medical_attendant);
         villagesvisited = findViewById(R.id.villages_visited);
         RegisterBtn= findViewById(R.id.update);
+        menubtn = findViewById(R.id.update2);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -228,6 +223,14 @@ public class DailyActivation extends AppCompatActivity {
        //Calendar c = Calendar.getInstance();
        // int hour = c.get(Calendar.HOUR_OF_DAY);
        // int minute = c.get(Calendar.MINUTE);
+
+        menubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class);
+                startActivity(intent);
+            }
+        });
 
 
 
