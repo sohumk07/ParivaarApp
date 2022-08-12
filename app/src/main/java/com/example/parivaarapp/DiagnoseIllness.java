@@ -324,6 +324,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 newDataDocument.put("Villages Visited", " ");
                                 newDataDocument.put("Cases " + "Clinic #:" + clinicname.getText().toString().toUpperCase().trim(), 1);
 
+
                                 Log.d(TAG, "New document created!");
 
 
