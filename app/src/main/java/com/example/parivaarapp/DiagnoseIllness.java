@@ -206,22 +206,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View view) {
 
-//                DocumentReference docIdRef = rootRef.collection(clinicname.getText().toString().trim()).document();
-//                docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            DocumentSnapshot document = task.getResult();
-//                            if (document.exists()) {
-//                                Log.d(TAG, "Document exists!");
-//                            } else {
-//                                Log.d(TAG, "Document does not exist!");
-//                            }
-//                        } else {
-//                            Log.d(TAG, "Failed with: ", task.getException());
-//                        }
-//                    }
-//                });
 
                 final String doctorsnotefullname1 = doctorsnotefullname.getText().toString().trim();
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
@@ -314,51 +298,67 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                 //new collection
-                Map<String, Object> DiagnoseIllnessData = new HashMap<>();
+                //Map<String, Object> DiagnoseIllnessData = new HashMap<>();
                 //DiagnoseIllnessData.put("Number Of Cases", numberofcases += 1);
 
+                Map<String, Object> newDataDocument = new HashMap<>();
+
+
+                //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTION
+
+                DocumentReference docIdRef = db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim()); //NEEDS FIXING MAYBE
+                docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
+                                DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
+                                incrementCases.update("Cases " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                            } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
+                                Log.d(TAG, "Document does not exist!");
+
+                                newDataDocument.put("Starting Time " + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Distance Covered (KM) " + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Villages Visited", " ");
+                                newDataDocument.put("Cases " + clinicname.getText().toString().toUpperCase().trim(), 1);
+
+                                Log.d(TAG, "New document created!");
+
+
+
+                                //newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), "");
+
+
+                            }
+                        } else {
+                            Log.d(TAG, "Failed with: ", task.getException());
+                        }
+                    }
+                });
 
 
 
 
 
 
-
-
-
-
-
-                db.collection(districtname.getText().toString().toUpperCase()).document("Mobile Clinic #" + clinicname.getText().toString() + "  Date:" + date.getText().toString())
-                        .set(DiagnoseIllnessData,SetOptions.merge())
+                db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim())
+                        .set(newDataDocument,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Toast.makeText(DiagnoseIllness.this, "Medical Assesment Uploaded to Database", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error writing document", e);
-                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             }
         });
@@ -387,10 +387,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
         Toast.makeText(getApplicationContext(), "Select Problem: "+users[position] ,Toast.LENGTH_SHORT).show();
         // add
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        DocumentReference testCount = db.collection("Sheopur").document("Test");
-        testCount.update("counter", FieldValue.increment(1));
+
 
     }
 
