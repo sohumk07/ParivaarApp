@@ -335,12 +335,16 @@ public class DailyActivation extends AppCompatActivity {
 
                 // DailyActivation.put(clinicname1.getText().toString(), nestedData);
 
+
+                //STUFF FOR EXPORTING
+
+
                 Map<String, Object> DailyActivationData = new HashMap<>();
                 DailyActivationData.put("Villages Visited", villagesvisited.getText().toString());
-                DailyActivationData.put("Distance Covered (KM)", totaldistance.getText().toString().trim());
-                DailyActivationData.put("Starting Time", starttime.getText().toString());
-                DailyActivationData.put("Leaving Time",endtime.getText().toString());
-                DailyActivationData.put("Remarks", remarks.getText().toString().trim());
+                DailyActivationData.put("Distance Covered (KM) " + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
+                DailyActivationData.put("Starting Time " + clinicname1.toString().trim().toUpperCase(), starttime.getText().toString()); //add clinic name to this field
+                DailyActivationData.put("Leaving Time " + clinicname1.toString().trim().toUpperCase(),endtime.getText().toString());
+                //DailyActivationData.put("Remarks", remarks.getText().toString().trim());
 
 
 
@@ -369,8 +373,11 @@ public class DailyActivation extends AppCompatActivity {
                         });
 
 
-                // new collection
-                db.collection(districtname.getText().toString().toUpperCase()).document("Mobile Clinic #" + clinicname1.getText().toString() + "  Date:" + date.getText().toString())
+
+
+
+                // new collection for exporting
+                db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim()) //put it in the document called the date, in the colleciton of the district.
                         .set(DailyActivationData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
