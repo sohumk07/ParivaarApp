@@ -318,11 +318,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
                                 Log.d(TAG, "Document does not exist!");
 
-                                newDataDocument.put("Starting Time " + clinicname.getText().toString().trim().toUpperCase(), " ");
-                                newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), " ");
-                                newDataDocument.put("Distance Covered (KM) " + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Starting Time " + "Clinic #:" + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Leaving Time " + "Clinic #:" + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Distance Covered (KM) " + "Clinic #:" + clinicname.getText().toString().trim().toUpperCase(), " ");
                                 newDataDocument.put("Villages Visited", " ");
-                                newDataDocument.put("Cases " + clinicname.getText().toString().toUpperCase().trim(), 1);
+                                newDataDocument.put("Cases " + "Clinic #:" + clinicname.getText().toString().toUpperCase().trim(), 1);
 
                                 Log.d(TAG, "New document created!");
 
