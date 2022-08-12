@@ -326,7 +326,7 @@ public class DailyActivation extends AppCompatActivity {
                 DailyActivation.put("endMileage", vehicleendmileage.getText().toString().trim());
                 DailyActivation.put("distanceTraveled", totaldistance.getText().toString().trim());
                 DailyActivation.put("districtsVisited", villagesvisited.getText().toString().trim());
-                DailyActivation.put("districtsVisited", remarks.getText().toString().trim());
+                DailyActivation.put("remarks", remarks.getText().toString().trim());
 
 
                 // Map<String, Object> nestedData = new HashMap<>();
@@ -341,9 +341,9 @@ public class DailyActivation extends AppCompatActivity {
 
                 Map<String, Object> DailyActivationData = new HashMap<>();
                 DailyActivationData.put("Villages Visited", villagesvisited.getText().toString());
-                DailyActivationData.put("Distance Covered (KM) " + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                DailyActivationData.put("Starting Time " + clinicname1.toString().trim().toUpperCase(), starttime.getText().toString()); //add clinic name to this field
-                DailyActivationData.put("Leaving Time " + clinicname1.toString().trim().toUpperCase(),endtime.getText().toString());
+                DailyActivationData.put("Distance Covered (KM) " + "Clinic #:" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
+                DailyActivationData.put("Starting Time " + "Clinic #:" + clinicname1.toString().trim().toUpperCase(), starttime.getText().toString()); //add clinic name to this field
+                DailyActivationData.put("Leaving Time " + "Clinic #:" + clinicname1.toString().trim().toUpperCase(),endtime.getText().toString());
                 //DailyActivationData.put("Remarks", remarks.getText().toString().trim());
 
 
