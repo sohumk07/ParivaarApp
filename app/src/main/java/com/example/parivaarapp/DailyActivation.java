@@ -225,9 +225,9 @@ public class DailyActivation extends AppCompatActivity {
             finish();
         }
 
-        Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+       //Calendar c = Calendar.getInstance();
+       // int hour = c.get(Calendar.HOUR_OF_DAY);
+       // int minute = c.get(Calendar.MINUTE);
 
 
 
@@ -257,56 +257,56 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
-                if(TextUtils.isEmpty(date1)){
+                if(TextUtils.isEmpty(date.getText().toString())){
                     date.setError("Date is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                if(TextUtils.isEmpty(doctor1)){
+                if(TextUtils.isEmpty(doctor.getText().toString())){
                     doctor.setError("Name is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(medattendant1)){
+                if(TextUtils.isEmpty(medattendant.getText().toString())){
                     medattendant.setError("Doctor is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(driver1)){
+                if(TextUtils.isEmpty(driver.getText().toString())){
                     driver.setError("Medical Attendant is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(vehiclestartmileage1)){
+                if(TextUtils.isEmpty(vehiclestartmileage.getText().toString())){
                     vehiclestartmileage.setError("Driver is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(districtsvisited1)){
+                if(TextUtils.isEmpty(villagesvisited.getText().toString())){
                     villagesvisited.setError("Driver is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(vehicleendmileage1)){
+                if(TextUtils.isEmpty(vehicleendmileage.getText().toString())){
                     vehicleendmileage.setError("Cannot Be Empty.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(totaldistance1)){
+                if(TextUtils.isEmpty(totaldistance.getText().toString())){
                     totaldistance.setError("Cannot Be Empty.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(clinicname2)){
+                if(TextUtils.isEmpty(clinicname1.getText().toString())){
                     clinicname1.setError("Cannot Be Empty.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
