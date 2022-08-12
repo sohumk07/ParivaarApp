@@ -162,7 +162,7 @@ public class DailyActivation extends AppCompatActivity {
 
     EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks, districtname, starttime, endtime;
     ImageView addphoto;
-    Button update, update2;
+    Button update, menubtn;
 
 
 
@@ -175,17 +175,11 @@ public class DailyActivation extends AppCompatActivity {
         actionBar.setSubtitle("App Name");
 
 
-        //Go To Daily Activation
-        update2=findViewById(R.id.preset_data);
 
-        update2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //code
-                Intent intent = new Intent(DailyActivation.this,DiagnoseIllness.class);
-                startActivity(intent);
-            }
-        });
+
+
+
+
 
 
 
@@ -215,6 +209,7 @@ public class DailyActivation extends AppCompatActivity {
         vehiclestartmileage = findViewById(R.id.daily_activation_medical_attendant);
         villagesvisited = findViewById(R.id.villages_visited);
         RegisterBtn= findViewById(R.id.update);
+        menubtn = findViewById(R.id.update2);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -225,9 +220,17 @@ public class DailyActivation extends AppCompatActivity {
             finish();
         }
 
-        Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+       //Calendar c = Calendar.getInstance();
+       // int hour = c.get(Calendar.HOUR_OF_DAY);
+       // int minute = c.get(Calendar.MINUTE);
+
+        menubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -257,56 +260,56 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
-                if(TextUtils.isEmpty(date1)){
+                if(TextUtils.isEmpty(date.getText().toString())){
                     date.setError("Date is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                if(TextUtils.isEmpty(doctor1)){
+                if(TextUtils.isEmpty(doctor.getText().toString())){
                     doctor.setError("Name is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(medattendant1)){
+                if(TextUtils.isEmpty(medattendant.getText().toString())){
                     medattendant.setError("Doctor is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(driver1)){
+                if(TextUtils.isEmpty(driver.getText().toString())){
                     driver.setError("Medical Attendant is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(vehiclestartmileage1)){
+                if(TextUtils.isEmpty(vehiclestartmileage.getText().toString())){
                     vehiclestartmileage.setError("Driver is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(districtsvisited1)){
+                if(TextUtils.isEmpty(villagesvisited.getText().toString())){
                     villagesvisited.setError("Driver is Required.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(vehicleendmileage1)){
+                if(TextUtils.isEmpty(vehicleendmileage.getText().toString())){
                     vehicleendmileage.setError("Cannot Be Empty.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(totaldistance1)){
+                if(TextUtils.isEmpty(totaldistance.getText().toString())){
                     totaldistance.setError("Cannot Be Empty.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(clinicname2)){
+                if(TextUtils.isEmpty(clinicname1.getText().toString())){
                     clinicname1.setError("Cannot Be Empty.");
                     Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
@@ -326,7 +329,7 @@ public class DailyActivation extends AppCompatActivity {
                 DailyActivation.put("endMileage", vehicleendmileage.getText().toString().trim());
                 DailyActivation.put("distanceTraveled", totaldistance.getText().toString().trim());
                 DailyActivation.put("districtsVisited", villagesvisited.getText().toString().trim());
-                DailyActivation.put("districtsVisited", remarks.getText().toString().trim());
+                DailyActivation.put("remarks", remarks.getText().toString().trim());
 
 
                 // Map<String, Object> nestedData = new HashMap<>();
@@ -341,9 +344,9 @@ public class DailyActivation extends AppCompatActivity {
 
                 Map<String, Object> DailyActivationData = new HashMap<>();
                 DailyActivationData.put("Villages Visited", villagesvisited.getText().toString());
-                DailyActivationData.put("Distance Covered (KM) " + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                DailyActivationData.put("Starting Time " + clinicname1.toString().trim().toUpperCase(), starttime.getText().toString()); //add clinic name to this field
-                DailyActivationData.put("Leaving Time " + clinicname1.toString().trim().toUpperCase(),endtime.getText().toString());
+                DailyActivationData.put("Distance Covered (KM) " + "Clinic #:" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
+                DailyActivationData.put("Starting Time " + "Clinic #:" + clinicname1.toString().trim().toUpperCase(), starttime.getText().toString()); //add clinic name to this field
+                DailyActivationData.put("Leaving Time " + "Clinic #:" + clinicname1.toString().trim().toUpperCase(),endtime.getText().toString());
                 //DailyActivationData.put("Remarks", remarks.getText().toString().trim());
 
 
