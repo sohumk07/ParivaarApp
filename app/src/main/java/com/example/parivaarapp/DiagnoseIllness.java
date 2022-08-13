@@ -2,6 +2,7 @@ package com.example.parivaarapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -298,6 +299,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
+
+
                 //new collection
                 //Map<String, Object> DiagnoseIllnessData = new HashMap<>();
                 //DiagnoseIllnessData.put("Number Of Cases", numberofcases += 1);
@@ -305,47 +308,59 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 Map<String, Object> newDataDocument = new HashMap<>();
 
 
-                //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTION
+                //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTIONS
+                String varDate = date.getText().toString().trim();
 
-                DocumentReference docIdRef = db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim()); //NEEDS FIXING MAYBE
+                DocumentReference docIdRef = db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate); //NEEDS FIXING MAYBE
                 docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
+
                                 DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
                                 incrementCases.update("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
                                 incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
+
+
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
-                                Log.d(TAG, "Document does not exist!");
 
 
-                                // newDataDocument.put(" Date", "");
-                                newDataDocument.put("Date ", date.getText().toString().trim().toUpperCase());
-                                //daily activation
-                                newDataDocument.put("Starting Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
-                                newDataDocument.put("Leaving Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
-                                newDataDocument.put("Distance Covered (KM) " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
-                                newDataDocument.put("Villages Visited", " ");
-                                // doctors note
-                                newDataDocument.put("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
+                                //Log.d(TAG, "DATE: " + varDate);
 
-                                //separated cases by category
-                                newDataDocument.put(conditionSelected + " Cases ", 1);
-//                                newDataDocument.put("Fever" + " Cases ", 0);
-//                                newDataDocument.put("Skin" + " Cases ", 0);
-//                                newDataDocument.put("Chronic Disease" + " Cases ", 0);
-//                                newDataDocument.put("Bp/Sugar" + " Cases ", 0);
-//                                newDataDocument.put("Eye" + " Cases ", 0);
-//                                newDataDocument.put("Other" + " Cases ", 0);
+                                  newDataDocument.put("Date ", varDate);
+                                  newDataDocument.put(conditionSelected + " Cases ", 1);
+                                  newDataDocument.put("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
 
 
-                                Log.d(TAG, "New document created!");
+//                                //daily activation
+//                                newDataDocument.put("Starting Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
+//                                newDataDocument.put("Leaving Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
+//                                newDataDocument.put("Distance Covered (KM) " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
+//                                newDataDocument.put("Villages Visited", " ");
 
 
 
-                                //newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), "");
+
+                                db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim())
+                                        .set(newDataDocument,SetOptions.merge())
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "DocumentSnapshot successfully written!");
+                                                Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.w(TAG, "Error writing document", e);
+                                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                               // newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), "");
 
 
                             }
@@ -358,24 +373,27 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
+                // doctors note
+                //newDataDocument.put("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
+
+                //separated cases by category
+                //newDataDocument.put(conditionSelected + " Cases ", 1);
+//                                newDataDocument.put("Fever" + " Cases ", 0);
+//                                newDataDocument.put("Skin" + " Cases ", 0);
+//                                newDataDocument.put("Chronic Disease" + " Cases ", 0);
+//                                newDataDocument.put("Bp/Sugar" + " Cases ", 0);
+//                                newDataDocument.put("Eye" + " Cases ", 0);
+//                                newDataDocument.put("Other" + " Cases ", 0);
 
 
-                db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim())
-                        .set(newDataDocument,SetOptions.merge())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error writing document", e);
-                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                Log.d(TAG, "New document created!");
+
+
+
+
+
+
+
 
             }
         });
