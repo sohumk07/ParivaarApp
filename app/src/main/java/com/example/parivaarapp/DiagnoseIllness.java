@@ -166,9 +166,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     FirebaseFirestore fStore;
     private Button upload;
     private int numberofcases = 0;
+    private String conditionSelected;
 
     EditText doctorsnotefullname, doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date;
-    String[] users = { "Fever", "Skin", "Chronic Disease", "Bp/Sugar", "Eye", "Other" };
+    String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -314,15 +315,27 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
                                 DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
-                                incrementCases.update("Cases " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                incrementCases.update("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
                                 Log.d(TAG, "Document does not exist!");
 
-                                newDataDocument.put("Starting Time " + "Clinic #:" + clinicname.getText().toString().trim().toUpperCase(), " ");
-                                newDataDocument.put("Leaving Time " + "Clinic #:" + clinicname.getText().toString().trim().toUpperCase(), " ");
-                                newDataDocument.put("Distance Covered (KM) " + "Clinic #:" + clinicname.getText().toString().trim().toUpperCase(), " ");
+
+                                newDataDocument.put("Date ", date.getText().toString().trim());
+                                newDataDocument.put("Starting Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Leaving Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
+                                newDataDocument.put("Distance Covered (KM) " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
                                 newDataDocument.put("Villages Visited", " ");
-                                newDataDocument.put("Cases " + "Clinic #:" + clinicname.getText().toString().toUpperCase().trim(), 1);
+                                newDataDocument.put("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
+
+                                //separated cases by category
+                                newDataDocument.put(conditionSelected + " Cases ", 1);
+//                                newDataDocument.put("Fever" + " Cases ", 0);
+//                                newDataDocument.put("Skin" + " Cases ", 0);
+//                                newDataDocument.put("Chronic Disease" + " Cases ", 0);
+//                                newDataDocument.put("Bp/Sugar" + " Cases ", 0);
+//                                newDataDocument.put("Eye" + " Cases ", 0);
+//                                newDataDocument.put("Other" + " Cases ", 0);
 
 
                                 Log.d(TAG, "New document created!");
@@ -388,6 +401,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
         Toast.makeText(getApplicationContext(), "Select Problem: "+users[position] ,Toast.LENGTH_SHORT).show();
         // add
+        conditionSelected = (String)(users[position]);
 
 
 
