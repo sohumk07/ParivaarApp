@@ -321,7 +321,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 Log.d(TAG, "Document does not exist!");
 
 
-                                newDataDocument.put(" Date", date.getText().toString().trim());
+                                // newDataDocument.put(" Date", "");
+                                newDataDocument.put("Date ", date.getText().toString().trim().toUpperCase());
                                 //daily activation
                                 newDataDocument.put("Starting Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
                                 newDataDocument.put("Leaving Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
