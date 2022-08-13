@@ -18,7 +18,7 @@ private Button button;
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Navigation Menu");
         actionBar.setSubtitle("App Name");
-        //test2
+        //test3
 
 
         // go to preset data
