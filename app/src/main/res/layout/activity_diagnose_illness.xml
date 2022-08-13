@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
             android:inputType="number"
-            android:hint="Clinic Name" />
+            android:hint="Clinic Number" />
 
         <EditText
             android:id="@+id/district_name"

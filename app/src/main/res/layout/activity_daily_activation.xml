@@ -78,6 +78,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
             android:hint="Vehicle End Mileage (KM)"
+            android:inputType="number"
             android:id="@+id/vehicle_end_mileage"/>
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
