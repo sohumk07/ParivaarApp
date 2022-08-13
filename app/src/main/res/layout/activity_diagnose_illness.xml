@@ -46,7 +46,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Date (dd-mm-yy)" />
+            android:hint="Date (dd-mm-yyyy)" />
 
         <EditText
             android:id="@+id/dn_full_name2"
