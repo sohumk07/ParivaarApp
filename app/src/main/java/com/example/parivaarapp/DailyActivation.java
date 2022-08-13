@@ -347,7 +347,7 @@ public class DailyActivation extends AppCompatActivity {
                 DailyActivationData.put("Distance Covered (KM) " + "Clinic #:" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
                 DailyActivationData.put("Starting Time " + "Clinic #:" + clinicname1.toString().trim().toUpperCase(), starttime.getText().toString()); //add clinic name to this field
                 DailyActivationData.put("Leaving Time " + "Clinic #:" + clinicname1.toString().trim().toUpperCase(),endtime.getText().toString());
-                //DailyActivationData.put("Remarks", remarks.getText().toString().trim());
+                DailyActivationData.put("Remarks", remarks.getText().toString().trim());
 
 
 
