@@ -222,6 +222,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
+
+
                 if(TextUtils.isEmpty(clinicname.getText().toString())){
                     clinicname.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
@@ -252,12 +254,19 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                     return;
                 }
-                if(TextUtils.isEmpty(referral1)){
-                    referral.setError("Cannot Be Empty");
-                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+
+                if(referral1.equals("yes") || referral1.equals("no")){
+                //code if condition is true
+                }else{
+                //code if condition is false
+                    referral.setError("Must Write 'yes' or 'no' ");
+                    Toast.makeText(DiagnoseIllness.this, "Must Write 'yes' or 'no' ", Toast.LENGTH_SHORT).show();
 
                     return;
+
                 }
+
+
 
                 Map<String, Object> DiagnoseIllness = new HashMap<>();
                 //DiagnoseIllness.put("name", doctorsnotefullname.getText().toString().trim());

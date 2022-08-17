@@ -142,6 +142,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.SetOptions;
 
 import android.app.DatePickerDialog;
@@ -359,6 +360,8 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
+
+
                 //documents and collections
                 db.collection("Daily Activation").document( date.getText().toString().trim() + " " + clinicname1.getText().toString().trim().toUpperCase())
                         .set(DailyActivation)
@@ -398,6 +401,9 @@ public class DailyActivation extends AppCompatActivity {
                                 Toast.makeText(DailyActivation.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
+
+                Query query = db.collection(districtname.getText().toString().trim().toUpperCase()).orderBy("Villages Visited");
+
 
 
 
