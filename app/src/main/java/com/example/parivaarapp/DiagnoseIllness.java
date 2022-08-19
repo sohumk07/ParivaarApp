@@ -263,9 +263,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                     return;
                 }
-                else{
-                    needOfReferral = true;
-                }
+
 
 
 
@@ -332,13 +330,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
-                                if(needOfReferral) {
 
-                                    DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
-                                    incrementCases.update("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
-                                    incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
-                                    incrementCases.update(needOfReferral +  "Clinic #" + clinicname.getText().toString().toUpperCase().trim() + "Number Of Referrals", FieldValue.increment(1));
+                                DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
+                                incrementCases.update("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
+                                if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                    incrementCases.update( "Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                 }
+
 
 
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
@@ -348,8 +347,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                   newDataDocument.put("Date ", varDate);
                                   newDataDocument.put(conditionSelected + " Cases ", 1);
-                                  newDataDocument.put(needOfReferral +  "Clinic #" + clinicname.getText().toString().toUpperCase().trim() + "Number Of Referrals", 1);
                                   newDataDocument.put("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
+                                if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                    newDataDocument.put("Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                }
 
 
 //                                //daily activation
