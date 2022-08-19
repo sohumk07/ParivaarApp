@@ -161,6 +161,7 @@ import android.widget.AdapterView;
 
 public class DiagnoseIllness extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    private boolean needOfReferral = false;
     private Button button;
     public static final String TAG = "TAG";
     FirebaseAuth fAuth;
@@ -262,6 +263,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                     return;
                 }
+                else{
+                    needOfReferral = true;
+                }
+
+
 
 
 
@@ -326,14 +332,18 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
-
+                                if(needOfReferral){
+                                    //Increment need of referral
+                                }
                                 DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
                                 incrementCases.update("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
                                 incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
 
 
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
-
+                                if(needOfReferral){
+                                    //Increment need of referral
+                                }
 
                                 //Log.d(TAG, "DATE: " + varDate);
 
