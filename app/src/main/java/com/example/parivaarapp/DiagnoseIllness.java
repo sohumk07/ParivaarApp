@@ -255,16 +255,15 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     return;
                 }
 
-                if(referral1.equals("yes") || referral1.equals("no")){
-                //code if condition is true
-                }else{
+                if(!(referral1.equals("yes") || (referral1.equals("no")))){
                 //code if condition is false
                     referral.setError("Must Write 'yes' or 'no' ");
                     Toast.makeText(DiagnoseIllness.this, "Error", Toast.LENGTH_SHORT).show();
 
                     return;
-
                 }
+
+
 
 
 
