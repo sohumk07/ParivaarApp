@@ -332,23 +332,23 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
-                                if(needOfReferral){
-                                    //Increment need of referral
+                                if(needOfReferral) {
+
+                                    DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
+                                    incrementCases.update("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                    incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
+                                    incrementCases.update(needOfReferral +  "Clinic #" + clinicname.getText().toString().toUpperCase().trim() + "Number Of Referrals", FieldValue.increment(1));
                                 }
-                                DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
-                                incrementCases.update("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
-                                incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
 
 
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
-                                if(needOfReferral){
-                                    //Increment need of referral
-                                }
+
 
                                 //Log.d(TAG, "DATE: " + varDate);
 
                                   newDataDocument.put("Date ", varDate);
                                   newDataDocument.put(conditionSelected + " Cases ", 1);
+                                  newDataDocument.put(needOfReferral +  "Clinic #" + clinicname.getText().toString().toUpperCase().trim() + "Number Of Referrals", 1);
                                   newDataDocument.put("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
 
 
