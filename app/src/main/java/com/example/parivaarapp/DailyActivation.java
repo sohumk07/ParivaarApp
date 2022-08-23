@@ -331,7 +331,6 @@ public class DailyActivation extends AppCompatActivity {
                 DailyActivation.put("distanceTraveled", totaldistance.getText().toString().trim());
                 DailyActivation.put("districtsVisited", villagesvisited.getText().toString().trim());
                 DailyActivation.put("remarks", remarks.getText().toString().trim());
-                //test
 
                 // Map<String, Object> nestedData = new HashMap<>();
 

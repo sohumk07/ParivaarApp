@@ -342,7 +342,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
 
-
+                                //test
                                 //Log.d(TAG, "DATE: " + varDate);
 
                                   newDataDocument.put("(a) Date ", varDate);
