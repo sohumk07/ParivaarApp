@@ -354,8 +354,16 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 newDataDocument.put(conditionSelected + " Cases ", 1);
                                 newDataDocument.put("(a) Date ", varDate);
-                                  newDataDocument.put(conditionSelected + " Cases ", 1);
-                                  newDataDocument.put("Cases " +  "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
+
+                                newDataDocument.put("Cases " +  "Clinic # " + 1, 0);
+                                newDataDocument.put("Cases " +  "Clinic # " + 2, 0);
+                                newDataDocument.put("Cases " +  "Clinic # " + 3, 0);
+
+                                newDataDocument.put("Clinic # " + 1 + " Referred to HC", 0);
+                                newDataDocument.put("Clinic # " + 2 + " Referred to HC", 0);
+                                newDataDocument.put("Clinic # " + 3 + " Referred to HC", 0);
+
+
                                 if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
                                     newDataDocument.put("Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
                                 }
