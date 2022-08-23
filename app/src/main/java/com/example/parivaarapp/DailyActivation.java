@@ -332,6 +332,7 @@ public class DailyActivation extends AppCompatActivity {
                 DailyActivation.put("districtsVisited", villagesvisited.getText().toString().trim());
                 DailyActivation.put("remarks", remarks.getText().toString().trim());
 
+
                 // Map<String, Object> nestedData = new HashMap<>();
 
 
@@ -344,7 +345,7 @@ public class DailyActivation extends AppCompatActivity {
 
                 Map<String, Object> DailyActivationData = new HashMap<>();
                 DailyActivationData.put("(a) Date", date.getText().toString().trim());
-                DailyActivationData.put("(b) Villages Visited", villagesvisited.getText().toString());
+                DailyActivationData.put("(b) Villages Visited", villagesvisited.getText().toString().trim());
                 DailyActivationData.put("(c) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
                 DailyActivationData.put("(d) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), starttime.getText().toString()); //add clinic name to this field
                 DailyActivationData.put("(e) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(),endtime.getText().toString());
