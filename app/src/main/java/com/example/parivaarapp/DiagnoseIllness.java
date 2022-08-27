@@ -363,6 +363,25 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 newDataDocument.put("Clinic # " + 2 + " Referred to HC", 0);
                                 newDataDocument.put("Clinic # " + 3 + " Referred to HC", 0);
 
+                                newDataDocument.put("(b) Villages Visited " + "Clinic #" + 1, "");
+                                newDataDocument.put("(b) Villages Visited " + "Clinic #" + 2, "");
+                                newDataDocument.put("(b) Villages Visited " + "Clinic #" + 3, "");
+
+                                newDataDocument.put("(c) Distance Covered (KM) " + "Clinic #" + 1, 0);
+                                newDataDocument.put("(c) Distance Covered (KM) " + "Clinic #" + 2, 0);
+                                newDataDocument.put("(c) Distance Covered (KM) " + "Clinic #" + 3, 0);
+
+                                newDataDocument.put("(d) Starting Time " + "Clinic #" + 1, ""); //add clinic name to this field
+                                newDataDocument.put("(e) Leaving Time " + "Clinic #" + 1,"");
+
+                                newDataDocument.put("(d) Starting Time " + "Clinic #" + 2, ""); //add clinic name to this field
+                                newDataDocument.put("(e) Leaving Time " + "Clinic #" + 2,"");
+
+                                newDataDocument.put("(d) Starting Time " + "Clinic #" + 3, ""); //add clinic name to this field
+                                newDataDocument.put("(e) Leaving Time " + "Clinic #" + 3,"");
+
+                                newDataDocument.put("(f) Remarks ","");
+
 
                                 if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
                                     newDataDocument.put("Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
