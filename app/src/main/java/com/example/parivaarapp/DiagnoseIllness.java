@@ -331,12 +331,32 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
 
+
                                 DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
-                                incrementCases.update("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
-                                incrementCases.update(conditionSelected + " Cases ", FieldValue.increment(1));
-                                if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
-                                    incrementCases.update( "Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
+
+                                if(clinicname.getText().toString().toUpperCase().trim() == "1"){
+                                    incrementCases.update("(h) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                        incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
+                                    }
                                 }
+                                else if(clinicname.getText().toString().toUpperCase().trim() == "2"){
+                                    incrementCases.update("(i) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                        incrementCases.update( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
+                                    }
+                                }
+                                else if(clinicname.getText().toString().toUpperCase().trim() == "3"){
+                                    incrementCases.update("(j) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                        incrementCases.update( "(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
+                                    }
+                                }
+                                incrementCases.update("(v) "+ conditionSelected + " Cases ", FieldValue.increment(1));
+
+
+
+
 
 
 
@@ -345,42 +365,54 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 //tests
                                 //Log.d(TAG, "DATE: " + varDate);
 
-                                newDataDocument.put("Fever" + " Cases ", 0);
-                                newDataDocument.put("Skin" + " Cases ", 0);
-                                newDataDocument.put("Chronic Disease" + " Cases ", 0);
-                                newDataDocument.put("Bp or Sugar" + " Cases ", 0);
-                                newDataDocument.put("Eye" + " Cases ", 0);
-                                newDataDocument.put("Other" + " Cases ", 0);
+
 
                                 newDataDocument.put(conditionSelected + " Cases ", 1);
                                 newDataDocument.put("(a) Date ", varDate);
 
-                                newDataDocument.put("Cases " +  "Clinic # " + 1, 0);
-                                newDataDocument.put("Cases " +  "Clinic # " + 2, 0);
-                                newDataDocument.put("Cases " +  "Clinic # " + 3, 0);
-
-                                newDataDocument.put("Clinic # " + 1 + " Referred to HC", 0);
-                                newDataDocument.put("Clinic # " + 2 + " Referred to HC", 0);
-                                newDataDocument.put("Clinic # " + 3 + " Referred to HC", 0);
-
-                                newDataDocument.put("(b) Villages Visited " + "Clinic #" + 1, "");
-                                newDataDocument.put("(b) Villages Visited " + "Clinic #" + 2, "");
-                                newDataDocument.put("(b) Villages Visited " + "Clinic #" + 3, "");
-
-                                newDataDocument.put("(c) Distance Covered (KM) " + "Clinic #" + 1, 0);
+                                newDataDocument.put("(b) Distance Covered (KM) " + "Clinic #" + 1, 0);
                                 newDataDocument.put("(c) Distance Covered (KM) " + "Clinic #" + 2, 0);
-                                newDataDocument.put("(c) Distance Covered (KM) " + "Clinic #" + 3, 0);
+                                newDataDocument.put("(d) Distance Covered (KM) " + "Clinic #" + 3, 0);
 
-                                newDataDocument.put("(d) Starting Time " + "Clinic #" + 1, ""); //add clinic name to this field
-                                newDataDocument.put("(e) Leaving Time " + "Clinic #" + 1,"");
+                                newDataDocument.put("(e) Villages Visited " + "Clinic #" + 1, "");
+                                newDataDocument.put("(f) Villages Visited " + "Clinic #" + 2, "");
+                                newDataDocument.put("(g) Villages Visited " + "Clinic #" + 3, "");
 
-                                newDataDocument.put("(d) Starting Time " + "Clinic #" + 2, ""); //add clinic name to this field
-                                newDataDocument.put("(e) Leaving Time " + "Clinic #" + 2,"");
+                                newDataDocument.put("(h) Cases " +  "Clinic # " + 1, 0);
+                                newDataDocument.put("(i) Cases " +  "Clinic # " + 2, 0);
+                                newDataDocument.put("(j) Cases " +  "Clinic # " + 3, 0);
 
-                                newDataDocument.put("(d) Starting Time " + "Clinic #" + 3, ""); //add clinic name to this field
-                                newDataDocument.put("(e) Leaving Time " + "Clinic #" + 3,"");
+                                newDataDocument.put("(k) Clinic # " + 1 + " Referred to HC", 0);
+                                newDataDocument.put("(l) Clinic # " + 2 + " Referred to HC", 0);
+                                newDataDocument.put("(m) Clinic # " + 3 + " Referred to HC", 0);
 
-                                newDataDocument.put("(f) Remarks ","");
+                                newDataDocument.put("(o) Remarks ","");
+
+                                newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, ""); //add clinic name to this field
+                                newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,"");
+
+                                newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, ""); //add clinic name to this field
+                                newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,"");
+
+                                newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, ""); //add clinic name to this field
+                                newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,"");
+
+                                newDataDocument.put("(v) Fever" + " Cases ", 0);
+                                newDataDocument.put("(v) Skin" + " Cases ", 0);
+                                newDataDocument.put("(v) Chronic Disease" + " Cases ", 0);
+                                newDataDocument.put("(v) Bp or Sugar" + " Cases ", 0);
+                                newDataDocument.put("(v) Eye" + " Cases ", 0);
+                                newDataDocument.put("(v) Other" + " Cases ", 0);
+
+
+
+
+
+
+
+
+
+
 
 
                                 if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
