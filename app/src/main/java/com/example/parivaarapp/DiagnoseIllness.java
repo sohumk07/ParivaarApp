@@ -406,18 +406,21 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-
-
-
-
-
-
-
-
-
                                 if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
-                                    newDataDocument.put("Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                    if(clinicname.getText().toString().toUpperCase().trim() == "1"){
+                                        newDataDocument.put( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+
+                                    }
+                                    else if(clinicname.getText().toString().toUpperCase().trim() == "2"){
+                                        newDataDocument.put( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+
+                                    }
+                                    else if(clinicname.getText().toString().toUpperCase().trim() == "3") {
+                                        newDataDocument.put("(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                    }
+
                                 }
+
 
 
 //                                //daily activation
