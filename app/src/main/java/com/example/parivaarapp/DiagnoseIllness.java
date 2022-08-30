@@ -331,22 +331,21 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
 
-
                                 DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
 
-                                if(clinicname.getText().toString().toUpperCase().trim() == "1"){
+                                if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                     incrementCases.update("(h) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
                                     if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
                                         incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
-                                else if(clinicname.getText().toString().toUpperCase().trim() == "2"){
+                                else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
                                     incrementCases.update("(i) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
                                     if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
                                         incrementCases.update( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
-                                else if(clinicname.getText().toString().toUpperCase().trim() == "3"){
+                                else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
                                     incrementCases.update("(j) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
                                     if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
                                         incrementCases.update( "(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
@@ -367,7 +366,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-                                newDataDocument.put(conditionSelected + " Cases ", 1);
+                                newDataDocument.put("(v) " + conditionSelected + " Cases ", 1);
                                 newDataDocument.put("(a) Date ", varDate);
 
                                 newDataDocument.put("(b) Distance Covered (KM) " + "Clinic #" + 1, 0);
@@ -407,15 +406,15 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                                 if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
-                                    if(clinicname.getText().toString().toUpperCase().trim() == "1"){
+                                    if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                         newDataDocument.put( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
 
                                     }
-                                    else if(clinicname.getText().toString().toUpperCase().trim() == "2"){
+                                    else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
                                         newDataDocument.put( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
 
                                     }
-                                    else if(clinicname.getText().toString().toUpperCase().trim() == "3") {
+                                    else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
                                         newDataDocument.put("(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
                                     }
 
