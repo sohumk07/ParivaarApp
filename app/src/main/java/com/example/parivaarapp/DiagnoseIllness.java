@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
@@ -354,11 +355,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 incrementCases.update("(v) "+ conditionSelected + " Cases ", FieldValue.increment(1));
 
 
-
-
-
-
-
                             } else { //create a new document for that day with ALL ATTRIBUTES THAT MIGHT BE READ IN
 
                                 //tests
@@ -366,7 +362,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-                                newDataDocument.put("(v) " + conditionSelected + " Cases ", 1);
                                 newDataDocument.put("(a) Date ", varDate);
 
                                 newDataDocument.put("(b) Distance Covered (KM) " + "Clinic #" + 1, 0);
@@ -402,6 +397,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 newDataDocument.put("(v) Bp or Sugar" + " Cases ", 0);
                                 newDataDocument.put("(v) Eye" + " Cases ", 0);
                                 newDataDocument.put("(v) Other" + " Cases ", 0);
+
+                                newDataDocument.put("(v) " + conditionSelected + " Cases ", 1);
 
 
 
@@ -518,6 +515,23 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.Menu:
+                startActivity(new Intent(DiagnoseIllness.this, Menu.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
 
     }
 }
