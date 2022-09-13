@@ -353,7 +353,7 @@ public class DailyActivation extends AppCompatActivity {
                     DailyActivationData.put("(q) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
 
                 }
-//h
+
                 else if(clinicname1.getText().toString().toUpperCase().trim().equals("2")) {
                     DailyActivationData.put("(f) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
                     DailyActivationData.put("(c) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
