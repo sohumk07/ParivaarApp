@@ -171,7 +171,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private int numberofcases = 0;
     private String conditionSelected;
 
-    EditText doctorsnotefullname, doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date;
+    EditText  doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date;
+    private int doctorsnotefullname;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
     @Override
@@ -238,6 +239,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                     return;
                 }
+
+                if(TextUtils.isEmpty(doctorsnotefullname1)){
+                    doctorsnotefullname.setError("Cannot Be Empty");
+                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+
+                    return;
+                }
+
                 if(TextUtils.isEmpty(doctorsadvice1)){
                     doctorsadvice.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();

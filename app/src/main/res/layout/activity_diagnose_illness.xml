@@ -24,13 +24,22 @@
 
 
         <EditText
+            android:id="@+id/dn_full_name2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:hint="Patient ID (12 digit Aadhaar)"
+            android:inputType="number" />
+
+        <EditText
             android:id="@+id/clinic_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:inputType="number"
-            android:hint="Clinic Number" />
+            android:hint="Clinic Number"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/district_name"
@@ -47,14 +56,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
             android:hint="Date (dd-mm-yyyy)" />
-
-        <EditText
-            android:id="@+id/dn_full_name2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Patient Full Name (must match name on patient registry)" />
 
         <TextView
             android:id="@+id/dn_doctors_note"
