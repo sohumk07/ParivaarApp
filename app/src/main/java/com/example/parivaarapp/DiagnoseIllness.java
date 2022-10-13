@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,9 +52,16 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private int numberofcases = 0;
     private String conditionSelected;
 
-    EditText  doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date;
+    EditText  doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname;
+    TextView date;
     private EditText patientID;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
+
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat, simpleDateFormat1;
+    String Date1;
+    String Time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +73,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
+        calendar = Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        simpleDateFormat1 = new SimpleDateFormat(" HH:mm:ss");
+        Date1 = simpleDateFormat.format(calendar.getTime());
+        Time = simpleDateFormat1.format(calendar.getTime());
         upload =findViewById(R.id.dn_upload);
 
         districtname = findViewById(R.id.district_name);
@@ -88,6 +103,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                date.setText(Date1);
+
 
 
                 final String doctorsnotefullname1 = patientID.getText().toString().trim();
@@ -209,7 +226,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                 //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTIONS
-                String varDate = date.getText().toString().trim();
+                String varDate = Date1;
+                String varTime = Time;
 
                 DocumentReference docIdRef = db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate); //NEEDS FIXING MAYBE
                 docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -250,6 +268,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                                 newDataDocument.put("(a) Date ", varDate);
+                                newDataDocument.put("(a) Time ", varTime);
 
                                 newDataDocument.put("(b) Distance Covered (KM) " + "Clinic #" + 1, 0);
                                 newDataDocument.put("(c) Distance Covered (KM) " + "Clinic #" + 2, 0);
