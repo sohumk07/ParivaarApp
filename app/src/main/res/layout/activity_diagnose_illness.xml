@@ -49,7 +49,7 @@
             android:layout_marginTop="60dp"
             android:hint="District Name" />
 
-        <EditText
+        <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

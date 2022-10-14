@@ -37,6 +37,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -164,6 +165,15 @@ public class DailyActivation extends AppCompatActivity {
     EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks, districtname, starttime, endtime;
     ImageView addphoto;
     Button update, menubtn;
+    String date1;
+    String time;
+
+
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat, simpleDateFormat1;
+    String Date1;
+    String Time;
+
 
 
 
@@ -174,6 +184,13 @@ public class DailyActivation extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Daily Activation");
         actionBar.setSubtitle("App Name");
+
+
+        calendar = Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        simpleDateFormat1 = new SimpleDateFormat(" HH:mm:ss");
+        Date1 = simpleDateFormat.format(calendar.getTime());
+        Time = simpleDateFormat1.format(calendar.getTime());
 
 
 
@@ -243,6 +260,9 @@ public class DailyActivation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String varDate = Date1;
+                String varTime = Time;
+
 
 
 
@@ -261,11 +281,11 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
-                if(TextUtils.isEmpty(date.getText().toString())){
-                    date.setError("Date is Required.");
-                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+               // if(TextUtils.isEmpty(date.getText().toString())){
+               //     date.setError("Date is Required.");
+                 //   Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+                   // return;
+                //}
 
 
                 if(TextUtils.isEmpty(doctor.getText().toString())){
@@ -322,7 +342,7 @@ public class DailyActivation extends AppCompatActivity {
                 // nothing in here
 
                 DailyActivation.put("clinicName", clinicname1.getText().toString().trim().toUpperCase());
-                DailyActivation.put("date", date.getText().toString().trim());
+                DailyActivation.put("date", varDate);
                 DailyActivation.put("doctorName", doctor.getText().toString().trim());
                 DailyActivation.put("attendantName", medattendant.getText().toString().trim());
                 DailyActivation.put("driverName", driver.getText().toString().trim());
@@ -349,23 +369,23 @@ public class DailyActivation extends AppCompatActivity {
                 if(clinicname1.getText().toString().toUpperCase().trim().equals("1")){
                     DailyActivationData.put("(e) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
                     DailyActivationData.put("(b) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                    DailyActivationData.put("(p) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), starttime.getText().toString()); //add clinic name to this field
-                    DailyActivationData.put("(q) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
+                    DailyActivationData.put("(p) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
+                    // DailyActivationData.put("(q) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
 
                 }
 //test
                 else if(clinicname1.getText().toString().toUpperCase().trim().equals("2")) {
                     DailyActivationData.put("(f) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
                     DailyActivationData.put("(c) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                    DailyActivationData.put("(r) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), starttime.getText().toString()); //add clinic name to this field
-                    DailyActivationData.put("(s) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
+                    DailyActivationData.put("(r) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
+                    // DailyActivationData.put("(s) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
 
                 }
                 else if(clinicname1.getText().toString().toUpperCase().trim().equals("3")) {
                     DailyActivationData.put("(g) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
                     DailyActivationData.put("(d) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                    DailyActivationData.put("(t) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), starttime.getText().toString()); //add clinic name to this field
-                    DailyActivationData.put("(u) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
+                    DailyActivationData.put("(t) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
+                  //  DailyActivationData.put("(u) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
 
                 }
                 DailyActivationData.put("(f) Remarks ", remarks.getText().toString());
@@ -382,7 +402,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 //documents and collections
-                db.collection("Daily Activation").document( date.getText().toString().trim() + " " + clinicname1.getText().toString().trim().toUpperCase())
+                db.collection("Daily Activation").document( varDate + " " + clinicname1.getText().toString().trim().toUpperCase())
                         .set(DailyActivation)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -404,7 +424,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
                 // new collection for exporting
-                db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim()) //put it in the document called the date, in the colleciton of the district.
+                db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate) //put it in the document called the date, in the colleciton of the district.
                         .set(DailyActivationData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
