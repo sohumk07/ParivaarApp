@@ -171,8 +171,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private int numberofcases = 0;
     private String conditionSelected;
 
-    EditText  doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date;
-    private int doctorsnotefullname;
+    EditText  doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date, patientID;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
     @Override
@@ -190,7 +189,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         districtname = findViewById(R.id.district_name);
         date = findViewById(R.id.date);
         clinicname = findViewById(R.id.clinic_name);
-        doctorsnotefullname = findViewById(R.id.dn_full_name2);
+        patientID = findViewById(R.id.PatientID);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.dn_medicines_uses);
         followup = findViewById(R.id.dn_follow_up);
@@ -212,7 +211,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             public void onClick(View view) {
 
 
-                final String doctorsnotefullname1 = doctorsnotefullname.getText().toString().trim();
+                final String doctorsnotefullname1 = patientID.getText().toString().trim();
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesused1 = medicinesused.getText().toString().trim();
                 final String followup1 = followup.getText().toString().trim();
@@ -234,14 +233,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 }
 
                 if(TextUtils.isEmpty(doctorsnotefullname1)){
-                    doctorsnotefullname.setError("Cannot Be Empty");
+                    patientID.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
 
                     return;
                 }
 
                 if(TextUtils.isEmpty(doctorsnotefullname1)){
-                    doctorsnotefullname.setError("Cannot Be Empty");
+                    patientID.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
 
                     return;
@@ -297,7 +296,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                 //documents and collections
-                db.collection("Patient Registration and-or Doctor's Notes").document(doctorsnotefullname.getText().toString().trim().toUpperCase())
+                db.collection("Patient Registration and-or Doctor's Notes").document(patientID.getText().toString().trim().toUpperCase())
                         .set(DiagnoseIllness, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
