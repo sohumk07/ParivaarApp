@@ -23,6 +23,17 @@
             android:textSize="34sp" />
 
 
+        <Button
+            android:id="@+id/loadPatientData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load Previous Patient Data"
+            app:iconTint="#FFFFFF" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <EditText
             android:id="@+id/PatientID"
             android:layout_width="match_parent"
@@ -71,8 +82,7 @@
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:text="Type Of Problem"
-            />
+            android:text="Type Of Problem" />
 
         <EditText
             android:id="@+id/dn_doctors_advice"
@@ -110,6 +120,7 @@
             android:id="@+id/dn_upload"
             android:layout_width="175dp"
             android:layout_height="50dp"
+            android:shadowColor="@color/blue"
             android:text="Upload"
             android:textColor="@color/white" />
 

@@ -177,6 +177,14 @@ public class AdminDoctorsNote extends AppCompatActivity {
     }
 
 
+
+
+
+
+
+
+
+
         @Override
         public boolean onCreateOptionsMenu(android.view.Menu menu) {
                 getMenuInflater().inflate(R.menu.main, menu);
