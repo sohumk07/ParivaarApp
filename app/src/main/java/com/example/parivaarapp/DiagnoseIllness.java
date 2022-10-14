@@ -8,8 +8,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +29,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -128,6 +132,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -145,6 +151,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firestore.v1.WriteResult;
 
@@ -170,6 +177,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private Button upload;
     private int numberofcases = 0;
     private String conditionSelected;
+
+
+    //Recycler View (display prev info)
+    private FirebaseFirestore firebaseFirestore;
+    private RecyclerView mFirestoreList;
+
+    private FirestoreRecyclerAdapter adapter2;
+    //
 
     EditText  doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date, patientID;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
@@ -503,12 +518,131 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
+    //Code for recylerView for previous patient Data
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        mFirestoreList = findViewById(R.id.DN_patient_list); //the actual recycler view
+        Query query = firebaseFirestore.collection("Patient Registration and-or Doctor's Notes").whereEqualTo("identificationNum", patientID);
+
+
+        //RecyclerOptions
+        FirestoreRecyclerOptions<PatientDataModel> options = new FirestoreRecyclerOptions.Builder<PatientDataModel>()
+                .setQuery(query, PatientDataModel.class)
+                .build();
+
+
+        adapter2 = new FirestoreRecyclerAdapter<PatientDataModel, DiagnoseIllness.PatientDataHolder>(options) {
+            @NonNull
+            @Override
+            public DiagnoseIllness.PatientDataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_patient_data, parent, false);
+                return new DiagnoseIllness.PatientDataHolder(view);
+            }
 
 
 
+            @Override
+            protected void onBindViewHolder(@NonNull DiagnoseIllness.PatientDataHolder holder, int position, @NonNull PatientDataModel model) {
+                holder.name.setText("Patient Name: " + model.getName());
+                holder.father_HusbandName.setText("Father/Husband's Name: " + model.getFather_HusbandName());
+                holder.age.setText("Age: " + model.getAge());
+                holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
+                holder.bloodPressure.setText("Blood Pressure: " + model.getBloodPressure());
+                holder.weight.setText("Weight: " + model.getWeight());
+                holder.bodyTemp.setText("Body Temperature: " + model.getBodyTemp());
+                holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
+
+                //Doctor notes attributes
+                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getName());
+                holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
+                holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
+                holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());
+                holder.followUpNeeded.setText("Follow up needed:  " + model.getFollowUpNeeded());
+                holder.needOfReferral.setText("Need of referral: " + model.getNeedOfReferral());
+
+
+
+
+
+
+
+
+
+            }
+        };
+
+        mFirestoreList.setHasFixedSize(true);
+        mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
+        mFirestoreList.setAdapter(adapter2);
 
 //test
     }
+
+    private class PatientDataHolder extends RecyclerView.ViewHolder {
+
+        private TextView name;
+        private TextView father_HusbandName;
+        private TextView age;
+        private TextView identificationNum;
+        private TextView bloodPressure;
+        private TextView weight;
+        private TextView bodyTemp;
+        private TextView bloodSugar;
+        private TextView doctorNoteHeader;
+        private TextView doctorNote;
+        private TextView doctorAdvice;
+        private TextView medicinesUsed;
+        private TextView followUpNeeded;
+        private TextView needOfReferral;
+
+
+
+
+
+        public PatientDataHolder(@NonNull View itemView) {
+            super(itemView);
+
+            name = itemView.findViewById(R.id.name);
+            father_HusbandName = itemView.findViewById(R.id.fatherHusbandName);
+            age = itemView.findViewById(R.id.age);
+            identificationNum = itemView.findViewById(R.id.identificationNum);
+
+            bloodPressure = itemView.findViewById(R.id.bloodPressure);
+            weight  = itemView.findViewById(R.id.weight);
+            bodyTemp = itemView.findViewById(R.id.bodyTemp);
+            bloodSugar = itemView.findViewById(R.id.bloodSugar);
+            doctorNote = itemView.findViewById(R.id.doctorsNote);
+            doctorAdvice = itemView.findViewById(R.id.doctorAdvice);
+            medicinesUsed = itemView.findViewById(R.id.medicinesUsed);
+            followUpNeeded = itemView.findViewById(R.id.followUpNeeded);
+            needOfReferral = itemView.findViewById(R.id.referralNeeded);
+            doctorNoteHeader = itemView.findViewById(R.id.doctorNoteHeader);
+
+
+
+
+
+
+
+        }
+
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter2.stopListening();
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter2.startListening();
+    }
+
+
+
+
 
 
     @Override
