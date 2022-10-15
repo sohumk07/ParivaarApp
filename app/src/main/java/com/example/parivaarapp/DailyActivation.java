@@ -188,7 +188,7 @@ public class DailyActivation extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        simpleDateFormat1 = new SimpleDateFormat(" HH:mm:ss");
+        simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
         Date1 = simpleDateFormat.format(calendar.getTime());
         Time = simpleDateFormat1.format(calendar.getTime());
 

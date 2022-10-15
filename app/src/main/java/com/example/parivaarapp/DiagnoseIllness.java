@@ -44,6 +44,8 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -189,6 +191,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     EditText  doctorsnote, doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date, patientID;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat, simpleDateFormat1;
+    String Date1;
+    String Time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,13 +203,17 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-
+        calendar = Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
+        Date1 = simpleDateFormat.format(calendar.getTime());
+        Time = simpleDateFormat1.format(calendar.getTime());
 
 
         upload =findViewById(R.id.dn_upload);
 
         districtname = findViewById(R.id.district_name);
-        date = findViewById(R.id.date);
+        // date = findViewById(R.id.date);
         clinicname = findViewById(R.id.clinic_name);
         patientID = findViewById(R.id.PatientID);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
@@ -224,6 +235,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String varDate = Date1;
+                String varTime = Time;
 
 
                 final String doctorsnotefullname1 = patientID.getText().toString().trim();
@@ -345,7 +359,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                 //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTIONS
-                String varDate = date.getText().toString().trim();
+                // String varDate = date.getText().toString().trim();
 
                 DocumentReference docIdRef = db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate); //NEEDS FIXING MAYBE
                 docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -355,11 +369,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
 
-                                DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(date.getText().toString().trim());
+                                DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(varDate);
 
                                 if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                     incrementCases.update("(h) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
-                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they wanted to refer
                                         incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
@@ -406,13 +420,13 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 newDataDocument.put("(o) Remarks ","");
 
                                 newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, ""); //add clinic name to this field
-                                newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,"");
+                                newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
 
                                 newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, ""); //add clinic name to this field
-                                newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,"");
+                                newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
 
                                 newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, ""); //add clinic name to this field
-                                newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,"");
+                                newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
 
                                 newDataDocument.put("(v) Fever" + " Cases ", 0);
                                 newDataDocument.put("(v) Skin" + " Cases ", 0);
@@ -451,7 +465,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-                                db.collection(districtname.getText().toString().trim().toUpperCase()).document(date.getText().toString().trim())
+                                db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate)
                                         .set(newDataDocument,SetOptions.merge())
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
