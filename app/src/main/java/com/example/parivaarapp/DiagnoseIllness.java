@@ -617,12 +617,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             needOfReferral = itemView.findViewById(R.id.referralNeeded);
             doctorNoteHeader = itemView.findViewById(R.id.doctorNoteHeader);
 
-
-
-
-
-
-
         }
 
 
