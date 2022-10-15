@@ -83,11 +83,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-        calendar = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
-        Date1 = simpleDateFormat.format(calendar.getTime());
-        Time = simpleDateFormat1.format(calendar.getTime());
+
 
 
         upload =findViewById(R.id.dn_upload);
@@ -115,6 +111,12 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                calendar = Calendar.getInstance();
+                simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
+                Date1 = simpleDateFormat.format(calendar.getTime());
+                Time = simpleDateFormat1.format(calendar.getTime());
 
                 String varDate = Date1;
                 String varTime = Time;
@@ -253,18 +255,21 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                     incrementCases.update("(h) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                    incrementCases.update("(q) Ending Time " + "Clinic #" + 1, varTime);
                                     if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they wanted to refer
                                         incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
                                 else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
                                     incrementCases.update("(i) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                    incrementCases.update("(q) Ending Time " + "Clinic #" + 2, varTime);
                                     if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
                                         incrementCases.update( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
                                 else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
                                     incrementCases.update("(j) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                    incrementCases.update("(q) Ending Time " + "Clinic #" + 3, varTime);
                                     if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
                                         incrementCases.update( "(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
@@ -299,14 +304,24 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 newDataDocument.put("(o) Remarks ","");
 
-                                newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, varTime); //add clinic name to this field
-                                newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
+                                if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
+                                  newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, varTime); //add clinic name to this field
+                                  newDataDocument.put("(q) Ending Time " + "Clinic #" + 1,varTime);
 
-                                newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, varTime); //add clinic name to this field
-                                newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
+                                }
 
-                                newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, varTime); //add clinic name to this field
-                                newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
+                                if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
+                                    newDataDocument.put("(p) Starting Time " + "Clinic #" + 2, varTime); //add clinic name to this field
+                                    newDataDocument.put("(q) Ending Time " + "Clinic #" + 2,varTime);
+                                }
+
+                                if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
+                                    newDataDocument.put("(p) Starting Time " + "Clinic #" + 3, varTime); //add clinic name to this field
+                                    newDataDocument.put("(q) Ending Time " + "Clinic #" + 3,varTime);
+                                }
+
+
+
 
                                 newDataDocument.put("(v) Fever" + " Cases ", 0);
                                 newDataDocument.put("(v) Skin" + " Cases ", 0);
