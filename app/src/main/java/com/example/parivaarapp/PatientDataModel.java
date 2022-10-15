@@ -3,7 +3,7 @@ package com.example.parivaarapp;
 public class PatientDataModel {
 
     //Patient Attributes
-    private String name;
+    private String patientID;
     private String father_HusbandName;
     private int age;
     private long identificationNum;
@@ -25,8 +25,8 @@ public class PatientDataModel {
     }
 
 
-    public PatientDataModel(String name, String father_HusbandName, int age, int identificationNum, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
-        this.name = name;
+    public PatientDataModel(String patientID, String father_HusbandName, int age, int identificationNum, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
+        this.patientID = patientID;
         this.father_HusbandName = father_HusbandName;
         this.age = age;
         this.identificationNum = identificationNum;
@@ -41,12 +41,12 @@ public class PatientDataModel {
         this.needOfReferral = needOfReferral;
     }
 
-    public String getName() {
-        return name;
+    public String getPatientID() {
+        return patientID;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPatientID(String name) {
+        this.patientID = name;
     }
 
     public String getFather_HusbandName() {
