@@ -419,13 +419,13 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 newDataDocument.put("(o) Remarks ","");
 
-                                newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, ""); //add clinic name to this field
+                                newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, varTime); //add clinic name to this field
                                 newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
 
-                                newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, ""); //add clinic name to this field
+                                newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, varTime); //add clinic name to this field
                                 newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
 
-                                newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, ""); //add clinic name to this field
+                                newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, varTime); //add clinic name to this field
                                 newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
 
                                 newDataDocument.put("(v) Fever" + " Cases ", 0);
