@@ -54,7 +54,7 @@ private Button button;
             @Override
             public void onClick(View view) {
                 //code
-                Intent intent = new Intent(Menu.this,DiagnoseIllness.class);
+                Intent intent = new Intent(Menu.this,intermediate.class);
                 startActivity(intent);
             }
         });
