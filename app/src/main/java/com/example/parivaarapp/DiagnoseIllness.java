@@ -57,13 +57,12 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     private Button upload;
-    private Button loadPreviousData;
-
     private int numberofcases = 0;
     private String conditionSelected;
-    private Query query;
-    private String realPatientID;
+
+
     //Recycler View (display prev info)
+    private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
 
     private FirestoreRecyclerAdapter adapter2;
@@ -76,13 +75,12 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     SimpleDateFormat simpleDateFormat, simpleDateFormat1;
     String Date1;
     String Time;
-    boolean loadedPreviousData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnose_illness);
+
 
 
         calendar = Calendar.getInstance();
@@ -92,7 +90,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         Time = simpleDateFormat1.format(calendar.getTime());
 
 
-        loadPreviousData = findViewById(R.id.loadPatientData);
+        upload =findViewById(R.id.dn_upload);
+
         districtname = findViewById(R.id.district_name);
         // date = findViewById(R.id.date);
         clinicname = findViewById(R.id.clinic_name);
@@ -113,126 +112,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             finish();
         }
 
-        //Code for recylerView for previous patient Data
-        mFirestoreList = findViewById(R.id.DN_patient_list); //the actual recycler view
-
-        query = fStore.collection("Patient Registration and-or Doctor's Notes").whereEqualTo("identificationNum", realPatientID);
-        //RecyclerOptions
-        FirestoreRecyclerOptions<PatientDataModel> options = new FirestoreRecyclerOptions.Builder<PatientDataModel>()
-                .setQuery(query, PatientDataModel.class)
-                .build();
-
-
-        adapter2 = new FirestoreRecyclerAdapter<PatientDataModel, DiagnoseIllness.PatientDataHolder>(options) {
-            @NonNull
-            @Override
-            public DiagnoseIllness.PatientDataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_patient_data, parent, false);
-                return new DiagnoseIllness.PatientDataHolder(view);
-            }
-
-
-
-            @Override
-            protected void onBindViewHolder(@NonNull DiagnoseIllness.PatientDataHolder holder, int position, @NonNull PatientDataModel model) {
-                holder.patientID.setText("Patient Name: " + model.getIdentificationNum());
-                holder.father_HusbandName.setText("Father/Husband's Name: " + model.getFather_HusbandName());
-                holder.age.setText("Age: " + model.getAge());
-                holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
-                holder.bloodPressure.setText("Blood Pressure: " + model.getBloodPressure());
-                holder.weight.setText("Weight: " + model.getWeight());
-                holder.bodyTemp.setText("Body Temperature: " + model.getBodyTemp());
-                holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
-
-                //Doctor notes attributes
-                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getIdentificationNum());
-                holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
-                holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
-                holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());
-                holder.followUpNeeded.setText("Follow up needed:  " + model.getFollowUpNeeded());
-                holder.needOfReferral.setText("Need of referral: " + model.getNeedOfReferral());
-
-            }
-        };
-        mFirestoreList.setHasFixedSize(true);
-        mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
-        mFirestoreList.setAdapter(adapter2);
-
-
-
-
-
-        loadPreviousData.setOnClickListener(new View.OnClickListener() {
-            @Override
-                public void onClick(View view) {
-
-                    if(TextUtils.isEmpty(patientID.getText().toString())){
-                        patientID.setError("Cannot Be Empty");
-                        Toast.makeText(DiagnoseIllness.this, "You must fill out patient ID to search records", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-
-                    query = fStore.collection("Patient Registration and-or Doctor's Notes").whereEqualTo("identificationNum", "1");
-
-                    //RecyclerOptions
-                FirestoreRecyclerOptions<PatientDataModel> options = new FirestoreRecyclerOptions.Builder<PatientDataModel>()
-                        .setQuery(query, PatientDataModel.class)
-                        .build();
-
-
-                adapter2 = new FirestoreRecyclerAdapter<PatientDataModel, DiagnoseIllness.PatientDataHolder>(options) {
-                    @NonNull
-                    @Override
-                    public DiagnoseIllness.PatientDataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_patient_data, parent, false);
-                        return new DiagnoseIllness.PatientDataHolder(view);
-                    }
-
-
-
-                    @Override
-                    protected void onBindViewHolder(@NonNull DiagnoseIllness.PatientDataHolder holder, int position, @NonNull PatientDataModel model) {
-                        holder.patientID.setText("Patient Name: " + model.getIdentificationNum());
-                        holder.father_HusbandName.setText("Father/Husband's Name: " + model.getFather_HusbandName());
-                        holder.age.setText("Age: " + model.getAge());
-                        holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
-                        holder.bloodPressure.setText("Blood Pressure: " + model.getBloodPressure());
-                        holder.weight.setText("Weight: " + model.getWeight());
-                        holder.bodyTemp.setText("Body Temperature: " + model.getBodyTemp());
-                        holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
-
-                        //Doctor notes attributes
-                        holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getIdentificationNum());
-                        holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
-                        holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
-                        holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());
-                        holder.followUpNeeded.setText("Follow up needed:  " + model.getFollowUpNeeded());
-                        holder.needOfReferral.setText("Need of referral: " + model.getNeedOfReferral());
-
-                    }
-                };
-
-                    //Toast.makeText(DiagnoseIllness.this, "changed id", Toast.LENGTH_SHORT).show();
-
-                    //realPatientID = patientID.getText().toString().trim();
-
-                }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -240,8 +119,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 String varDate = Date1;
                 String varTime = Time;
 
-                final String realPatientID = patientID.getText().toString().trim();
 
+                final String doctorsnotefullname1 = patientID.getText().toString().trim();
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesused1 = medicinesused.getText().toString().trim();
                 final String followup1 = followup.getText().toString().trim();
@@ -262,14 +141,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     return;
                 }
 
-                if(TextUtils.isEmpty(realPatientID)){
+                if(TextUtils.isEmpty(doctorsnotefullname1)){
                     patientID.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
 
                     return;
                 }
 
-                if(TextUtils.isEmpty(realPatientID)){
+                if(TextUtils.isEmpty(doctorsnotefullname1)){
                     patientID.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
 
@@ -533,8 +412,63 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
+    //Code for recylerView for previous patient Data
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        mFirestoreList = findViewById(R.id.DN_patient_list); //the actual recycler view
+        Query query = firebaseFirestore.collection("Patient Registration and-or Doctor's Notes").whereEqualTo("identificationNum", patientID.getText().toString().trim());
 
 
+        //RecyclerOptions
+        FirestoreRecyclerOptions<PatientDataModel> options = new FirestoreRecyclerOptions.Builder<PatientDataModel>()
+                .setQuery(query, PatientDataModel.class)
+                .build();
+
+
+        adapter2 = new FirestoreRecyclerAdapter<PatientDataModel, DiagnoseIllness.PatientDataHolder>(options) {
+            @NonNull
+            @Override
+            public DiagnoseIllness.PatientDataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_patient_data, parent, false);
+                return new DiagnoseIllness.PatientDataHolder(view);
+            }
+
+
+
+            @Override
+            protected void onBindViewHolder(@NonNull DiagnoseIllness.PatientDataHolder holder, int position, @NonNull PatientDataModel model) {
+                holder.patientID.setText("Patient Name: " + model.getPatientID());
+                holder.father_HusbandName.setText("Father/Husband's Name: " + model.getFather_HusbandName());
+                holder.age.setText("Age: " + model.getAge());
+                holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
+                holder.bloodPressure.setText("Blood Pressure: " + model.getBloodPressure());
+                holder.weight.setText("Weight: " + model.getWeight());
+                holder.bodyTemp.setText("Body Temperature: " + model.getBodyTemp());
+                holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
+
+                //Doctor notes attributes
+                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getPatientID());
+                holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
+                holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
+                holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());
+                holder.followUpNeeded.setText("Follow up needed:  " + model.getFollowUpNeeded());
+                holder.needOfReferral.setText("Need of referral: " + model.getNeedOfReferral());
+
+
+
+
+
+
+
+
+
+            }
+        };
+
+        mFirestoreList.setHasFixedSize(true);
+        mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
+        mFirestoreList.setAdapter(adapter2);
+
+//test
     }
 
     private class PatientDataHolder extends RecyclerView.ViewHolder {
@@ -576,21 +510,23 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             followUpNeeded = itemView.findViewById(R.id.followUpNeeded);
             needOfReferral = itemView.findViewById(R.id.referralNeeded);
             doctorNoteHeader = itemView.findViewById(R.id.doctorNoteHeader);
-        }
-    }
 
+        }
+
+
+
+    }
 
     @Override
     protected void onStop() {
         super.onStop();
         adapter2.stopListening();
     }
+    @Override
     protected void onStart() {
         super.onStart();
         adapter2.startListening();
     }
-
-
 
 
 

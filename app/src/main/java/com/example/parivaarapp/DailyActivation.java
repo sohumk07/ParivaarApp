@@ -186,11 +186,7 @@ public class DailyActivation extends AppCompatActivity {
         actionBar.setSubtitle("App Name");
 
 
-        calendar = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
-        Date1 = simpleDateFormat.format(calendar.getTime());
-        Time = simpleDateFormat1.format(calendar.getTime());
+
 
 
 
@@ -260,8 +256,16 @@ public class DailyActivation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                calendar = Calendar.getInstance();
+                simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
+                Date1 = simpleDateFormat.format(calendar.getTime());
+                Time = simpleDateFormat1.format(calendar.getTime());
+
                 String varDate = Date1;
                 String varTime = Time;
+
+
 
 
 
@@ -370,7 +374,7 @@ public class DailyActivation extends AppCompatActivity {
                     DailyActivationData.put("(e) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
                     DailyActivationData.put("(b) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
                     DailyActivationData.put("(p) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
-                    // DailyActivationData.put("(q) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
+                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicname1.getText().toString().trim(),varTime);
 
                 }
 //test
@@ -378,15 +382,13 @@ public class DailyActivation extends AppCompatActivity {
                     DailyActivationData.put("(f) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
                     DailyActivationData.put("(c) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
                     DailyActivationData.put("(r) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
-                    // DailyActivationData.put("(s) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
-
+                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicname1.getText().toString().trim(),varTime);
                 }
                 else if(clinicname1.getText().toString().toUpperCase().trim().equals("3")) {
                     DailyActivationData.put("(g) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
                     DailyActivationData.put("(d) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
                     DailyActivationData.put("(t) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
-                  //  DailyActivationData.put("(u) Leaving Time " + "Clinic #" + clinicname1.getText().toString().trim(),endtime.getText().toString());
-
+                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicname1.getText().toString().trim(),varTime);
                 }
                 DailyActivationData.put("(f) Remarks ", remarks.getText().toString());
 
