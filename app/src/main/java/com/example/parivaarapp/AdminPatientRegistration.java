@@ -98,7 +98,7 @@ public class AdminPatientRegistration extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull PatientDataHolder holder, int position, @NonNull PatientDataModel model) {
-                holder.name.setText("Patient Name: " + model.getPatientID());
+                holder.name.setText("Patient Name: " + model.getIdentificationNum());
                 holder.father_HusbandName.setText("Father/Husband's Name: " + model.getFather_HusbandName());
                 holder.age.setText("Age: " + model.getAge());
                 holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
@@ -108,7 +108,7 @@ public class AdminPatientRegistration extends AppCompatActivity {
                 holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
 
                 //Doctor notes attributes
-                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getPatientID());
+                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getIdentificationNum());
                 holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
                 holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
                 holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());

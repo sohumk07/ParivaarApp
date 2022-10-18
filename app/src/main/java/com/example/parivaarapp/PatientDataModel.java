@@ -3,10 +3,10 @@ package com.example.parivaarapp;
 public class PatientDataModel {
 
     //Patient Attributes
-    private String patientID;
+    //private String patientID;
     private String father_HusbandName;
     private int age;
-    private long identificationNum;
+    private String identificationNum;
     private int bloodPressure;
     private int weight;
     private int bodyTemp;
@@ -25,8 +25,8 @@ public class PatientDataModel {
     }
 
 
-    public PatientDataModel(String patientID, String father_HusbandName, int age, int identificationNum, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
-        this.patientID = patientID;
+    public PatientDataModel(String identificationNum, String father_HusbandName, int age, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
+     //   this.patientID = patientID;
         this.father_HusbandName = father_HusbandName;
         this.age = age;
         this.identificationNum = identificationNum;
@@ -41,13 +41,13 @@ public class PatientDataModel {
         this.needOfReferral = needOfReferral;
     }
 
-    public String getPatientID() {
-        return patientID;
-    }
-
-    public void setPatientID(String name) {
-        this.patientID = name;
-    }
+//    public String getIdentificationNum() {
+//        return identificationNum;
+//    }
+//
+//    public void setPatientID(String patientID) {
+//        this.patientID = patientID;
+//    }
 
     public String getFather_HusbandName() {
         return father_HusbandName;
@@ -66,11 +66,11 @@ public class PatientDataModel {
         this.age = age;
     }
 
-    public long getIdentificationNum() {
+    public String getIdentificationNum() {
         return identificationNum;
     }
 
-    public void setIdentificationNum(long identificationNum) {
+    public void setIdentificationNum(String identificationNum) {
         this.identificationNum = identificationNum;
     }
 
