@@ -23,12 +23,12 @@
             android:textSize="34sp" />
 
 
-        <Button
-            android:id="@+id/loadPatientData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Load Previous Patient Data"
-            app:iconTint="#FFFFFF" />
+<!--        <Button-->
+<!--            android:id="@+id/loadPatientData"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Load Previous Patient Data"-->
+<!--            app:iconTint="#FFFFFF" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/DN_patient_list"

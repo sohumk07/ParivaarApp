@@ -6,7 +6,7 @@ public class PatientDataModel {
     //private String patientID;
     private String father_HusbandName;
     private int age;
-    private String identificationNum;
+    private String patientID;
     private int bloodPressure;
     private int weight;
     private int bodyTemp;
@@ -25,11 +25,10 @@ public class PatientDataModel {
     }
 
 
-    public PatientDataModel(String identificationNum, String father_HusbandName, int age, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
-     //   this.patientID = patientID;
+    public PatientDataModel(String patientID, String father_HusbandName, int age, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
+        this.patientID = patientID;
         this.father_HusbandName = father_HusbandName;
         this.age = age;
-        this.identificationNum = identificationNum;
         this.bloodPressure = bloodPressure;
         this.weight = weight;
         this.bodyTemp = bodyTemp;
@@ -66,12 +65,12 @@ public class PatientDataModel {
         this.age = age;
     }
 
-    public String getIdentificationNum() {
-        return identificationNum;
+    public String getPatientID() {
+        return patientID;
     }
 
-    public void setIdentificationNum(String identificationNum) {
-        this.identificationNum = identificationNum;
+    public void setPatientID(String patientID) {
+        this.patientID = patientID;
     }
 
     public int getBloodPressure() {

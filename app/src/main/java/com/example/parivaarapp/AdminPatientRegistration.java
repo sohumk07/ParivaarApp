@@ -98,17 +98,17 @@ public class AdminPatientRegistration extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull PatientDataHolder holder, int position, @NonNull PatientDataModel model) {
-                holder.name.setText("Patient Name: " + model.getIdentificationNum());
+                holder.name.setText("Patient Name: " + model.getPatientID());
                 holder.father_HusbandName.setText("Father/Husband's Name: " + model.getFather_HusbandName());
                 holder.age.setText("Age: " + model.getAge());
-                holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
+                holder.identificationNum.setText("Identification Number: " + model.getPatientID());
                 holder.bloodPressure.setText("Blood Pressure: " + model.getBloodPressure());
                 holder.weight.setText("Weight: " + model.getWeight());
                 holder.bodyTemp.setText("Body Temperature: " + model.getBodyTemp());
                 holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
 
                 //Doctor notes attributes
-                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getIdentificationNum());
+                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getPatientID());
                 holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
                 holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
                 holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());
@@ -172,7 +172,7 @@ public class AdminPatientRegistration extends AppCompatActivity {
             name = itemView.findViewById(R.id.patientID);
             father_HusbandName = itemView.findViewById(R.id.fatherHusbandName);
             age = itemView.findViewById(R.id.age);
-            identificationNum = itemView.findViewById(R.id.identificationNum);
+            identificationNum = itemView.findViewById(R.id.patientID);
 
             bloodPressure = itemView.findViewById(R.id.bloodPressure);
             weight  = itemView.findViewById(R.id.weight);

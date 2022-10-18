@@ -22,11 +22,12 @@
 
 
     <EditText
+        android:id="@+id/enterID"
         android:layout_width="324dp"
         android:layout_height="53dp"
         android:layout_marginBottom="92dp"
         android:inputType="number"
-        android:text="Enter Aadhar #"
+        android:hint="Enter Aadhar #"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

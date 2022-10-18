@@ -270,7 +270,7 @@ public class NewPatientRegistration extends AppCompatActivity {
                 NewPatientRegistration.put("name", fullname.getText().toString().trim().toUpperCase());
                 NewPatientRegistration.put("father_HusbandName",patientregistrationhusbandname.getText().toString().trim());
                 NewPatientRegistration.put("age",Integer.parseInt(patientregistrationage.getText().toString().trim()));
-                NewPatientRegistration.put("identificationNum",Integer.parseInt(patientregistrationidentification.getText().toString().trim()));
+                NewPatientRegistration.put("identificationNum",patientregistrationidentification.getText().toString().trim());
                 NewPatientRegistration.put("bloodPressure",Integer.parseInt(patientregistrationbp.getText().toString().trim()));
                 NewPatientRegistration.put("weight",Integer.parseInt(patientregistrationweight.getText().toString().trim()));
                 NewPatientRegistration.put("bodyTemp",Integer.parseInt(patientregistrationbodytemperature.getText().toString().trim()));
