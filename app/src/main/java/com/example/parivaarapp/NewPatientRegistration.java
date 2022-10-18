@@ -265,7 +265,7 @@ public class NewPatientRegistration extends AppCompatActivity {
 
 
 
-
+//
                 Map<String, Object> NewPatientRegistration = new HashMap<>();
                 NewPatientRegistration.put("name", fullname.getText().toString().trim().toUpperCase());
                 NewPatientRegistration.put("father_HusbandName",patientregistrationhusbandname.getText().toString().trim());
