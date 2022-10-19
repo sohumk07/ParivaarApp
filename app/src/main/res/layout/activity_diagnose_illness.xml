@@ -25,19 +25,17 @@
             />
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/DN_patient_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
             android:hint="Full Name"
             android:id="@+id/full_name"/>
-
-        <EditText android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Photo"
-            android:id="@+id/patient_registration_photo"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -52,13 +50,6 @@
             android:layout_marginTop="60dp"
             android:hint="Age"
             android:id="@+id/patient_registration_age"/>
-
-        <EditText android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Identification Number (phone # OR aadhar # or ayushman #)"
-            android:id="@+id/patient_registration_identification"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -94,7 +85,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="          Medical Assessment"
+            android:text="Diagnose the current Situation"
             android:textSize="34sp" />
 
 
@@ -104,20 +95,6 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:text="Load Previous Patient Data"-->
 <!--            app:iconTint="#FFFFFF" />-->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/DN_patient_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <EditText
-            android:id="@+id/PatientID"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Patient ID (12 digit Aadhaar)"
-            android:inputType="number" />
 
         <EditText
             android:id="@+id/clinic_name"

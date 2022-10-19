@@ -217,7 +217,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private FirestoreRecyclerAdapter adapter2;
     //
 
-    EditText doctorsadvice, medicinesused, referral, followup, clinicname, districtname, date, patientID;
+    EditText doctorsadvice, medicinesused, referral, followup, clinicname, districtname;
     TextView doctorsnote;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
@@ -230,7 +230,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
     //Patient Registration
 
-    public EditText fullname, patientregistrationphoto, patientregistrationhusbandname, patientregistrationage, patientregistrationidentification,patientregistrationbp, patientregistrationweight, patientregistrationbodytemperature, patientregistrationbloodsugar;
+    public EditText fullname, patientregistrationphoto, patientregistrationhusbandname, patientregistrationage, patientregistrationbp, patientregistrationweight, patientregistrationbodytemperature, patientregistrationbloodsugar;
 
 
 
@@ -242,12 +242,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         Intent receiverIntent = getIntent();
         String realPatientID = receiverIntent.getStringExtra("KEY_PATIENT");
 
-        //getting patient ID from intermediate
-        //String realPatientID = recieverIntent.getStringExtra("KEY_PATIENT_ID");
-
-
-
-
 
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -256,7 +250,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         Time = simpleDateFormat1.format(calendar.getTime());
 
 
-        upload =findViewById(R.id.dn_upload);
 
         districtname = findViewById(R.id.district_name);
         // date = findViewById(R.id.date);
@@ -266,7 +259,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         medicinesused = findViewById(R.id.dn_medicines_uses);
         followup = findViewById(R.id.dn_follow_up);
         referral = findViewById(R.id.dn_referral);
-        upload = findViewById(R.id.dn_upload);
+        upload =findViewById(R.id.dn_upload);
 
 
         fAuth = FirebaseAuth.getInstance();
@@ -341,12 +334,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         //patientregistrationphoto = findViewById(R.id.patient_registration_photo);
         patientregistrationhusbandname = findViewById(R.id.patient_registration_husband_name);
         patientregistrationage = findViewById(R.id.patient_registration_age);
-        patientregistrationidentification = findViewById(R.id.patient_registration_identification);
         patientregistrationbp = findViewById(R.id.patient_registration_bp);
         patientregistrationweight = findViewById(R.id.patient_registration_weight);
         patientregistrationbodytemperature = findViewById(R.id.patient_registration_body_temperature);
         patientregistrationbloodsugar = findViewById(R.id.patient_registration_blood_sugar);
-        upload = findViewById(R.id.patient_registration_button);
 
 
         fAuth = FirebaseAuth.getInstance();
@@ -394,19 +385,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     return;
                 }
 
-//                if(TextUtils.isEmpty(patientID)){
-//                    patientID.setError("Cannot Be Empty");
-//                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-//
-//                    return;
-//                }
-//
-//                if(TextUtils.isEmpty(doctorsnotefullname1)){
-//                    patientID.setError("Cannot Be Empty");
-//                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-//
-//                    return;
-//                }
 
                 if(TextUtils.isEmpty(doctorsadvice1)){
                     doctorsadvice.setError("Cannot Be Empty");
@@ -417,7 +395,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 if(TextUtils.isEmpty(medicinesused1)){
                     medicinesused.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-
                     return;
                 }
                 if(TextUtils.isEmpty(followup1)){
@@ -655,9 +632,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 final String fullname_1 = fullname.getText().toString().trim();
                 final String patientregistrationhusbandname_1 = patientregistrationhusbandname.getText().toString().trim();
                 final String patientregistrationage_1 = patientregistrationage.getText().toString().trim();
-                final String patientregistrationidentification_1 = patientregistrationidentification.getText().toString().trim();
                 final String patientregistrationbp_1 = patientregistrationbp.getText().toString().trim();
-                final String patientregistrationweight_1 = patientregistrationweight.getText().toString().trim();
+                //final String patientregistrationweight_1 = patientregistrationweight.getText().toString().trim();
                 final String patientregistrationbodytemperature_1 = patientregistrationbodytemperature.getText().toString().trim();
                 final String patientregistrationbloodsugar_1 = patientregistrationbloodsugar.getText().toString().trim();
 
@@ -677,20 +653,16 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     return;
                 }
 
-                if(TextUtils.isEmpty(patientregistrationidentification_1)){
-                    patientregistrationidentification.setError("Cannot Be Empty");
-                    return;
-                }
 
                 if(TextUtils.isEmpty(patientregistrationbp_1)){
                     patientregistrationbp.setError("Cannot Be Empty");
                     return;
                 }
 
-                if(TextUtils.isEmpty(patientregistrationweight_1)){
-                    patientregistrationweight.setError("Cannot Be Empty");
-                    return;
-                }
+//                if(TextUtils.isEmpty(patientregistrationweight_1)){
+//                    patientregistrationweight.setError("Cannot Be Empty");
+//                    return;
+//                }
 
 
                 if(TextUtils.isEmpty(patientregistrationbodytemperature_1)){
@@ -711,7 +683,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 NewPatientRegistration.put("name", fullname.getText().toString().trim().toUpperCase());
                 NewPatientRegistration.put("father_HusbandName",patientregistrationhusbandname.getText().toString().trim());
                 NewPatientRegistration.put("age",Integer.parseInt(patientregistrationage.getText().toString().trim()));
-                NewPatientRegistration.put("identificationNum",patientregistrationidentification.getText().toString().trim());
+                NewPatientRegistration.put("identificationNum",realPatientID);
                 NewPatientRegistration.put("bloodPressure",Integer.parseInt(patientregistrationbp.getText().toString().trim()));
                 NewPatientRegistration.put("weight",Integer.parseInt(patientregistrationweight.getText().toString().trim()));
                 NewPatientRegistration.put("bodyTemp",Integer.parseInt(patientregistrationbodytemperature.getText().toString().trim()));
@@ -724,20 +696,20 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 //NewPatientRegistration.put("Patient Registration Info", nestedData);
 
 
-                db.collection("Patient Registration and-or Doctor's Notes").document(fullname.getText().toString().trim().toUpperCase())
+                db.collection("Patient Registration and-or Doctor's Notes").document(realPatientID)
                         .set(NewPatientRegistration, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Toast.makeText(DiagnoseIllness.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
+                                //Log.d(TAG, "DocumentSnapshot successfully written!");
+                                //Toast.makeText(DiagnoseIllness.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error writing document", e);
-                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
+                                //Log.w(TAG, "Error writing document", e);
+                                //Toast.makeText(DiagnoseIllness.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
 
