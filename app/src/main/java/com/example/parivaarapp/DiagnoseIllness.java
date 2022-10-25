@@ -258,7 +258,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         clinicname = findViewById(R.id.clinic_name);
     //    patientID = findViewById(R.id.PatientID);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
-        medicinesused = findViewById(R.id.dn_medicines_uses);
+        medicinesused = findViewById(R.id.medicinesUsed_ACTV);
         followup = findViewById(R.id.dn_follow_up);
         referral = findViewById(R.id.dn_referral);
         upload =findViewById(R.id.dn_upload);

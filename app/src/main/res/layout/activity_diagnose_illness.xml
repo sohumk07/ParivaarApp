@@ -139,24 +139,32 @@
             android:layout_marginTop="60dp"
             android:hint="Doctor's Advice" />
 
+        <TextView
+            android:id="@+id/textViewHintMedicines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select a medicine"
+            android:textSize="20sp"
+            android:paddingBottom="16dp"
+            android:paddingTop="30dp"/>
 
         <AutoCompleteTextView
             android:id="@+id/medicinesUsed_ACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Select the medicine used"
             android:completionThreshold="1"
+            android:dropDownAnchor="@id/textViewHintMedicines"
             android:completionHint="Select the medicine used"/>
 
 
 
-        <EditText
-            android:id="@+id/dn_medicines_uses"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Medicines Used" />
+<!--        <EditText-->
+<!--            android:id="@+id/dn_medicines_uses"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            />-->
 
         <EditText
             android:id="@+id/dn_follow_up"
