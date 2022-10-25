@@ -44,12 +44,13 @@
             android:hint="Father/Husband Name"
             android:id="@+id/patient_registration_husband_name"/>
 
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/patient_registration_age"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Age"
-            android:id="@+id/patient_registration_age"/>
+            android:hint="Age" />
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -65,12 +66,13 @@
             android:hint="Weight (kg)"
             android:id="@+id/patient_registration_weight"/>
 
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/patient_registration_body_temperature"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Body Temperature"
-            android:id="@+id/patient_registration_body_temperature"/>
+            android:hint="Body Temperature" />
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -136,6 +138,17 @@
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
             android:hint="Doctor's Advice" />
+
+
+        <AutoCompleteTextView
+            android:id="@+id/medicinesUsed_ACTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select the medicine used"
+            android:completionThreshold="1"
+            android:completionHint="Select the medicine used"/>
+
+
 
         <EditText
             android:id="@+id/dn_medicines_uses"

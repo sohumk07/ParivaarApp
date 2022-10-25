@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.text.TextUtils;
 import android.util.Log;
@@ -31,6 +32,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -739,6 +741,37 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(this);
+
+
+
+        //Code for autocomplete selection
+        ArrayList<String> listOfMedicines = new ArrayList<String>();
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        DocumentReference codesRef = rootRef.collection("Doctor Names").document("Names");
+        codesRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    Map<String, Object> map = task.getResult().getData();
+                    for (Map.Entry<String, Object> entry : map.entrySet()) {
+                        listOfMedicines.add(entry.getKey());
+                        //Toast.makeText(DiagnoseIllness.this, entry.getKey(), Toast.LENGTH_SHORT).show();
+                    }
+                    //Do what you want to do with your list
+                }
+            }
+
+
+        });
+
+        AutoCompleteTextView editMedicineUsed = findViewById(R.id.medicinesUsed_ACTV);
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                    android.R.layout.simple_list_item_1, listOfMedicines);
+//            editMedicinesUsed.setAdapter(adapter);
+
+        ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this
+                , android.R.layout.simple_dropdown_item_1line, listOfMedicines);
+        editMedicineUsed.setAdapter(medicineAdapter);
 
 
 //test
