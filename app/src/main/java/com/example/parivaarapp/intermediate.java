@@ -35,9 +35,16 @@ public class intermediate extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //TODO uncomment when testing is complete
+//                if(!(enterID.getText().toString().length() == 12 )){
+//                    //code if not valid ID
+//                    enterID.setError("Not a valid AADHAR number (12 digits)");
+//                    //Toast.makeText(intermediate.this, "Not a valid AADHAR number, please try again", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 //code
                 Intent senderIntent = new Intent(intermediate.this, DiagnoseIllness.class);
-                //senderIntent.putExtra("KEY_PATIENT_ID", 2);
+
                 senderIntent.putExtra("KEY_PATIENT", enterID.getText().toString().trim());
                 startActivity(senderIntent);
 

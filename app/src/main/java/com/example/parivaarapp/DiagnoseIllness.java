@@ -758,20 +758,21 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         //Toast.makeText(DiagnoseIllness.this, entry.getKey(), Toast.LENGTH_SHORT).show();
                     }
                     //Do what you want to do with your list
+                    AutoCompleteTextView editMedicineUsed = findViewById(R.id.medicinesUsed_ACTV);
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                    android.R.layout.simple_list_item_1, listOfMedicines);
+//            editMedicinesUsed.setAdapter(adapter);
+
+                    ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this
+                            , android.R.layout.simple_dropdown_item_1line, listOfMedicines);
+                    editMedicineUsed.setAdapter(medicineAdapter);
                 }
             }
 
 
         });
 
-        AutoCompleteTextView editMedicineUsed = findViewById(R.id.medicinesUsed_ACTV);
-//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                    android.R.layout.simple_list_item_1, listOfMedicines);
-//            editMedicinesUsed.setAdapter(adapter);
 
-        ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this
-                , android.R.layout.simple_dropdown_item_1line, listOfMedicines);
-        editMedicineUsed.setAdapter(medicineAdapter);
 
 
 //test

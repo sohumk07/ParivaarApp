@@ -9,35 +9,64 @@
     tools:context=".NewPatientRegistration">
 
     <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
 
         <TextView
+            android:paddingTop="10dp"
             android:id="@+id/textView7"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="           Patient Registration"
-            android:textSize="34sp"
-            />
+            android:text="Patient Registration \n  &amp; Dotor's Assesment"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingTop="10dp"
             android:id="@+id/DN_patient_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/DarkGray"
+            android:outlineAmbientShadowColor="@color/Black"
+            android:outlineSpotShadowColor="@color/black" />
+
+
+        <TextView
+            android:textStyle="italic"
+            android:id="@+id/beginFormTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Begin Form Below"
+            android:textColor="@color/gray"
+            android:textSize="20sp"
+            android:paddingBottom="10dp"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="10dp"
             android:hint="Full Name"
             android:id="@+id/full_name"/>
 
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
@@ -52,7 +81,9 @@
             android:layout_marginTop="60dp"
             android:hint="Age" />
 
+
         <EditText android:layout_width="match_parent"
+
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
@@ -145,7 +176,7 @@
             android:layout_height="wrap_content"
             android:text="Select a medicine"
             android:textSize="20sp"
-            android:paddingBottom="16dp"
+            android:paddingBottom="10dp"
             android:paddingTop="30dp"/>
 
         <AutoCompleteTextView
@@ -153,7 +184,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:completionThreshold="1"
-            android:dropDownAnchor="@id/textViewHintMedicines"
             android:completionHint="Select the medicine used"/>
 
 
