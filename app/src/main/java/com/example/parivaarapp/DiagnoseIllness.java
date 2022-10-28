@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -219,7 +220,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private FirestoreRecyclerAdapter adapter2;
     //
 
-    EditText doctorsadvice, medicinesused, referral, followup, clinicname, districtname;
+    EditText doctorsadvice, medicinesused, clinicname, districtname;
+    CheckBox followUpCheck, refferalCheck;
     TextView doctorsnote;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
@@ -259,8 +261,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     //    patientID = findViewById(R.id.PatientID);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.medicinesUsed_ACTV);
-        followup = findViewById(R.id.dn_follow_up);
-        referral = findViewById(R.id.dn_referral);
+        followUpCheck = findViewById(R.id.followUpCheck);
+        refferalCheck = findViewById(R.id.referralCheck);
         upload =findViewById(R.id.dn_upload);
 
 
@@ -369,8 +371,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesused1 = medicinesused.getText().toString().trim();
-                final String followup1 = followup.getText().toString().trim();
-                final String referral1 = referral.getText().toString().trim();
+
 
 
 
@@ -399,20 +400,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(followup1)){
-                    followup.setError("Cannot Be Empty");
-                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
 
-                    return;
-                }
-
-                if(!(referral1.equals("yes") || (referral1.equals("no")))){
-                //code if condition is false
-                    referral.setError("Must Write 'yes' or 'no' ");
-                    Toast.makeText(DiagnoseIllness.this, "Error", Toast.LENGTH_SHORT).show();
-
-                    return;
-                }
 
 
 

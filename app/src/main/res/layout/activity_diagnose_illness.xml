@@ -41,9 +41,8 @@
             android:layout_height="3dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/DarkGray"
-            android:outlineAmbientShadowColor="@color/Black"
-            android:outlineSpotShadowColor="@color/black" />
+            android:background="@color/purple_500"
+/>
 
 
         <TextView
@@ -54,16 +53,17 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Begin Form Below"
-            android:textColor="@color/gray"
+            android:textColor="@color/purple_500"
             android:textSize="20sp"
             android:paddingBottom="10dp"/>
 
-        <EditText android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/full_name"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:hint="Full Name"
-            android:id="@+id/full_name"/>
+            android:hint="Full Name" />
 
         <EditText
             android:layout_width="match_parent"
@@ -112,14 +112,25 @@
             android:hint="Blood Sugar"
             android:id="@+id/patient_registration_blood_sugar"/>
 
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/purple_500"
+            android:outlineAmbientShadowColor="@color/Black"
+            android:outlineSpotShadowColor="@color/black" />
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Diagnose the current Situation"
-            android:textSize="34sp" />
+            android:textColor="@color/purple_500"
+            android:textStyle="italic"
+            android:text="Current medical assessment begins below"
+            android:textSize="22sp" />
 
 
 <!--        <Button-->
@@ -134,7 +145,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="35dp"
             android:hint="Clinic Number"
             android:inputType="number" />
 
@@ -157,10 +168,12 @@
             android:textSize="20dp" />
 
         <Spinner
+
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:text="Type Of Problem" />
+            android:text="Type Of Problem"
+            android:outlineSpotShadowColor="@color/black"/>
 
         <EditText
             android:id="@+id/dn_doctors_advice"
@@ -168,16 +181,17 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Doctor's Advice" />
+            android:hint="Doctor's Advice"
+            />
 
         <TextView
             android:id="@+id/textViewHintMedicines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select a medicine"
+            android:text="Select a medicine (begin type)"
             android:textSize="20sp"
             android:paddingBottom="10dp"
-            android:paddingTop="30dp"/>
+            android:paddingTop="25dp"/>
 
         <AutoCompleteTextView
             android:id="@+id/medicinesUsed_ACTV"
@@ -196,21 +210,37 @@
 <!--            android:layout_marginTop="60dp"-->
 <!--            />-->
 
-        <EditText
-            android:id="@+id/dn_follow_up"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Follow Up Needed? (yes or no)" />
+<!--        <EditText-->
+<!--            android:id="@+id/dn_follow_up"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:hint="Follow Up Needed? (yes or no)" />-->
 
-        <EditText
-            android:id="@+id/dn_referral"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Need Of Referral? (yes or no)" />
+        <CheckBox
+            android:id="@+id/followUpCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="15dp"
+            android:text="Follow up needed"/>
+<!--        <EditText-->
+<!--            android:id="@+id/dn_referral"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:hint="Need Of Referral? (yes or no)" />-->
+        <CheckBox
+            android:id="@+id/referralCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="15dp"
+            android:text="Need of Referral"
+            android:layout_marginBottom="10dp"
+            />
 
         <Button
             android:id="@+id/dn_upload"
@@ -218,7 +248,8 @@
             android:layout_height="50dp"
             android:shadowColor="@color/blue"
             android:text="Upload"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            />
 
 
     </LinearLayout>
