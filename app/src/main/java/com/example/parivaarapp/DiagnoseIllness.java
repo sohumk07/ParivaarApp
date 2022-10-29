@@ -221,7 +221,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     //
 
     EditText doctorsadvice, medicinesused, clinicname, districtname;
-    CheckBox followUpCheck, refferalCheck;
+    CheckBox followUpCheck, referralCheck;
     TextView doctorsnote;
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
@@ -252,6 +252,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
         Date1 = simpleDateFormat.format(calendar.getTime());
         Time = simpleDateFormat1.format(calendar.getTime());
+        followUpCheck = findViewById(R.id.followUpCheck);
+        referralCheck = findViewById(R.id.referralCheck);
+
 
 
 
@@ -261,8 +264,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     //    patientID = findViewById(R.id.PatientID);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.medicinesUsed_ACTV);
-        followUpCheck = findViewById(R.id.followUpCheck);
-        refferalCheck = findViewById(R.id.referralCheck);
         upload =findViewById(R.id.dn_upload);
 
 
@@ -414,8 +415,20 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 // DiagnoseIllness.put("doctorNote", doctorsnote.getText().toString().trim());
                 DiagnoseIllness.put("doctorAdvice", doctorsadvice.getText().toString().trim());
                 DiagnoseIllness.put("medicinesUsed", medicinesused.getText().toString().trim());
-                DiagnoseIllness.put("followUpNeeded", followup.getText().toString().trim());
-                DiagnoseIllness.put("needOfReferral", referral.getText().toString().trim());
+                if(followUpCheck.isChecked()){
+                    DiagnoseIllness.put("followUpNeeded", "yes");
+                }
+                else{
+                    DiagnoseIllness.put("followUpNeeded", "no");
+
+                }
+                if(referralCheck.isChecked()){
+                    DiagnoseIllness.put("needOfReferral", "yes");
+                }
+                else{
+                    DiagnoseIllness.put("needOfReferral", "no");
+
+                }
 
                 //Map<String, Object> Data = new HashMap<>();
 
@@ -473,19 +486,19 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                     incrementCases.update("(h) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
-                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they wanted to refer
+                                    if(referralCheck.isChecked()){ //if they wanted to refer
                                         incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
                                 else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
                                     incrementCases.update("(i) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
-                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                    if(referralCheck.isChecked()){ //if they watned to refer
                                         incrementCases.update( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
                                 else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
                                     incrementCases.update("(j) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
-                                    if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                    if(referralCheck.isChecked()){ //if they watned to refer
                                         incrementCases.update( "(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                 }
@@ -539,7 +552,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-                                if(referral.getText().toString().trim().toLowerCase().equals("yes")){ //if they watned to refer
+                                if(referralCheck.isChecked()){ //if they watned to refer
                                     if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                         newDataDocument.put( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
 

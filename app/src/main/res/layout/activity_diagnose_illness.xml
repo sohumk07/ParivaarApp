@@ -129,8 +129,8 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:textColor="@color/purple_500"
             android:textStyle="italic"
-            android:text="Current medical assessment begins below"
-            android:textSize="22sp" />
+            android:text="Begin current medical assesment"
+            android:textSize="20sp" />
 
 
 <!--        <Button-->
