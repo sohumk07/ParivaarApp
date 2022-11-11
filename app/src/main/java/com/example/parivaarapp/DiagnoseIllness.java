@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -230,6 +231,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     String Date1;
     String Time;
 
+    MultiAutoCompleteTextView editMedicineUsed; //medicine selector
 
 
     //Patient Registration
@@ -365,22 +367,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View view) {
 
-
                 String varDate = Date1;
                 String varTime = Time;
 
-
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
-                final String medicinesused1 = medicinesused.getText().toString().trim();
-
-
-
-
-
-
-
-
-
+                final String medicinesInput = editMedicineUsed.getText().toString();
 
 
                 if(TextUtils.isEmpty(clinicname.getText().toString())){
@@ -396,18 +387,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                     return;
                 }
-                if(TextUtils.isEmpty(medicinesused1)){
-                    medicinesused.setError("Cannot Be Empty");
+                if(TextUtils.isEmpty(medicinesInput)){
+                    editMedicineUsed.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-
-
-
-
-
-
 
 
                 Map<String, Object> DiagnoseIllness = new HashMap<>();
@@ -438,6 +422,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                 //documents and collections
+                //create new document in patient reg
                 db.collection("Patient Registration and-or Doctor's Notes").document(realPatientID)
                         .set(DiagnoseIllness, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -456,6 +441,17 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
+
+                //TODO: read which district they are from.
+                //Alter medicine database based on district and medicine administered.
+                String[] individualMedidicnes = medicinesInput.split("\\s*,\\s*");
+                DocumentReference medicineDatabaseIDREF = db.collection("Medicine Database").document(districtname.getText().toString().trim().toUpperCase()); //NEEDS FIXING MAYBE
+                for(int i = 0; i<individualMedidicnes.length; i++){
+                    medicineDatabaseIDREF.update(individualMedidicnes[i], FieldValue.increment(1));
+                }
+
+
+
 
 
 
@@ -759,14 +755,16 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         //Toast.makeText(DiagnoseIllness.this, entry.getKey(), Toast.LENGTH_SHORT).show();
                     }
                     //Do what you want to do with your list
-                    AutoCompleteTextView editMedicineUsed = findViewById(R.id.medicinesUsed_ACTV);
-//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                    android.R.layout.simple_list_item_1, listOfMedicines);
-//            editMedicinesUsed.setAdapter(adapter);
+                    editMedicineUsed = findViewById(R.id.medicinesUsed_ACTV);
 
                     ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this
                             , android.R.layout.simple_dropdown_item_1line, listOfMedicines);
                     editMedicineUsed.setAdapter(medicineAdapter);
+                    editMedicineUsed.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+
+
+
                 }
             }
 

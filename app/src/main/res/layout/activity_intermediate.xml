@@ -7,12 +7,14 @@
     tools:context=".intermediate">
 
     <TextView
+        android:layout_marginTop="30dp"
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Patient ID (aadhar)"
-        android:textSize="34sp"
         android:fontFamily="sans-serif-black"
+        android:text="Enter 12 Digit Patient ID \n(Aadhar)"
+        android:textColor="@color/black"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -21,25 +23,39 @@
         app:layout_constraintVertical_bias="0.098" />
 
 
-    <EditText
-        android:id="@+id/enterID"
-        android:layout_width="324dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="92dp"
-        android:inputType="number"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterIDLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="32dp"
         android:hint="Enter Aadhar #"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:endIconMode="clear_text"
+        app:helperText="12 digit number Required*"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:maxLength="12"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/profile">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enterID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="230dp"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

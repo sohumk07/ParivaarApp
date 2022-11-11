@@ -26,6 +26,14 @@
             android:text="Patient Registration \n  &amp; Dotor's Assesment"
             android:textColor="@color/black"
             android:textSize="30sp" />
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/black"
+            />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -62,14 +70,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:hint="Full Name" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:hint="Father/Husband Name"
             android:id="@+id/patient_registration_husband_name"/>
 
@@ -78,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:hint="Age" />
 
 
@@ -86,15 +94,15 @@
 
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:hint="Blood Pressure"
             android:id="@+id/patient_registration_bp"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Weight (kg)"
+            android:layout_marginTop="40dp"
+            android:hint="Weight (Kg)"
             android:id="@+id/patient_registration_weight"/>
 
         <EditText
@@ -102,13 +110,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Body Temperature" />
+            android:layout_marginTop="40dp"
+            android:hint="Body Temperature (C)" />
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:hint="Blood Sugar"
             android:id="@+id/patient_registration_blood_sugar"/>
 
@@ -154,7 +162,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:hint="District Name" />
 
         <TextView
@@ -162,10 +170,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:inputType="none"
-            android:text="Select Type Of Issue"
-            android:textSize="20dp" />
+            android:text="Select type of issue"
+            android:textStyle="italic"
+            android:textSize="20dp"
+            android:layout_marginBottom="8dp"/>
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+
 
         <Spinner
 
@@ -173,32 +190,40 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:text="Type Of Problem"
+
             android:outlineSpotShadowColor="@color/black"/>
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
 
         <EditText
             android:id="@+id/dn_doctors_advice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:hint="Doctor's Advice"
+            android:layout_marginBottom="40dp"
             />
 
-        <TextView
-            android:id="@+id/textViewHintMedicines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select a medicine (begin type)"
-            android:textSize="20sp"
-            android:paddingBottom="10dp"
-            android:paddingTop="25dp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/textViewHintMedicines"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Select a medicine (begin type)"-->
+<!--            android:textSize="20sp"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            android:paddingTop="25dp"/>-->
 
-        <AutoCompleteTextView
+        <MultiAutoCompleteTextView
             android:id="@+id/medicinesUsed_ACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:completionThreshold="1"
-            android:completionHint="Select the medicine used"/>
+            android:hint="Select medicines"
+            android:completionHint="Select the medicines used"/>
 
 
 
@@ -224,7 +249,8 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="15dp"
-            android:text="Follow up needed"/>
+            android:text="Follow up needed"
+            />
 <!--        <EditText-->
 <!--            android:id="@+id/dn_referral"-->
 <!--            android:layout_width="match_parent"-->
