@@ -2,16 +2,17 @@ package com.example.parivaarapp;
 
 public class PatientDataModel {
 
+
+
     //Patient Attributes
-    //private String patientID;
+    private String name;
+    private String identificationNum;
     private String father_HusbandName;
     private int age;
-    private String patientID;
     private int bloodPressure;
     private int weight;
     private int bodyTemp;
     private int bloodSugar;
-
 
     //Connected Doctors notes attributes
     private String doctorNote;
@@ -24,9 +25,8 @@ public class PatientDataModel {
 
     }
 
-
-    public PatientDataModel(String patientID, String father_HusbandName, int age, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
-        this.patientID = patientID;
+    public PatientDataModel(String name, String identificationNum, String father_HusbandName, int age, int bloodPressure, int weight, int bodyTemp, int bloodSugar, String doctorNote, String doctorAdvice, String medicinesUsed, String followUpNeeded, String needOfReferral) {
+        this.identificationNum = identificationNum;
         this.father_HusbandName = father_HusbandName;
         this.age = age;
         this.bloodPressure = bloodPressure;
@@ -38,15 +38,24 @@ public class PatientDataModel {
         this.medicinesUsed = medicinesUsed;
         this.followUpNeeded = followUpNeeded;
         this.needOfReferral = needOfReferral;
+        this.name = name;
     }
 
-//    public String getIdentificationNum() {
-//        return identificationNum;
-//    }
+    public String getIdentificationNum() {
+        return identificationNum;
+    }
 //
-//    public void setPatientID(String patientID) {
-//        this.patientID = patientID;
-//    }
+    public void setIdentificationNum(String identificationNum) {
+        this.identificationNum = identificationNum;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getFather_HusbandName() {
         return father_HusbandName;
@@ -56,21 +65,12 @@ public class PatientDataModel {
         this.father_HusbandName = father_HusbandName;
     }
 
-
     public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getPatientID() {
-        return patientID;
-    }
-
-    public void setPatientID(String patientID) {
-        this.patientID = patientID;
     }
 
     public int getBloodPressure() {

@@ -303,17 +303,17 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
             @Override
             protected void onBindViewHolder(@NonNull DiagnoseIllness.PatientDataHolder holder, int position, @NonNull PatientDataModel model) {
-                holder.patientID.setText("Patient Name: " + model.getPatientID());
+                holder.name.setText(model.getName()+ "'s last visit on " );
                 holder.father_HusbandName.setText("Father/Husband's Name: " + model.getFather_HusbandName());
                 holder.age.setText("Age: " + model.getAge());
-                holder.patientID.setText("Identification Number: " + model.getPatientID());
+                holder.identificationNum.setText("Identification Number: " + model.getIdentificationNum());
                 holder.bloodPressure.setText("Blood Pressure: " + model.getBloodPressure());
                 holder.weight.setText("Weight: " + model.getWeight());
                 holder.bodyTemp.setText("Body Temperature: " + model.getBodyTemp());
                 holder.bloodSugar.setText("Blood Sugar: " + model.getBloodSugar());
 
                 //Doctor notes attributes
-                holder.doctorNoteHeader.setText("Doctor's Notes for: " + model.getPatientID());
+                holder.doctorNoteHeader.setText("Doctor's Note");
                 holder.doctorNote.setText("Doctor's Description: " + model.getDoctorNote());
                 holder.doctorAdvice.setText("Doctor's advice: " + model.getDoctorAdvice());
                 holder.medicinesUsed.setText("Medicines Used: " + model.getMedicinesUsed());
@@ -395,10 +395,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                 Map<String, Object> DiagnoseIllness = new HashMap<>();
-                //DiagnoseIllness.put("name", doctorsnotefullname.getText().toString().trim());
-                // DiagnoseIllness.put("doctorNote", doctorsnote.getText().toString().trim());
+
                 DiagnoseIllness.put("doctorAdvice", doctorsadvice.getText().toString().trim());
                 DiagnoseIllness.put("medicinesUsed", medicinesused.getText().toString().trim());
+                DiagnoseIllness.put("doctorNote", conditionSelected.toString().trim());
                 if(followUpCheck.isChecked()){
                     DiagnoseIllness.put("followUpNeeded", "yes");
                 }
@@ -414,12 +414,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                 }
 
-                //Map<String, Object> Data = new HashMap<>();
-
-
-                //DiagnoseIllness.put("Doctor's Note", Data);
-
-
 
                 //documents and collections
                 //create new document in patient reg
@@ -428,8 +422,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-
-
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
                                 Toast.makeText(DiagnoseIllness.this, "Medical Assesment Uploaded to Database", Toast.LENGTH_SHORT).show();
                             }
@@ -451,22 +443,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 }
 
 
-
-
-
-
-
-
-
-
-
-                //new collection
-                //Map<String, Object> DiagnoseIllnessData = new HashMap<>();
-                //DiagnoseIllnessData.put("Number Of Cases", numberofcases += 1);
-
                 Map<String, Object> newDataDocument = new HashMap<>();
-
-
                 //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTIONS
                 // String varDate = date.getText().toString().trim();
 
@@ -505,8 +482,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 //tests
                                 //Log.d(TAG, "DATE: " + varDate);
-
-
 
                                 newDataDocument.put("(a) Date ", varDate);
 
@@ -547,7 +522,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 newDataDocument.put("(v) " + conditionSelected + " Cases ", 1);
 
 
-
                                 if(referralCheck.isChecked()){ //if they watned to refer
                                     if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                         newDataDocument.put( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
@@ -560,18 +534,13 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                     else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
                                         newDataDocument.put("(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
                                     }
-
                                 }
-
-
 
 //                                //daily activation
 //                                newDataDocument.put("Starting Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
 //                                newDataDocument.put("Leaving Time " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
 //                                newDataDocument.put("Distance Covered (KM) " + "Clinic # " + clinicname.getText().toString().trim().toUpperCase(), " ");
 //                                newDataDocument.put("Villages Visited", " ");
-
-
 
 
                                 db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate)
@@ -603,28 +572,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-
-                // doctors note
-                //newDataDocument.put("Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), 1);
-
-                //separated cases by category
-                //newDataDocument.put(conditionSelected + " Cases ", 1);
-//                                newDataDocument.put("Fever" + " Cases ", 0);
-//                                newDataDocument.put("Skin" + " Cases ", 0);
-//                                newDataDocument.put("Chronic Disease" + " Cases ", 0);
-//                                newDataDocument.put("Bp/Sugar" + " Cases ", 0);
-//                                newDataDocument.put("Eye" + " Cases ", 0);
-//                                newDataDocument.put("Other" + " Cases ", 0);
-
-
                 Log.d(TAG, "New document created!");
-
-
-
-
-
-
-
 
                 //Patient Registration
 
@@ -677,7 +625,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-//
                 Map<String, Object> NewPatientRegistration = new HashMap<>();
                 NewPatientRegistration.put("name", fullname.getText().toString().trim().toUpperCase());
                 NewPatientRegistration.put("father_HusbandName",patientregistrationhusbandname.getText().toString().trim());
@@ -690,42 +637,24 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                 //Map<String, Object> nestedData = new HashMap<>();
-
-
                 //NewPatientRegistration.put("Patient Registration Info", nestedData);
 
-
                 db.collection("Patient Registration and-or Doctor's Notes").document(realPatientID)
-                        .set(NewPatientRegistration, SetOptions.merge())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                //Log.d(TAG, "DocumentSnapshot successfully written!");
-                                //Toast.makeText(DiagnoseIllness.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                //Log.w(TAG, "Error writing document", e);
-                                //Toast.makeText(DiagnoseIllness.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                .set(NewPatientRegistration, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        //Log.d(TAG, "DocumentSnapshot successfully written!");
+                        //Toast.makeText(DiagnoseIllness.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Log.w(TAG, "Error writing document", e);
+                        //Toast.makeText(DiagnoseIllness.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
@@ -762,24 +691,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     editMedicineUsed.setAdapter(medicineAdapter);
                     editMedicineUsed.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
-
-
-
                 }
             }
-
-
         });
-
-
-
-
-//test
     }
 
     private class PatientDataHolder extends RecyclerView.ViewHolder {
 
-        private TextView patientID;
+        private TextView identificationNum;
         private TextView father_HusbandName;
         private TextView age;
         private TextView bloodPressure;
@@ -792,6 +711,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         private TextView medicinesUsed;
         private TextView followUpNeeded;
         private TextView needOfReferral;
+        private TextView name;
 
 
 
@@ -799,10 +719,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
         public PatientDataHolder(@NonNull View itemView) {
             super(itemView);
-
+            name = itemView.findViewById(R.id.patientName);
             father_HusbandName = itemView.findViewById(R.id.fatherHusbandName);
             age = itemView.findViewById(R.id.age);
-            patientID = itemView.findViewById(R.id.patientID);
+            identificationNum = itemView.findViewById(R.id.patientID);
 
             bloodPressure = itemView.findViewById(R.id.bloodPressure);
             weight  = itemView.findViewById(R.id.weight);
