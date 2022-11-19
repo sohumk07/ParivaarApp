@@ -462,18 +462,29 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                     if(referralCheck.isChecked()){ //if they wanted to refer
                                         incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
+                                    //update ending time to latest
+                                    newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
+
                                 }
                                 else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
                                     incrementCases.update("(i) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
                                     if(referralCheck.isChecked()){ //if they watned to refer
                                         incrementCases.update( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
+                                    //update ending time to latest
+                                    newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
+
+
+
                                 }
                                 else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
                                     incrementCases.update("(j) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
                                     if(referralCheck.isChecked()){ //if they watned to refer
                                         incrementCases.update( "(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
+                                    //update ending time to latest
+                                    newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
+
                                 }
                                 incrementCases.update("(v) "+ conditionSelected + " Cases ", FieldValue.increment(1));
 
@@ -503,14 +514,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 newDataDocument.put("(o) Remarks ","");
 
-                                newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, varTime); //add clinic name to this field
-                                newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
+                                newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, "00:00:00"); //add clinic name to this field
+                                newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,"00:00:00");
 
-                                newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, varTime); //add clinic name to this field
-                                newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
+                                newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, "00:00:00"); //add clinic name to this field
+                                newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,"00:00:00");
 
-                                newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, varTime); //add clinic name to this field
-                                newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
+                                newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, "00:00:00"); //add clinic name to this field
+                                newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,"00:00:00");
 
                                 newDataDocument.put("(v) Fever" + " Cases ", 0);
                                 newDataDocument.put("(v) Skin" + " Cases ", 0);
@@ -525,14 +536,21 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 if(referralCheck.isChecked()){ //if they watned to refer
                                     if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                         newDataDocument.put( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                        newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, varTime); //add clinic name to this field
+                                        newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
 
                                     }
                                     else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
                                         newDataDocument.put( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                        newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, varTime); //add clinic name to this field
+                                        newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
 
                                     }
                                     else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
                                         newDataDocument.put("(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                        newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, varTime); //add clinic name to this field
+                                        newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
+
                                     }
                                 }
 
