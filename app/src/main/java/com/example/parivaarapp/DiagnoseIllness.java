@@ -227,7 +227,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
 
     Calendar calendar;
-    SimpleDateFormat simpleDateFormat, simpleDateFormat1;
+    SimpleDateFormat simpleDateFormat, simpleTimeFormat;
     String Date1;
     String Time;
 
@@ -251,12 +251,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        simpleDateFormat1 = new SimpleDateFormat("HH:mm:ss");
-        Date1 = simpleDateFormat.format(calendar.getTime());
-        Time = simpleDateFormat1.format(calendar.getTime());
+        simpleTimeFormat = new SimpleDateFormat("HH:mm:ss");
         followUpCheck = findViewById(R.id.followUpCheck);
         referralCheck = findViewById(R.id.referralCheck);
-
 
 
 
@@ -367,8 +364,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View view) {
 
-                String varDate = Date1;
-                String varTime = Time;
+
+
+                String varDate = simpleDateFormat.format(calendar.getTime());;
+                String varTime = simpleTimeFormat.format(calendar.getTime());
 
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesInput = editMedicineUsed.getText().toString();
