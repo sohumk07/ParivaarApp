@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Patient Registration \n  &amp; Dotor's Assesment"
+            android:text="Patient Registration \n  &amp; Doctor's Assessment"
             android:textColor="@color/black"
             android:textSize="30sp" />
         <View
@@ -249,7 +249,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="15dp"
-            android:text="Follow up needed"
+            android:text="Follow up needed?"
             />
 <!--        <EditText-->
 <!--            android:id="@+id/dn_referral"-->
@@ -264,7 +264,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="15dp"
-            android:text="Need of Referral"
+            android:text="Need of Referral?"
             android:layout_marginBottom="10dp"
             />
 

@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_marginRight="40dp"
+    android:layout_marginLeft="40dp">
 
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="[Our App Name]"
+        android:fontFamily="sans-serif-medium"
+        android:text="App Name"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/master_login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,10 +24,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.254" />
 
+
     <Button
+
         android:id="@+id/master_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="66dp"
+        android:backgroundTint="@color/BlueViolet"
         android:text="Admin Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,10 +39,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.475" />
 
+    <TextView
+        android:id="@+id/askText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select a login option"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/master_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.1"
+        />
+
+<!--    <View-->
+
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="3dp"-->
+<!--        android:background="@color/Blue"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/clinic_login"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/master_login"-->
+<!--        app:layout_constraintVertical_bias="0.4"-->
+<!--        tools:layout_editor_absoluteX="20dp" />-->
+<!--    />-->
+
     <Button
         android:id="@+id/clinic_login"
-        android:layout_width="106dp"
-        android:layout_height="62dp"
+        android:layout_width="155dp"
+        android:layout_height="66dp"
+        android:backgroundTint="@color/CornflowerBlue"
+
         android:text="Clinic Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
