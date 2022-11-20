@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class AdminMenu extends AppCompatActivity {
 
-    private Button submitbutton, signout;
+    private Button adminmedicine, admindoctor, signout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,8 @@ public class AdminMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu);
 
-        submitbutton = (Button) findViewById(R.id.submit);
+        adminmedicine = (Button) findViewById(R.id.medicinebutton);
+        admindoctor = (Button) findViewById(R.id.doctorbutton);
         signout = (Button) findViewById(R.id.adminsignout);
 
 
@@ -32,13 +33,21 @@ public class AdminMenu extends AppCompatActivity {
 
 
 
-//        submitbutton.setOnClickListener(new View.OnClickListener() {
- //           @Override
-  //          public void onClick(View view) {
-//                Intent intent = new Intent(AdminMenu.this, adminmenu2.class);
-//                startActivity(intent);
- //           }
-//        });
+        adminmedicine.setOnClickListener(new View.OnClickListener() {
+          @Override
+         public void onClick(View view) {
+               Intent intent = new Intent(AdminMenu.this, adminmedicine.class);
+               startActivity(intent);
+            }
+       });
+
+        admindoctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminMenu.this, admindoctor.class);
+                startActivity(intent);
+            }
+        });
 
 
         signout.setOnClickListener(new View.OnClickListener() {
