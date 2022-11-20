@@ -24,18 +24,6 @@
             android:exported="false"
             android:label="@string/title_activity_intermediate" />
         <activity
-            android:name=".AdminDoctorsNote"
-            android:exported="false" />
-        <activity
-            android:name=".AdminPatientRegistration"
-            android:exported="false" />
-        <activity
-            android:name=".AdminDailyActivation"
-            android:exported="false" />
-        <activity
-            android:name=".AdminPresetData"
-            android:exported="false" />
-        <activity
             android:name=".AdminMenu"
             android:exported="false" />
         <activity

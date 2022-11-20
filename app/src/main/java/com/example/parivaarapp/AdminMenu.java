@@ -32,13 +32,13 @@ public class AdminMenu extends AppCompatActivity {
 
 
 
-        submitbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdminMenu.this, AdminPresetData.class);
-                startActivity(intent);
-            }
-        });
+//        submitbutton.setOnClickListener(new View.OnClickListener() {
+ //           @Override
+  //          public void onClick(View view) {
+//                Intent intent = new Intent(AdminMenu.this, adminmenu2.class);
+//                startActivity(intent);
+ //           }
+//        });
 
 
         signout.setOnClickListener(new View.OnClickListener() {

@@ -6,19 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".AdminMenu">
 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
         android:fontFamily="serif"
         android:text="Admin Menu"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.254"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/textView876"
+        android:layout_width="272dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:hint="District Name"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.57" />
 
     <TextView
         android:id="@+id/textView87"
@@ -30,49 +43,38 @@
         android:textColor="@color/purple_500"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/adminsignout"
+        app:layout_constraintBottom_toTopOf="@+id/textView876"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.359" />
-
-    <EditText
-        android:id="@+id/textView876"
-        android:layout_width="272dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center"
-        android:hint="District Name"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/adminsignout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView87"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintVertical_bias="0.916" />
 
     <Button
         android:id="@+id/adminsignout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="134dp"
+        android:layout_height="47dp"
         android:text="Sign Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.929" />
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="182dp"
         android:layout_height="55dp"
-        android:text="Submit"
         android:backgroundTint="@color/LightCoral"
+        android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.837" />
+        app:layout_constraintVertical_bias="0.905" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
