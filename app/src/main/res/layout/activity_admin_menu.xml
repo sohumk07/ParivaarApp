@@ -25,7 +25,7 @@
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:hint="District Name"
-        android:inputType="number"
+        android:inputType="textCapCharacters"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
