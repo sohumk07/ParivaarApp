@@ -38,6 +38,8 @@ public class AdminMenu extends AppCompatActivity {
          public void onClick(View view) {
                Intent intent = new Intent(AdminMenu.this, adminmedicine.class);
                startActivity(intent);
+
+               //add sender stuff
             }
        });
 
@@ -46,6 +48,8 @@ public class AdminMenu extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(AdminMenu.this, admindoctor.class);
                 startActivity(intent);
+
+                //add sender stuff
             }
         });
 
