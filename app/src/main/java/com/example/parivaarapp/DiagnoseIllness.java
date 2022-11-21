@@ -236,7 +236,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
     //Patient Registration
 
-    public EditText fullname, patientregistrationphoto, patientregistrationhusbandname, patientregistrationage, patientregistrationbp, patientregistrationweight, patientregistrationbodytemperature, patientregistrationbloodsugar;
+    public EditText fullname, patientregistrationhusbandname, patientregistrationage, patientregistrationbp, patientregistrationweight, patientregistrationbodytemperature, patientregistrationbloodsugar;
 
 
 
@@ -247,7 +247,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_diagnose_illness);
         Intent receiverIntent = getIntent();
         String realPatientID = receiverIntent.getStringExtra("KEY_PATIENT");
-
 
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -335,7 +334,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
         fullname = findViewById(R.id.full_name);
-        //patientregistrationphoto = findViewById(R.id.patient_registration_photo);
         patientregistrationhusbandname = findViewById(R.id.patient_registration_husband_name);
         patientregistrationage = findViewById(R.id.patient_registration_age);
         patientregistrationbp = findViewById(R.id.patient_registration_bp);
@@ -353,13 +351,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         }
 
 
-
-
-
-
-
-
-
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -372,13 +363,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesInput = editMedicineUsed.getText().toString();
 
-
                 if(TextUtils.isEmpty(clinicname.getText().toString())){
                     clinicname.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
 
                 if(TextUtils.isEmpty(doctorsadvice1)){
                     doctorsadvice.setError("Cannot Be Empty");
@@ -393,45 +382,25 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 }
 
 
-                Map<String, Object> DiagnoseIllness = new HashMap<>();
-
-                DiagnoseIllness.put("doctorAdvice", doctorsadvice.getText().toString().trim());
-                DiagnoseIllness.put("medicinesUsed", medicinesused.getText().toString().trim());
-                DiagnoseIllness.put("doctorNote", conditionSelected.toString().trim());
-                if(followUpCheck.isChecked()){
-                    DiagnoseIllness.put("followUpNeeded", "yes");
-                }
-                else{
-                    DiagnoseIllness.put("followUpNeeded", "no");
-
-                }
-                if(referralCheck.isChecked()){
-                    DiagnoseIllness.put("needOfReferral", "yes");
-                }
-                else{
-                    DiagnoseIllness.put("needOfReferral", "no");
-
-                }
-
 
                 //documents and collections
                 //create new document in patient reg
-                db.collection("Patient Registration and-or Doctor's Notes").document(realPatientID)
-                        .set(DiagnoseIllness, SetOptions.merge())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Toast.makeText(DiagnoseIllness.this, "Medical Assesment Uploaded to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error writing document", e);
-                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+//                db.collection("Patient Registration and-or Doctor's Notes").document(realPatientID)
+//                        .set(DiagnoseIllness, SetOptions.merge())
+//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Log.d(TAG, "DocumentSnapshot successfully written!");
+//                                Toast.makeText(DiagnoseIllness.this, "Medical Assesment Uploaded to Database", Toast.LENGTH_SHORT).show();
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w(TAG, "Error writing document", e);
+//                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Medical Assesment to Database", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
 
                 //TODO: read which district they are from.
                 //Alter medicine database based on district and medicine administered.
@@ -462,6 +431,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                         incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
                                     }
                                     //update ending time to latest
+
                                     newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
 
                                 }
@@ -641,7 +611,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 }
 
 
-
+                //Read in patient Info
                 Map<String, Object> NewPatientRegistration = new HashMap<>();
                 NewPatientRegistration.put("name", fullname.getText().toString().trim().toUpperCase());
                 NewPatientRegistration.put("father_HusbandName",patientregistrationhusbandname.getText().toString().trim());
@@ -652,6 +622,25 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 NewPatientRegistration.put("bodyTemp",Integer.parseInt(patientregistrationbodytemperature.getText().toString().trim()));
                 NewPatientRegistration.put("bloodSugar",Integer.parseInt(patientregistrationbloodsugar.getText().toString().trim()));
 
+
+                //Doctor's asessment
+                NewPatientRegistration.put("doctorAdvice", doctorsadvice.getText().toString().trim());
+                NewPatientRegistration.put("medicinesUsed", medicinesused.getText().toString().trim());
+                NewPatientRegistration.put("doctorNote", conditionSelected.toString().trim());
+                if(followUpCheck.isChecked()){
+                    NewPatientRegistration.put("followUpNeeded", "yes");
+                }
+                else{
+                    NewPatientRegistration.put("followUpNeeded", "no");
+
+                }
+                if(referralCheck.isChecked()){
+                    NewPatientRegistration.put("needOfReferral", "yes");
+                }
+                else{
+                    NewPatientRegistration.put("needOfReferral", "no");
+
+                }
 
                 //Map<String, Object> nestedData = new HashMap<>();
                 //NewPatientRegistration.put("Patient Registration Info", nestedData);
