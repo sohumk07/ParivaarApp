@@ -126,19 +126,20 @@
             android:layout_height="3dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/purple_500"
+            android:background="@color/MediumSlateBlue"
             android:outlineAmbientShadowColor="@color/Black"
             android:outlineSpotShadowColor="@color/black" />
+
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
-            android:textColor="@color/purple_500"
-            android:textStyle="italic"
             android:text="Begin current medical assesment"
-            android:textSize="20sp" />
+            android:textColor="@color/MediumSlateBlue"
+            android:textSize="20sp"
+            android:textStyle="italic" />
 
 
 <!--        <Button-->
@@ -205,17 +206,29 @@
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:hint="Doctor's Advice"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="30dp"
             />
 
-<!--        <TextView-->
-<!--            android:id="@+id/textViewHintMedicines"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Select a medicine (begin type)"-->
-<!--            android:textSize="20sp"-->
-<!--            android:paddingBottom="10dp"-->
-<!--            android:paddingTop="25dp"/>-->
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/DodgerBlue" />
+
+
+        <TextView
+            android:id="@+id/selectMedicinesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:paddingBottom="15dp"
+            android:text="Fill out medicine information respectively and separated by comma"
+            android:textColor="@color/DodgerBlue"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <MultiAutoCompleteTextView
             android:id="@+id/medicinesUsed_ACTV"
@@ -223,7 +236,30 @@
             android:layout_height="wrap_content"
             android:completionThreshold="1"
             android:hint="Select medicines"
-            android:completionHint="Select the medicines used"/>
+            android:completionHint="Select the medicines used"
+            android:layout_marginBottom="25dp"
+            />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/dosesPerDay_ACTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1"
+            android:hint="How many times a day?"
+            android:completionHint="Select the medicines used"
+            android:layout_marginBottom="25dp"
+            />
+
+        <EditText
+            android:id="@+id/daysAdministered_ACTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1"
+            android:hint="For how many days?"
+            android:completionHint="Select the medicines used"
+            android:layout_marginBottom="10dp"
+            />
+
 
 
 

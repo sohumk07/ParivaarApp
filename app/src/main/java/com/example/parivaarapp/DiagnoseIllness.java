@@ -224,7 +224,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     EditText doctorsadvice, medicinesused, clinicname, districtname;
     CheckBox followUpCheck, referralCheck;
     TextView doctorsnote;
-    String[] users = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
+    String[] conditions = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
+
+    int[] medicinesPerDayOptions = { 1, 2, 3, 4, 5};
 
     Calendar calendar;
     SimpleDateFormat simpleDateFormat, simpleTimeFormat;
@@ -232,6 +234,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     String Time;
 
     MultiAutoCompleteTextView editMedicineUsed; //medicine selector
+    MultiAutoCompleteTextView dosesPerDay;
 
 
     //Patient Registration
@@ -669,7 +672,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
         Spinner spin = (Spinner) findViewById(R.id.spinner2);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, users);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, conditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(this);
@@ -765,9 +768,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(), "Select Problem: "+users[position] ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Select Problem: "+conditions[position] ,Toast.LENGTH_SHORT).show();
         // add
-        conditionSelected = (String)(users[position]);
+        conditionSelected = (String)(conditions[position]);
 
 
 
