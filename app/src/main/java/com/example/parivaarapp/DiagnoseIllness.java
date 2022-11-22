@@ -210,7 +210,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     private Button upload;
-    private int numberofcases = 0;
     private String conditionSelected;
 
 
@@ -221,27 +220,34 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private FirestoreRecyclerAdapter adapter2;
     //
 
-    EditText doctorsadvice, medicinesused, clinicname, districtname;
     CheckBox followUpCheck, referralCheck;
     TextView doctorsnote;
     String[] conditions = { "Fever", "Skin", "Chronic Disease", "Bp or Sugar", "Eye", "Other" };
-
-    int[] medicinesPerDayOptions = { 1, 2, 3, 4, 5};
+    String[] dosesPerDayOptions = { "1", "2", "3", "4", "5"};
 
     Calendar calendar;
     SimpleDateFormat simpleDateFormat, simpleTimeFormat;
     String Date1;
     String Time;
 
-    MultiAutoCompleteTextView editMedicineUsed; //medicine selector
-    MultiAutoCompleteTextView dosesPerDay;
+    //Multi Autocomplete Text Views for patient info screen
+    MultiAutoCompleteTextView editMedicineUsedACTV; //medicine selector
+    MultiAutoCompleteTextView dosesPerDayACTV;
 
-
-    //Patient Registration
-
-    public EditText fullname, patientregistrationhusbandname, patientregistrationage, patientregistrationbp, patientregistrationweight, patientregistrationbodytemperature, patientregistrationbloodsugar;
-
-
+    //ALL THE NORMAL EDIT TEXTS IN PATIENT INFORMATION SCREEN
+    private EditText
+            doctorsadvice,
+            medicinesused,
+            clinicname,
+            districtname,
+            daysOfDosage,
+            fullname,
+            patientregistrationhusbandname,
+            patientregistrationage,
+            patientregistrationbp,
+            patientregistrationweight,
+            patientregistrationbodytemperature,
+            patientregistrationbloodsugar;
 
 
     @Override
@@ -258,14 +264,15 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         referralCheck = findViewById(R.id.referralCheck);
 
 
-
+//TODO: possibly make a checkbox for them to indicate the first patient of the day, using this we can put in the starting value in timestamp
+        //TextViews to enter text
         districtname = findViewById(R.id.district_name);
-        // date = findViewById(R.id.date);
         clinicname = findViewById(R.id.clinic_name);
-    //    patientID = findViewById(R.id.PatientID);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.medicinesUsed_ACTV);
-        upload =findViewById(R.id.dn_upload);
+        upload = findViewById(R.id.dn_upload);
+        dosesPerDayACTV = findViewById(R.id.dosesPerDay_ACTV);
+        daysOfDosage = findViewById(R.id.daysOfTaking);
 
 
         fAuth = FirebaseAuth.getInstance();
@@ -358,13 +365,13 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View view) {
 
-
+                //TODO: Fix timestamp to figure out how to replace the most recent from that clinic
 
                 String varDate = simpleDateFormat.format(calendar.getTime());;
                 String varTime = simpleTimeFormat.format(calendar.getTime());
 
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
-                final String medicinesInput = editMedicineUsed.getText().toString();
+                final String medicinesInput = editMedicineUsedACTV.getText().toString();
 
                 if(TextUtils.isEmpty(clinicname.getText().toString())){
                     clinicname.setError("Cannot Be Empty");
@@ -379,7 +386,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     return;
                 }
                 if(TextUtils.isEmpty(medicinesInput)){
-                    editMedicineUsed.setError("Cannot Be Empty");
+                    editMedicineUsedACTV.setError("Cannot Be Empty");
                     Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -408,9 +415,14 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 //TODO: read which district they are from.
                 //Alter medicine database based on district and medicine administered.
                 String[] individualMedidicnes = medicinesInput.split("\\s*,\\s*");
+                String[] individualDosesPerDay = dosesPerDayACTV.getText().toString().split("\\s*,\\s*");
+                String[] individualDaysOfDosage = daysOfDosage.getText().toString().split("\\s*,\\s*");
+
+
                 DocumentReference medicineDatabaseIDREF = db.collection("Medicine Database").document(districtname.getText().toString().trim().toUpperCase()); //NEEDS FIXING MAYBE
                 for(int i = 0; i<individualMedidicnes.length; i++){
-                    medicineDatabaseIDREF.update(individualMedidicnes[i], FieldValue.increment(1));
+                    int amtIncrement = Integer.parseInt(individualDosesPerDay[i])*Integer.parseInt(individualDaysOfDosage[i]);
+                    medicineDatabaseIDREF.update(individualMedidicnes[i], FieldValue.increment(-1*amtIncrement));
                 }
 
 
@@ -574,7 +586,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 final String patientregistrationbodytemperature_1 = patientregistrationbodytemperature.getText().toString().trim();
                 final String patientregistrationbloodsugar_1 = patientregistrationbloodsugar.getText().toString().trim();
 
-
                 if(TextUtils.isEmpty(fullname_1)){
                     fullname.setError("Cannot Be Empty");
                     return;
@@ -628,7 +639,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                 //Doctor's asessment
                 NewPatientRegistration.put("doctorAdvice", doctorsadvice.getText().toString().trim());
-                NewPatientRegistration.put("medicinesUsed", medicinesused.getText().toString().trim());
+                NewPatientRegistration.put("medicinesUsed", medicinesused.getText().toString().trim()); //TODO: add amounts into this
                 NewPatientRegistration.put("doctorNote", conditionSelected.toString().trim());
                 if(followUpCheck.isChecked()){
                     NewPatientRegistration.put("followUpNeeded", "yes");
@@ -677,12 +688,16 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(this);
 
+        //code for autocomplete amt of doses per day autocomplete selection
+        ArrayAdapter<String> dosesPerDayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dosesPerDayOptions);
+        dosesPerDayACTV.setAdapter(dosesPerDayAdapter); //TODO: figure out way to make threashhold 0 so that its like a dropdown.
+        dosesPerDayACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
 
-        //Code for autocomplete selection
+        //Code for autocomplete medicine type selection
         ArrayList<String> listOfMedicines = new ArrayList<String>();
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-        DocumentReference codesRef = rootRef.collection("Doctor Names").document("Names");
+        DocumentReference codesRef = rootRef.collection("Medicine Database").document("SHEOPUR");
         codesRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -693,12 +708,12 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                         //Toast.makeText(DiagnoseIllness.this, entry.getKey(), Toast.LENGTH_SHORT).show();
                     }
                     //Do what you want to do with your list
-                    editMedicineUsed = findViewById(R.id.medicinesUsed_ACTV);
+                    editMedicineUsedACTV = findViewById(R.id.medicinesUsed_ACTV);
 
                     ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this
                             , android.R.layout.simple_dropdown_item_1line, listOfMedicines);
-                    editMedicineUsed.setAdapter(medicineAdapter);
-                    editMedicineUsed.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+                    editMedicineUsedACTV.setAdapter(medicineAdapter);
+                    editMedicineUsedACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
                 }
             }

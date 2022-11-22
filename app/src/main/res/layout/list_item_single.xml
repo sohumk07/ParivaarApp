@@ -8,6 +8,7 @@
     android:textStyle="bold"
     >
 
+
     <TextView
         android:textColor="@color/black"
         android:id="@+id/clinicName"

@@ -244,14 +244,14 @@
             android:id="@+id/dosesPerDay_ACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:completionThreshold="1"
+            android:completionThreshold="-1"
             android:hint="How many times a day?"
             android:completionHint="Select the medicines used"
             android:layout_marginBottom="25dp"
             />
 
         <EditText
-            android:id="@+id/daysAdministered_ACTV"
+            android:id="@+id/daysOfTaking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:completionThreshold="1"
@@ -261,24 +261,6 @@
             />
 
 
-
-
-<!--        <EditText-->
-<!--            android:id="@+id/dn_medicines_uses"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            />-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/dn_follow_up"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            android:hint="Follow Up Needed? (yes or no)" />-->
-
         <CheckBox
             android:id="@+id/followUpCheck"
             android:layout_width="wrap_content"
@@ -287,13 +269,7 @@
             android:textSize="15dp"
             android:text="Follow up needed?"
             />
-<!--        <EditText-->
-<!--            android:id="@+id/dn_referral"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            android:hint="Need Of Referral? (yes or no)" />-->
+
         <CheckBox
             android:id="@+id/referralCheck"
             android:layout_width="wrap_content"
