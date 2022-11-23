@@ -213,7 +213,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     FirebaseFirestore fStore;
     private Button upload;
     private String conditionSelected;
-
+    private String districtName;
 
     //Recycler View (display prev info)
     private FirebaseFirestore firebaseFirestore;
@@ -236,6 +236,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     MultiAutoCompleteTextView editMedicineUsedACTV; //medicine selector
     MultiAutoCompleteTextView dosesPerDayACTV;
 
+
+
+
+
     //ALL THE NORMAL EDIT TEXTS IN PATIENT INFORMATION SCREEN
     private EditText
             doctorsadvice,
@@ -256,8 +260,15 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnose_illness);
-        Intent receiverIntent = getIntent();
-        String realPatientID = receiverIntent.getStringExtra("KEY_PATIENT");
+
+
+        Intent intent = getIntent();
+        districtName = intent.getStringExtra("DISTRICT_NAME_KEY");
+        String realPatientID = intent.getStringExtra("KEY_PATIENT");
+
+        Toast.makeText(this, "DISTRICT NAME IS: " + districtName, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Patient id " + realPatientID, Toast.LENGTH_SHORT).show();
+
 
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -339,12 +350,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
         // Patient Registration
         ActionBar actionBar = getSupportActionBar();
-       // Intent receiverIntent = getIntent();
-        String receivedValue = receiverIntent.getStringExtra("KEY_SENDER");
-        //hello3
-        districtname.setText(receivedValue);
-        actionBar.setSubtitle("RYAN");
-        actionBar.setTitle("Patient Registration");
+
+        actionBar.setSubtitle(districtName);
+        actionBar.setTitle("Patient Assessment");
 
 
 
@@ -425,7 +433,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 String[] individualDaysOfDosage = daysOfDosage.getText().toString().split("\\s*,\\s*");
 
 
-                DocumentReference medicineDatabaseIDREF = db.collection("Medicine Database").document(districtname.getText().toString().trim().toUpperCase()); //NEEDS FIXING MAYBE
+                DocumentReference medicineDatabaseIDREF = db.collection("Medicine Database").document(districtName); //NEEDS FIXING MAYBE
                 for(int i = 0; i<individualMedidicnes.length; i++){
                     int amtIncrement = Integer.parseInt(individualDosesPerDay[i])*Integer.parseInt(individualDaysOfDosage[i]);
                     medicineDatabaseIDREF.update(individualMedidicnes[i], FieldValue.increment(-1*amtIncrement));
@@ -436,7 +444,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTIONS
                 // String varDate = date.getText().toString().trim();
 
-                DocumentReference docIdRef = db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate); //NEEDS FIXING MAYBE
+                DocumentReference docIdRef = db.collection(districtName).document(varDate); //NEEDS FIXING MAYBE
                 docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -444,7 +452,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
 
-                                DocumentReference incrementCases = db.collection(districtname.getText().toString().toUpperCase().trim()).document(varDate);
+                                DocumentReference incrementCases = db.collection(districtName).document(varDate);
 
                                 if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
                                     incrementCases.update("(h) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
@@ -551,7 +559,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 //                                newDataDocument.put("Villages Visited", " ");
 
 
-                                db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate)
+                                db.collection(districtName).document(varDate)
                                         .set(newDataDocument,SetOptions.merge())
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override

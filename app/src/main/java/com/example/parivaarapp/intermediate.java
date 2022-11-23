@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class intermediate extends AppCompatActivity {
     private Button button;
     private EditText enterID;
+    String districtName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,9 @@ public class intermediate extends AppCompatActivity {
 
 
         // doctors note
+        Intent menuIntent = getIntent();
+        districtName = menuIntent.getStringExtra("DISTRICT_NAME_KEY");
+
         button=findViewById(R.id.button);
         enterID = findViewById(R.id.enterID);
 
@@ -44,9 +48,10 @@ public class intermediate extends AppCompatActivity {
 //                }
                 //code
                 Intent senderIntent = new Intent(intermediate.this, DiagnoseIllness.class);
-
                 senderIntent.putExtra("KEY_PATIENT", enterID.getText().toString().trim());
+                senderIntent.putExtra("DISTRICT_NAME_KEY", districtName);
                 startActivity(senderIntent);
+
 
             }
         });

@@ -48,15 +48,15 @@ public class Menu extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //code
-                Intent intent = new Intent(Menu.this,DailyActivation.class);
-                startActivity(intent);
-
-
-                //add sender stuff
-                Intent senderIntent = new Intent(Menu.this, DailyActivation.class);
-                senderIntent.putExtra("KEY_SENDER", districtname.getText().toString());
-                startActivity(senderIntent);
+//                //code
+//                Intent intent = new Intent(Menu.this,DailyActivation.class);
+//                startActivity(intent);
+//
+//
+//                //add sender stuff
+//                Intent senderIntent = new Intent(Menu.this, DailyActivation.class);
+//                senderIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString());
+//                startActivity(senderIntent);
             }
         });
 
@@ -68,13 +68,12 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //code
-                Intent intent = new Intent(Menu.this,intermediate.class);
-                startActivity(intent);
 
                 //add sender stuff
-                Intent senderIntent = new Intent(Menu.this, DiagnoseIllness.class);
-                senderIntent.putExtra("KEY_SENDER", districtname.getText().toString());
-                startActivity(senderIntent);
+                Intent districtNameIntent = new Intent(Menu.this, intermediate.class);
+                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
+                //start intermediate
+                startActivity(districtNameIntent);
             }
         });
 
