@@ -101,6 +101,7 @@
         android:id="@+id/textView876"
         android:layout_width="272dp"
         android:layout_height="45dp"
+
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
