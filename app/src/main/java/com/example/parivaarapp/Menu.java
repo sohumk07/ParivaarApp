@@ -7,9 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class Menu extends AppCompatActivity {
-private Button button;
+    private Button button;
+    EditText districtname;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +22,9 @@ private Button button;
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Navigation Menu");
-        actionBar.setSubtitle("App Name");
+
+        districtname = (EditText)  findViewById(R.id.textView876);
+
 
 
 
@@ -30,6 +37,7 @@ private Button button;
                 //code
                 Intent intent = new Intent(Menu.this,PresetData.class);
                 startActivity(intent);
+
             }
         });
 
@@ -43,6 +51,12 @@ private Button button;
                 //code
                 Intent intent = new Intent(Menu.this,DailyActivation.class);
                 startActivity(intent);
+
+
+                //add sender stuff
+                Intent senderIntent = new Intent(Menu.this, DailyActivation.class);
+                senderIntent.putExtra("KEY_SENDER", districtname.getText().toString());
+                startActivity(senderIntent);
             }
         });
 
@@ -56,21 +70,32 @@ private Button button;
                 //code
                 Intent intent = new Intent(Menu.this,intermediate.class);
                 startActivity(intent);
+
+                //add sender stuff
+                Intent senderIntent = new Intent(Menu.this, DiagnoseIllness.class);
+                senderIntent.putExtra("KEY_SENDER", districtname.getText().toString());
+                startActivity(senderIntent);
             }
         });
 
         //go to diagnose illness
 
-        button=findViewById(R.id.Patient_Registration);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //code
-                Intent intent = new Intent(Menu.this,NewPatientRegistration.class);
-                startActivity(intent);
-            }
-        });
+//        button=findViewById(R.id.Patient_Registration);
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //code
+//                Intent intent = new Intent(Menu.this,NewPatientRegistration.class);
+//                startActivity(intent);
+//
+//
+//                //add sender stuff
+//                Intent senderIntent = new Intent(Menu.this, DiagnoseIllness.class);
+//                senderIntent.putExtra("KEY_SENDER", districtname.getText().toString());
+//                startActivity(senderIntent);
+//            }
+//        });
 
 
         //sign out

@@ -7,10 +7,9 @@
     android:background="#FDFDFD"
     android:backgroundTint="#FFFFFF"
     tools:context=".Menu">
-`
+
     <Button
         android:id="@+id/preset_data"
-        android:theme="@android:style/Theme.Black"
         android:layout_width="372dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/daily_activation"
@@ -20,6 +19,7 @@
         android:backgroundTint="#E91E63"
         android:text="Preset Data"
         android:textColor="@color/white"
+        android:theme="@android:style/Theme.Black"
         app:strokeColor="#E91E63"
         tools:layout_editor_absoluteX="6dp"
         tools:layout_editor_absoluteY="151dp" />
@@ -76,4 +76,44 @@
         android:fontFamily="serif"
         android:text="Menu"
         android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/textView87"
+        android:layout_width="287dp"
+        android:layout_height="47dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="625dp"
+        android:fontFamily="sans-serif-condensed-medium"
+
+        android:text="Enter District Name"
+        android:textColor="@color/purple_500"
+        android:textSize="20sp"
+
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.855" />
+
+    <EditText
+        android:id="@+id/textView876"
+        android:layout_width="272dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="593dp"
+        android:hint="District Name"
+        android:inputType="textCapCharacters"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.379" />
+
+
 </RelativeLayout>

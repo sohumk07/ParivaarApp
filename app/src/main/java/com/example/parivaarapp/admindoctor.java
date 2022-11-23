@@ -14,7 +14,7 @@ public class admindoctor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admindoctor);
 
-        districtname = findViewById(R.id.textView6);
+        districtname = findViewById(R.id.textView10);
 
         Intent receiverIntent = getIntent();
         String receivedValue = receiverIntent.getStringExtra("KEY_SENDER");

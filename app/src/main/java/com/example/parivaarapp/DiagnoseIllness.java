@@ -241,7 +241,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             doctorsadvice,
             medicinesused,
             clinicname,
-            districtname,
+           // districtname,
             daysOfDosage,
             fullname,
             patientregistrationhusbandname,
@@ -268,7 +268,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 //TODO: possibly make a checkbox for them to indicate the first patient of the day, using this we can put in the starting value in timestamp
         //TextViews to enter text
-        districtname = findViewById(R.id.district_name);
+       // districtname = findViewById(R.id.district_name);
         clinicname = findViewById(R.id.clinic_name);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.medicinesUsed_ACTV);
@@ -339,7 +339,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
         // Patient Registration
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setSubtitle("App Name");
+       // Intent receiverIntent = getIntent();
+        String receivedValue = receiverIntent.getStringExtra("KEY_SENDER");
+        //hello3
+        districtname.setText(receivedValue);
+        actionBar.setSubtitle("RYAN");
         actionBar.setTitle("Patient Registration");
 
 
@@ -822,6 +826,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         getMenuInflater().inflate(R.menu.main, menu);
 
         return super.onCreateOptionsMenu(menu);
+
     }
 
     @Override
