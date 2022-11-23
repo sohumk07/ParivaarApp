@@ -18,6 +18,7 @@ public class admindoctor extends AppCompatActivity {
 
         Intent receiverIntent = getIntent();
         String receivedValue = receiverIntent.getStringExtra("KEY_SENDER");
+        //hello
         districtname.setText(receivedValue);
     }
 }
