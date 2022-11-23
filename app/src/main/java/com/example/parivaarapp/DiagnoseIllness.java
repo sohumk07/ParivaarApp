@@ -45,6 +45,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import android.widget.Spinner;
@@ -678,6 +680,27 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             }
         });
 
+//TEST CODE
+        //CollectionReference medicinesTest = db.collection("test medicine").document("medicines").collection("testDistrict");
+        db.collection("test medicine").document("medicines").collection("testDistrict")
+//                .whereLessThan("Quantity", 100)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Toast.makeText(DiagnoseIllness.this, document.getId(), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+
+
 
         //spinner code
 
@@ -696,25 +719,24 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
         //Code for autocomplete medicine type selection
         ArrayList<String> listOfMedicines = new ArrayList<String>();
-        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-        DocumentReference codesRef = rootRef.collection("Medicine Database").document("SHEOPUR");
-        codesRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+        db.collection("test medicine").document("medicines").collection("testDistrict")
+//                .whereLessThan("Quantity", 100)
+        .get()
+        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    Map<String, Object> map = task.getResult().getData();
-                    for (Map.Entry<String, Object> entry : map.entrySet()) {
-                        listOfMedicines.add(entry.getKey());
-                        //Toast.makeText(DiagnoseIllness.this, entry.getKey(), Toast.LENGTH_SHORT).show();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        listOfMedicines.add(document.getId());
+                        editMedicineUsedACTV = findViewById(R.id.medicinesUsed_ACTV);
+                        ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this, android.R.layout.simple_dropdown_item_1line, listOfMedicines);
+                        editMedicineUsedACTV.setAdapter(medicineAdapter);
+                        editMedicineUsedACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+                        //Toast.makeText(DiagnoseIllness.this, document.getId(), Toast.LENGTH_SHORT).show();
                     }
-                    //Do what you want to do with your list
-                    editMedicineUsedACTV = findViewById(R.id.medicinesUsed_ACTV);
-
-                    ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this
-                            , android.R.layout.simple_dropdown_item_1line, listOfMedicines);
-                    editMedicineUsedACTV.setAdapter(medicineAdapter);
-                    editMedicineUsedACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
-
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
                 }
             }
         });
