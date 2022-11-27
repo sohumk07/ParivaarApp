@@ -820,15 +820,13 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         Toast.makeText(getApplicationContext(), "Select Problem: "+conditions[position] ,Toast.LENGTH_SHORT).show();
         // add
         conditionSelected = (String)(conditions[position]);
-
-
-
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 
-    }
+
+
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -842,6 +840,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         switch(item.getItemId()){
             case R.id.Menu:
                 startActivity(new Intent(DiagnoseIllness.this, Menu.class));
+                break;
+            case R.id.sign_out:
+                startActivity(new Intent(DiagnoseIllness.this, MainActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

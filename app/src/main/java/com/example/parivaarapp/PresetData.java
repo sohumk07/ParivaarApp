@@ -256,20 +256,6 @@ public class PresetData extends AppCompatActivity {
                                 Toast.makeText(PresetData.this, "Error Uploading Preset Data to Database", Toast.LENGTH_SHORT).show();
                             }
                         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
         });
 

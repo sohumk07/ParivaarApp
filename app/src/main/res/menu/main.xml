@@ -10,4 +10,12 @@
 
     />
 
+    <item android:title="SignOut"
+        android:id="@+id/sign_out"
+        android:orderInCategory="101"
+        app:showAsAction="always"
+        android:icon = "@drawable/sign_out"
+
+        />
+
 </menu>

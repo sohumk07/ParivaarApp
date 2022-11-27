@@ -11,7 +11,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="serif"
         android:text="Admin Menu"
         android:textSize="34sp"
@@ -29,10 +29,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.379" />
+        app:layout_constraintVertical_bias="0.354" />
 
     <TextView
         android:id="@+id/textView87"
@@ -46,10 +46,10 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/textView876"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.855" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/adminsignout"
@@ -66,28 +66,28 @@
 
     <Button
         android:id="@+id/medicinebutton"
-        android:layout_width="182dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="148dp"
+        android:layout_width="169dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/LightCoral"
         android:text="Manage Medicines"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adminsignout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView876"
+        app:layout_constraintVertical_bias="0.229" />
 
     <Button
         android:id="@+id/doctorbutton"
-        android:layout_width="182dp"
-        android:layout_height="55dp"
+        android:layout_width="169dp"
+        android:layout_height="70dp"
         android:backgroundTint="@color/LightCoral"
         android:text="Manage doctors"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adminsignout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.991"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.735" />
+        app:layout_constraintTop_toBottomOf="@+id/medicinebutton"
+        app:layout_constraintVertical_bias="0.416" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

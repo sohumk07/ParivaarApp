@@ -1,5 +1,6 @@
 package com.example.parivaarapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +25,6 @@ public class intermediate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intermediate);
 
-
-
         // doctors note
         Intent menuIntent = getIntent();
         districtName = menuIntent.getStringExtra("DISTRICT_NAME_KEY");
@@ -36,6 +36,9 @@ public class intermediate extends AppCompatActivity {
 //            Intent senderIntent = new Intent(this, DiagnoseIllness.class);
 //            senderIntent.putExtra("KEY_SENDER", Integer.parseInt(patientID.getText().trim());
 //        }
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Enter patient ID");
+        actionBar.setSubtitle(districtName);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,5 +58,25 @@ public class intermediate extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.Menu:
+                startActivity(new Intent(intermediate.this, Menu.class));
+                break;
+            case R.id.sign_out:
+                startActivity(new Intent(intermediate.this, MainActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }

@@ -274,12 +274,30 @@ public class AdminMenu extends AppCompatActivity {
         });
 
 
-        signout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdminMenu.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        signout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(AdminMenu.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+    }
+
+    //code for top bar
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.sign_out:
+                startActivity(new Intent(AdminMenu.this, MainActivity.class));
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
