@@ -1,39 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminmedicine">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
 
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="401dp"
+        android:layout_height="318dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <!--
+        In the above cardview widget
+        cardelevation property will give elevation to your card view
+        card corner radius will provide radius to your card view
+        card background color will give background color to your card view
+        card max elevation will give the cardview maximum elevation
+        card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.
+        card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.
+        below are the two widgets imageview and text view we are displaying inside our card view.
+        -->
+
+        <EditText
+            android:id="@+id/medicinename"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="10dp"
+
+            android:hint="Add Medicine"
+
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/medicinenumber"
+            android:layout_width="200dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="70dp"
+
+            android:inputType="number"
+            android:hint="Medicine Quantity"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="141dp"
+            android:layout_height="121dp"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/admin_listOfMedicines"
         android:layout_width="388dp"
         android:layout_height="wrap_content"
 
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="11dp"
         android:layout_marginTop="92dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="13dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Low medication supply ordered by lowest"
-        android:textSize="15dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/admin_listOfMedicines"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintVertical_bias="0.564" />
 
     <View
 
@@ -46,24 +103,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
 
         app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="294dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="220dp"
+        android:text="Low medication supply ordered by lowest"
+        android:textSize="15dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/admin_listOfMedicines"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.953" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-
+</RelativeLayout>
