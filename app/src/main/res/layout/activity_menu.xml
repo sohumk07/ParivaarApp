@@ -77,63 +77,6 @@
         android:text="Menu"
         android:textSize="34sp" />
 
-    <TextView
-        android:id="@+id/textView87"
-        android:layout_width="287dp"
-        android:layout_height="47dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="78dp"
-        android:layout_marginBottom="644dp"
-        android:fontFamily="sans-serif-condensed-medium"
-
-        android:text="Enter District Name"
-        android:textColor="@color/purple_500"
-        android:textSize="20sp"
-
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.855" />
-
-    <EditText
-        android:id="@+id/textView876"
-        android:layout_width="272dp"
-        android:layout_height="45dp"
-
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
-
-        android:layout_marginEnd="94dp"
-        android:layout_marginBottom="603dp"
-        android:hint="District Name"
-        android:inputType="textCapCharacters"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
-
-    <EditText
-        android:id="@+id/textView11"
-        android:layout_width="272dp"
-        android:layout_height="45dp"
-
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
-
-        android:layout_marginEnd="94dp"
-        android:layout_marginBottom="563dp"
-        android:hint="Clinic Number"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
 
 
 </RelativeLayout>

@@ -11,8 +11,8 @@ import android.widget.EditText;
 
 public class Menu extends AppCompatActivity {
     private Button button;
-    EditText districtname;
-    EditText clinicname;
+    String districtName;
+    String clinicName;
 
 
 
@@ -21,11 +21,18 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Intent menuIntent = getIntent();
+        districtName = menuIntent.getStringExtra("DISTRICT_NAME_KEY");
+        clinicName = menuIntent.getStringExtra("CLINIC_NAME_KEY");
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Navigation Menu");
+        actionBar.setSubtitle(districtName + ", Clinic #:" + clinicName);
 
-        districtname = (EditText)  findViewById(R.id.textView876);
-        clinicname = (EditText)  findViewById(R.id.textView11);
+
+
+
+
 
 
 
@@ -75,9 +82,11 @@ public class Menu extends AppCompatActivity {
 
                 //add sender stuff
                 Intent districtNameIntent = new Intent(Menu.this, intermediate.class);
-                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
-                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
-                //start intermediate
+
+//
+//                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
+//                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
+//                //start intermediate
                 startActivity(districtNameIntent);
 
 

@@ -22,6 +22,7 @@
         app:endIconMode="clear_text"
         app:helperText="Required*"
         app:helperTextTextColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/password_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,10 +37,9 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
         android:id="@+id/password_layout"
-        app:endIconMode="password_toggle"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/login"
@@ -47,27 +47,80 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="544dp"
         android:layout_marginEnd="32dp"
         android:hint="Password"
 
+        app:endIconMode="password_toggle"
         app:helperText="Required*"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_layout"
-        app:startIconDrawable="@drawable/lock"
-        >
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/lock">
 
         <com.google.android.material.textfield.TextInputEditText
 
             android:id="@+id/password_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/textView87"
+        android:layout_width="287dp"
+        android:layout_height="47dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="78dp"
+        android:fontFamily="sans-serif-condensed-medium"
+
+        android:text="Enter District Name"
+        android:textColor="@color/purple_500"
+        android:textSize="20sp"
+
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="147dp" />
+
+    <EditText
+        android:id="@+id/textView876"
+        android:layout_width="272dp"
+        android:layout_height="45dp"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="484dp"
+        android:hint="District Name"
+        android:inputType="textCapCharacters"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/textView11"
+        android:layout_width="272dp"
+        android:layout_height="45dp"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="412dp"
+        android:hint="Clinic Number"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/login"
@@ -79,9 +132,10 @@
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_layout"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.688" />
 
     <TextView
 
