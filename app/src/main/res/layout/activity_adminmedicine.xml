@@ -1,75 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    tools:context=".adminmedicine">
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="401dp"
         android:layout_height="318dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:cardMaxElevation="12dp"
+        app:cardElevation="7dp"
+        app:cardMaxElevation="7dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!--
-        In the above cardview widget
-        cardelevation property will give elevation to your card view
-        card corner radius will provide radius to your card view
-        card background color will give background color to your card view
-        card max elevation will give the cardview maximum elevation
-        card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.
-        card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.
-        below are the two widgets imageview and text view we are displaying inside our card view.
-        -->
 
-        <EditText
-            android:id="@+id/medicinename"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="75dp"
-            android:layout_marginTop="10dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            android:hint="Add Medicine"
 
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manage Inventory"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/medicinename"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.39" />
 
-        <EditText
-            android:id="@+id/medicinenumber"
-            android:layout_width="200dp"
-            android:layout_height="42dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="75dp"
-            android:layout_marginTop="70dp"
+            <EditText
+                android:id="@+id/medicinename"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
 
-            android:inputType="number"
-            android:hint="Medicine Quantity"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:layout_marginBottom="12dp"
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="141dp"
-            android:layout_height="121dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                android:hint="Medicine Name"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                app:layout_constraintBottom_toTopOf="@+id/medicinenumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="150dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            <EditText
+                android:id="@+id/medicinenumber"
+                android:layout_width="200dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_horizontal"
 
+                android:layout_marginBottom="100dp"
+                android:hint="Medicine Quantity"
+                android:inputType="number"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="102dp"
+                android:layout_height="50dp"
+                android:text="Submit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/medicinenumber" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -77,72 +90,44 @@
         android:id="@+id/admin_listOfMedicines"
         android:layout_width="388dp"
         android:layout_height="wrap_content"
-
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="13dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.564" />
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.152" />
 
     <View
 
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_above="@+id/admin_listOfMedicines"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="-78dp"
         android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="7dp"
-        android:background="@color/Black"
+        android:layout_marginTop="52dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/admin_listOfMedicines"
+        android:layout_marginRight="18dp"
+        android:background="@color/Black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.657"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="294dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="228dp"
         android:text="Low medication supply ordered by lowest"
         android:textSize="15dp"
         android:textStyle="italic"
+
         app:layout_constraintBottom_toTopOf="@+id/admin_listOfMedicines"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
-
-    <EditText
-        android:id="@+id/textView13"
-        android:layout_width="126dp"
-        android:layout_height="37dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="169dp"
-        android:text="Search Medicines"
-        android:textSize="15dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/admin_listOfMedicines"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.321" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
