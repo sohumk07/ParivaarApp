@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Enter 12 Digit Patient ID \n(Aadhar)"
+        android:text="Enter 12 Digit Patient ID \n(Aadhaar)"
         android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
