@@ -19,6 +19,7 @@ public class intermediate extends AppCompatActivity {
     private Button button;
     private EditText enterID;
     String districtName;
+    String clinicName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class intermediate extends AppCompatActivity {
         // doctors note
         Intent menuIntent = getIntent();
         districtName = menuIntent.getStringExtra("DISTRICT_NAME_KEY");
+        clinicName = menuIntent.getStringExtra("CLINIC_NAME_KEY");
 
         button=findViewById(R.id.button);
         enterID = findViewById(R.id.enterID);
@@ -38,7 +40,7 @@ public class intermediate extends AppCompatActivity {
 //        }
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Enter patient ID");
-        actionBar.setSubtitle(districtName);
+        actionBar.setSubtitle(districtName + ", Clinic #:" + clinicName);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +55,7 @@ public class intermediate extends AppCompatActivity {
                 Intent senderIntent = new Intent(intermediate.this, DiagnoseIllness.class);
                 senderIntent.putExtra("KEY_PATIENT", enterID.getText().toString().trim());
                 senderIntent.putExtra("DISTRICT_NAME_KEY", districtName);
+                senderIntent.putExtra("CLINIC_NAME_KEY", clinicName);
                 startActivity(senderIntent);
 
 

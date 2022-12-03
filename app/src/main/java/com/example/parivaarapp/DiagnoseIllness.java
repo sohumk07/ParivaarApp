@@ -214,6 +214,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private Button upload;
     private String conditionSelected;
     private String districtName;
+    private String clinicName;
 
     //Recycler View (display prev info)
     private FirebaseFirestore firebaseFirestore;
@@ -244,7 +245,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private EditText
             doctorsadvice,
             medicinesused,
-            clinicname,
+          //  clinicname,
            // districtname,
             daysOfDosage,
             fullname,
@@ -264,9 +265,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
         Intent intent = getIntent();
         districtName = intent.getStringExtra("DISTRICT_NAME_KEY");
+        clinicName = intent.getStringExtra("CLINIC_NAME_KEY");
         String realPatientID = intent.getStringExtra("KEY_PATIENT");
 
         Toast.makeText(this, "DISTRICT NAME IS: " + districtName, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "CLINIC NAME IS: " + clinicName, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Patient id " + realPatientID, Toast.LENGTH_SHORT).show();
 
 
@@ -280,7 +283,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 //TODO: possibly make a checkbox for them to indicate the first patient of the day, using this we can put in the starting value in timestamp
         //TextViews to enter text
        // districtname = findViewById(R.id.district_name);
-        clinicname = findViewById(R.id.clinic_name);
+      //  clinicname = findViewById(R.id.clinic_name);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.medicinesUsed_ACTV);
         upload = findViewById(R.id.dn_upload);
@@ -351,7 +354,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         // Patient Registration
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setSubtitle(districtName);
+        actionBar.setSubtitle(districtName + ", Clinic #:" + clinicName);
         actionBar.setTitle("Patient Assessment");
 
 
@@ -387,11 +390,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 final String doctorsadvice1 = doctorsadvice.getText().toString().trim();
                 final String medicinesInput = editMedicineUsedACTV.getText().toString();
 
-                if(TextUtils.isEmpty(clinicname.getText().toString())){
-                    clinicname.setError("Cannot Be Empty");
-                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(TextUtils.isEmpty(clinicname.getText().toString())){
+//                    clinicname.setError("Cannot Be Empty");
+//                    Toast.makeText(DiagnoseIllness.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
                 if(TextUtils.isEmpty(doctorsadvice1)){
                     doctorsadvice.setError("Cannot Be Empty");
@@ -454,20 +457,20 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 DocumentReference incrementCases = db.collection(districtName).document(varDate);
 
-                                if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
-                                    incrementCases.update("(h) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                if(clinicName.equals("1")){
+                                    incrementCases.update("(h) Cases " + "Clinic # " + clinicName, FieldValue.increment(1));
                                     if(referralCheck.isChecked()){ //if they wanted to refer
-                                        incrementCases.update( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
+                                        incrementCases.update( "(k) Clinic # " + clinicName + " Referred to HC", FieldValue.increment(1));
                                     }
                                     //update ending time to latest
 
                                     newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
 
                                 }
-                                else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
-                                    incrementCases.update("(i) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                else if(clinicName.equals("2")){
+                                    incrementCases.update("(i) Cases " + "Clinic # " + clinicName, FieldValue.increment(1));
                                     if(referralCheck.isChecked()){ //if they watned to refer
-                                        incrementCases.update( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
+                                        incrementCases.update( "(l) Clinic # " + clinicName + " Referred to HC", FieldValue.increment(1));
                                     }
                                     //update ending time to latest
                                     newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
@@ -475,10 +478,10 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                                 }
-                                else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
-                                    incrementCases.update("(j) Cases " + "Clinic # " + clinicname.getText().toString().toUpperCase().trim(), FieldValue.increment(1));
+                                else if(clinicName.equals("3")){
+                                    incrementCases.update("(j) Cases " + "Clinic # " + clinicName, FieldValue.increment(1));
                                     if(referralCheck.isChecked()){ //if they watned to refer
-                                        incrementCases.update( "(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", FieldValue.increment(1));
+                                        incrementCases.update( "(m) Clinic # " + clinicName + " Referred to HC", FieldValue.increment(1));
                                     }
                                     //update ending time to latest
                                     newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
@@ -532,20 +535,20 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                                 if(referralCheck.isChecked()){ //if they watned to refer
-                                    if(clinicname.getText().toString().toUpperCase().trim().equals("1")){
-                                        newDataDocument.put( "(k) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                    if(clinicName.equals("1")){
+                                        newDataDocument.put( "(k) Clinic # " + clinicName + " Referred to HC", 1);
                                         newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, varTime); //add clinic name to this field
                                         newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
 
                                     }
-                                    else if(clinicname.getText().toString().toUpperCase().trim().equals("2")){
-                                        newDataDocument.put( "(l) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                    else if(clinicName.equals("2")){
+                                        newDataDocument.put( "(l) Clinic # " + clinicName + " Referred to HC", 1);
                                         newDataDocument.put("(r) Starting Time " + "Clinic #" + 2, varTime); //add clinic name to this field
                                         newDataDocument.put("(s) Leaving Time " + "Clinic #" + 2,varTime);
 
                                     }
-                                    else if(clinicname.getText().toString().toUpperCase().trim().equals("3")){
-                                        newDataDocument.put("(m) Clinic # " + clinicname.getText().toString().toUpperCase().trim() + " Referred to HC", 1);
+                                    else if(clinicName.equals("3")){
+                                        newDataDocument.put("(m) Clinic # " + clinicName + " Referred to HC", 1);
                                         newDataDocument.put("(t) Starting Time " + "Clinic #" + 3, varTime); //add clinic name to this field
                                         newDataDocument.put("(u) Leaving Time " + "Clinic #" + 3,varTime);
 
