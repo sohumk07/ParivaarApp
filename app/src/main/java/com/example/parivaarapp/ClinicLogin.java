@@ -27,8 +27,8 @@ public class ClinicLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic_login);
 
-        districtname = (EditText)  findViewById(R.id.textView876);
-        clinicname = (EditText)  findViewById(R.id.textView11);
+        districtname = (EditText)  findViewById(R.id.textView7);
+        clinicname = (EditText)  findViewById(R.id.textView52);
 
 
 

@@ -10,10 +10,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="401dp"
         android:layout_height="318dp"
+        android:layout_alignBottom="@+id/admin_listOfMedicines"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="390dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
@@ -52,8 +55,8 @@
             android:layout_marginLeft="75dp"
             android:layout_marginTop="70dp"
 
-            android:inputType="number"
             android:hint="Medicine Quantity"
+            android:inputType="number"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
@@ -64,10 +67,10 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="150dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="150dp"
             android:text="Button" />
 
 
