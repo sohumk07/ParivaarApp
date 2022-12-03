@@ -56,9 +56,11 @@ public class Menu extends AppCompatActivity {
 //
 //
 //                //add sender stuff
-//                Intent senderIntent = new Intent(Menu.this, DailyActivation.class);
-//                senderIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString());
-//                startActivity(senderIntent);
+//                Intent districtNameIntent = new Intent(Menu.this, intermediate.class);
+//                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
+//                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
+//                //start intermediate
+//                startActivity(districtNameIntent);
             }
         });
 
@@ -95,9 +97,11 @@ public class Menu extends AppCompatActivity {
 //
 //
 //                //add sender stuff
-//                Intent senderIntent = new Intent(Menu.this, DiagnoseIllness.class);
-//                senderIntent.putExtra("KEY_SENDER", districtname.getText().toString());
-//                startActivity(senderIntent);
+//                Intent districtNameIntent = new Intent(Menu.this, intermediate.class);
+//                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
+//                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
+//                //start intermediate
+//                startActivity(districtNameIntent);
 //            }
 //        });
 
