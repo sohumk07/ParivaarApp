@@ -84,9 +84,9 @@ public class Menu extends AppCompatActivity {
                 Intent districtNameIntent = new Intent(Menu.this, intermediate.class);
 
 //
-//                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
-//                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
-//                //start intermediate
+                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtName);
+                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicName);
+                //start intermediate
                 startActivity(districtNameIntent);
 
 

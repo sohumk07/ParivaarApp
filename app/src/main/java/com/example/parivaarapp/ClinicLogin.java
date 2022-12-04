@@ -11,25 +11,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class ClinicLogin extends AppCompatActivity {
 
-    private EditText Username;
     private EditText Password;
     private TextView Info;
     private Button Login;
-    EditText districtname;
-    EditText clinicname;
+    private EditText districtname;
+    private EditText clinicname;
 
 
 
-    @Override //
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic_login);
 
         districtname = findViewById(R.id.textView7);
         clinicname = findViewById(R.id.textView52);
-
 
 
 //Code to change text of the toolbar
@@ -39,7 +39,6 @@ public class ClinicLogin extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        Username = (EditText) findViewById(R.id.username_editText);
         Password = (EditText) findViewById(R.id.password_editText);
         Login = (Button) findViewById(R.id.login);
 
@@ -47,29 +46,25 @@ public class ClinicLogin extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(Username.getText().toString(), Password.getText().toString());
+                if (Password.getText().toString().equals("parivaar")){
+                    Toast.makeText(ClinicLogin.this, "CORRECT", Toast.LENGTH_SHORT).show();
+
+                    //sender intent
+                    Intent intent = new Intent(ClinicLogin.this, Menu.class);
+                    intent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
+                    intent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(ClinicLogin.this, "INCORRECT", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
+
+
+
     }
 
-    private void validate(String userName, String userPassword){
-        if ((userName.equals("clinic")) && (userPassword.equals("parivaar"))){
-            //correct password
-
-            Toast.makeText(this, "CORRECT", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(ClinicLogin.this, Menu.class);
-            startActivity(intent);
-
-            //add sender stuff
-            Intent districtNameIntent = new Intent(ClinicLogin.this, intermediate.class);
-            districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
-            districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
-            //start intermediate
-            startActivity(districtNameIntent);
-        }else{
-            //wrong password
-            Toast.makeText(this, "INCORRECT", Toast.LENGTH_SHORT).show();
-        }
-    }
 }
