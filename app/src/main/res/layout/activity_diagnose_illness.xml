@@ -212,7 +212,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed-medium"
-            android:paddingBottom="15dp"
+            android:paddingBottom="40dp"
             android:text="Fill out medicine information respectively and separated by comma"
             android:textColor="@color/DodgerBlue"
             android:textSize="18sp"
@@ -271,11 +271,10 @@
         <Button
             android:id="@+id/dn_upload"
             android:layout_width="175dp"
-            android:layout_height="50dp"
+            android:layout_height="57dp"
             android:shadowColor="@color/blue"
             android:text="Upload"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
 
 
     </LinearLayout>
