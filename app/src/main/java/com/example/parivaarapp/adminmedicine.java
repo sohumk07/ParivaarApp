@@ -125,7 +125,7 @@ public class adminmedicine extends AppCompatActivity {
                     medicineQuantity.setError("Cannot Be Empty");
                     return;
                 }
-                //TODO: replace "lastRefilled" with date
+                //TODO: replace "lastRefilled" with date (DONE)
 
 
                 DocumentReference specificMedicine = firebaseFirestore.collection("test medicine").document("medicines").collection(district).document(medicineName.getText().toString().trim().toUpperCase());
