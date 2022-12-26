@@ -35,6 +35,17 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
+import android.util.Log;
+import android.view.View;
+
+
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.time.Duration;
+
 
 public class adminmedicine extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
@@ -42,6 +53,8 @@ public class adminmedicine extends AppCompatActivity {
     private FirestoreRecyclerAdapter medicinesAdapter;
 
     private static final String medicineTag = "medicine TAG";
+
+
 
     //Manage medicine
     private Button submitRefill;
@@ -100,6 +113,10 @@ public class adminmedicine extends AppCompatActivity {
         submitRefill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Calendar secondTimestamp = Calendar.getInstance();
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
                 if (TextUtils.isEmpty(medicineName.getText())) {
                     medicineName.setError("Cannot Be Empty");
                     return;
@@ -138,15 +155,16 @@ public class adminmedicine extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Log.d(medicineTag, "DocumentSnapshot successfully written!");
-                                            Toast.makeText(adminmedicine.this, "Refill processed to database", Toast.LENGTH_SHORT).show();
-                                        }
+
+                                            String secondTimestampString = timeFormat.format(secondTimestamp.getTimeInMillis());
+                                            Toast.makeText(adminmedicine.this, "Refill processed to database at" + secondTimestampString, Toast.LENGTH_SHORT).show();                                        }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Log.w(medicineTag, "Error writing document", e);
-                                            Toast.makeText(adminmedicine.this, "Error uploading refill to database", Toast.LENGTH_SHORT).show();
-                                        }
+                                            String secondTimestampString = timeFormat.format(secondTimestamp.getTimeInMillis());
+                                            Toast.makeText(adminmedicine.this, "Refill processed to database at" + secondTimestampString, Toast.LENGTH_SHORT).show();                                        }
                                     });
 
                         }
