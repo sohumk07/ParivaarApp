@@ -21,12 +21,16 @@ public class ClinicLogin extends AppCompatActivity {
     private EditText districtname;
     private EditText clinicname;
 
+    public String district;
+    public String clinicNum;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic_login);
+
 
         districtname = findViewById(R.id.textView7);
         clinicname = findViewById(R.id.textView52);

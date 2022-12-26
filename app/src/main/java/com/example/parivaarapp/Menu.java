@@ -38,17 +38,16 @@ public class Menu extends AppCompatActivity {
 
 
         // go to preset data
-        button=findViewById(R.id.preset_data);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //code
-                Intent intent = new Intent(Menu.this,PresetData.class);
-                startActivity(intent);
-
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //code
+//                Intent intent = new Intent(Menu.this,PresetData.class);
+//                startActivity(intent);
+//
+//            }
+//        });
 
         //go to daily activation
 

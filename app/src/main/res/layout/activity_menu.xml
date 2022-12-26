@@ -4,30 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="30dp"
     android:background="#FDFDFD"
     android:backgroundTint="#FFFFFF"
     tools:context=".Menu">
 
     <Button
-        android:id="@+id/preset_data"
-        android:layout_width="372dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/daily_activation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="38dp"
-        android:background="#E91E63"
-        android:backgroundTint="#E91E63"
-        android:text="Preset Data"
-        android:textColor="@color/white"
-        android:theme="@android:style/Theme.Black"
-        app:strokeColor="#E91E63"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="151dp" />
-
-    <Button
         android:id="@+id/daily_activation"
         android:layout_width="375dp"
-        android:layout_height="62dp"
+        android:layout_height="75dp"
         android:layout_above="@+id/diagnose_illness"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
@@ -38,7 +23,7 @@
     <Button
         android:id="@+id/diagnose_illness"
         android:layout_width="375dp"
-        android:layout_height="62dp"
+        android:layout_height="75dp"
         android:layout_above="@+id/Patient_Registration"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
@@ -49,7 +34,7 @@
     <Button
         android:id="@+id/Patient_Registration"
         android:layout_width="375dp"
-        android:layout_height="62dp"
+        android:layout_height="75dp"
         android:layout_above="@+id/sign_out"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="90dp"
