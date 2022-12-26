@@ -208,7 +208,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
     private boolean needOfReferral = false;
     private Button button;
-    public static final String TAG = "TAG";
+    private static final String TAG = "TAG";
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     private Button upload;
@@ -354,7 +354,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         // Patient Registration
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setSubtitle(districtName + ", Clinic #:" + clinicName);
+        actionBar.setSubtitle(districtName + ", Clinic # " + clinicName);
         actionBar.setTitle("Patient Assessment");
 
 
@@ -429,7 +429,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 //                            }
 //                        });
 
-                //TODO: read which district they are from.
                 //Alter medicine database based on district and medicine administered.
                 String[] individualMedidicnes = medicinesInput.split("\\s*,\\s*");
                 String[] individualDosesPerDay = dosesPerDayACTV.getText().toString().split("\\s*,\\s*");
@@ -562,27 +561,29 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 //                                newDataDocument.put("Villages Visited", " ");
 
 
-                                db.collection(districtName).document(varDate)
-                                        .set(newDataDocument,SetOptions.merge())
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Log.d(TAG, "DocumentSnapshot successfully written!");
-                                                Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.w(TAG, "Error writing document", e);
-                                                Toast.makeText(DiagnoseIllness.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
+
 
                                // newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), "");
 
 
                             }
+                            //TODO: verify that this fixes the issue
+                            db.collection(districtName).document(varDate)
+                                    .set(newDataDocument,SetOptions.merge())
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                                            Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error writing document", e);
+                                            Toast.makeText(DiagnoseIllness.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                         } else {
                             Log.d(TAG, "Failed with: ", task.getException());
                         }
@@ -695,10 +696,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
             }
         });
 
-//TEST CODE
+//TEST CODE //TODO: implement test code into real autocomplete
         //CollectionReference medicinesTest = db.collection("test medicine").document("medicines").collection("testDistrict");
-        db.collection("test medicine").document("medicines").collection("testDistrict")
-//                .whereLessThan("Quantity", 100)
+        db.collection("test medicine").document("medicines").collection(districtName)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -735,8 +735,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         //Code for autocomplete medicine type selection
         ArrayList<String> listOfMedicines = new ArrayList<String>();
 
-        db.collection("test medicine").document("medicines").collection("testDistrict")
-//                .whereLessThan("Quantity", 100)
+
+
+
+
+        db.collection("test medicine").document("medicines").collection(districtName)
         .get()
         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override

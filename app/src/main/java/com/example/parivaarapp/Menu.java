@@ -27,7 +27,7 @@ public class Menu extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Navigation Menu");
-        actionBar.setSubtitle(districtName + ", Clinic #:" + clinicName);
+        actionBar.setSubtitle(districtName + ", Clinic # " + clinicName);
 
 
 

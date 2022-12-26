@@ -150,29 +150,16 @@
 <!--            android:text="Load Previous Patient Data"-->
 <!--            app:iconTint="#FFFFFF" />-->
 
-        <EditText
-            android:id="@+id/clinic_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="35dp"
-            android:hint="Clinic Number"
-            android:inputType="number" />
 
-        <EditText
-            android:id="@+id/district_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:hint="District Name" />
+
+
 
         <TextView
             android:id="@+id/dn_doctors_note"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:inputType="none"
             android:text="Select type of issue"
             android:textStyle="italic"
@@ -205,7 +192,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:hint="Doctor's Advice"
             android:layout_marginBottom="30dp"
             />

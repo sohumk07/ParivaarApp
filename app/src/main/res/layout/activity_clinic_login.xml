@@ -44,21 +44,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:hint="Clinic #"
-        app:helperText="Required*"
+        android:paddingLeft="40dp"
 
+        app:helperText="Required*"
         app:helperTextTextColor="@color/red"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_layout"
-        app:layout_constraintVertical_bias="0.294"
+        app:layout_constraintVertical_bias="0.137"
         app:startIconDrawable="@drawable/profile">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textView52"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
