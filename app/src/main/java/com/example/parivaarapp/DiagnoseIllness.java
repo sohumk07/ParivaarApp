@@ -456,6 +456,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 DocumentReference incrementCases = db.collection(districtName).document(varDate);
                                 //TODO: if document exists, change only the ending time, and calculate the difference between starting time and ending time.
+
+
                                 //TODO: sohum here there are 3 different if statements checking which clinic they are form, which specifies which ending time to increment
                                 //TODO: every time the ending time is changed, a new working time should be calculated, so you would do the calulation code every time here
                                 //TODO: you would have to grab the staring time from the database - stack overflow prolly help - and then you already have the ending time as a local variable
@@ -579,7 +581,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Log.d(TAG, "DocumentSnapshot successfully written!");
-                                            Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(DiagnoseIllness.this, "Uploaded to Database", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
