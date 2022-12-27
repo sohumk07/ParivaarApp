@@ -113,8 +113,6 @@ public class adminmedicine extends AppCompatActivity {
 
                 DocumentReference specificMedicine = firebaseFirestore.collection("test medicine").document("medicines").collection(district).document(medicineName.getText().toString().trim().toUpperCase());
                 Map<String, Object> refillDocument = new HashMap<>();
-                //CHECKING IF DOCUMENT EXISTS OR NOT IN EXPORTING COLLECTIONS
-                // String varDate = date.getText().toString().trim();
 
                 specificMedicine.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
