@@ -229,7 +229,7 @@ public class AdminMenu extends AppCompatActivity {
 
         adminmedicine = (Button) findViewById(R.id.medicinebutton);
         admindoctor = (Button) findViewById(R.id.doctorbutton);
-        signout = (Button) findViewById(R.id.adminsignout);
+//        signout = (Button) findViewById(R.id.adminsignout);
         districtname = (EditText)  findViewById(R.id.textView876);
 
 

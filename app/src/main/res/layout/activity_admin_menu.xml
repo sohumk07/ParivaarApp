@@ -7,11 +7,26 @@
     tools:context=".AdminMenu">
 
 
+    <!--    <TextView-->
+<!--    android:id="@+id/textView10"-->
+<!--    android:layout_width="272dp"-->
+<!--    android:layout_height="45dp"-->
+<!--    android:layout_gravity="center"-->
+<!--    android:hint="Clinic Number"-->
+<!--    android:inputType="number"-->
+
+<!--    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintHorizontal_bias="0.496"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toBottomOf="@+id/textView3"-->
+<!--    app:layout_constraintVertical_bias="0.245" />-->
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="serif"
         android:text="Admin Menu"
         android:textSize="34sp"
@@ -19,78 +34,95 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/textView876"
-        android:layout_width="272dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center"
+    <!--    <Button-->
+<!--        android:id="@+id/adminsignout"-->
+<!--        android:layout_width="138dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:text="Sign Out"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.937" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:hint="District Name"
-        android:inputType="textCapCharacters"
 
+        android:paddingHorizontal="40dp"
+        app:endIconMode="clear_text"
+        app:helperText="Required*"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintVertical_bias="0.172">
 
-    <EditText
-        android:id="@+id/textView10"
-        android:layout_width="272dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center"
-        android:hint="Clinic Number"
-        android:inputType="number"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textView876"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapCharacters" />
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/clinic_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:hint="Clinic #"
+
+        android:paddingHorizontal="40dp"
+        app:endIconMode="clear_text"
+        app:helperText="Required*"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.432" />
+        app:layout_constraintVertical_bias="0.345">
 
-    <TextView
-        android:id="@+id/textView87"
-        android:layout_width="287dp"
-        android:layout_height="47dp"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="Enter District and Clinic"
-        android:textColor="@color/purple_500"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/textView876"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.556"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="1.0" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
 
-    <Button
-        android:id="@+id/adminsignout"
-        android:layout_width="134dp"
-        android:layout_height="47dp"
-        android:text="Sign Out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.245" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/medicinebutton"
         android:layout_width="169dp"
         android:layout_height="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="108dp"
         android:backgroundTint="@color/LightCoral"
         android:text="Manage Medicines"
-        app:layout_constraintBottom_toTopOf="@+id/adminsignout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView876"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintTop_toBottomOf="@+id/username_layout"
+        app:layout_constraintVertical_bias="0.175" />
 
     <Button
         android:id="@+id/doctorbutton"
@@ -98,11 +130,11 @@
         android:layout_height="70dp"
         android:backgroundTint="@color/LightCoral"
         android:text="Manage doctors"
-        app:layout_constraintBottom_toTopOf="@+id/adminsignout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medicinebutton"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.176" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

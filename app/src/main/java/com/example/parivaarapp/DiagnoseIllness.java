@@ -455,14 +455,17 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                             if (document.exists()) { // increment the counter                                  // Look in the collection with inputted district and document w/ inputted date
 
                                 DocumentReference incrementCases = db.collection(districtName).document(varDate);
-
+                                //TODO: if document exists, change only the ending time, and calculate the difference between starting time and ending time.
+                                //TODO: sohum here there are 3 different if statements checking which clinic they are form, which specifies which ending time to increment
+                                //TODO: every time the ending time is changed, a new working time should be calculated, so you would do the calulation code every time here
+                                //TODO: you would have to grab the staring time from the database - stack overflow prolly help - and then you already have the ending time as a local variable
+                                //TODO: so you would get the time from whatever its called in the databse - so for example 8:00 - and u would subtract it with the ending time u currently just got when the button was pressed
                                 if(clinicName.equals("1")){
                                     incrementCases.update("(h) Cases " + "Clinic # " + clinicName, FieldValue.increment(1));
                                     if(referralCheck.isChecked()){ //if they wanted to refer
                                         incrementCases.update( "(k) Clinic # " + clinicName + " Referred to HC", FieldValue.increment(1));
                                     }
                                     //update ending time to latest
-
                                     newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,varTime);
 
                                 }
@@ -514,6 +517,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 newDataDocument.put("(o) Remarks ","");
 
+                                //starting time initialized to 00:00:00 for all patients
                                 newDataDocument.put("(p) Starting Time " + "Clinic #" + 1, "00:00:00"); //add clinic name to this field
                                 newDataDocument.put("(q) Leaving Time " + "Clinic #" + 1,"00:00:00");
 
@@ -533,6 +537,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                 newDataDocument.put("(v) " + conditionSelected + " Cases ", 1);
 
 
+                                //TODO: so here is where the starting time is put in (when the first patient of the day is seen (remember this only applies to 1 of 3 clinics, the rest don't have a starting time)
                                 if(referralCheck.isChecked()){ //if they watned to refer
                                     if(clinicName.equals("1")){
                                         newDataDocument.put( "(k) Clinic # " + clinicName + " Referred to HC", 1);
@@ -567,7 +572,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
                             }
-                            //TODO: verify that this fixes the issue
+                            //TODO:RYAN verify that this fixes the issue - it does for now
                             db.collection(districtName).document(varDate)
                                     .set(newDataDocument,SetOptions.merge())
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -735,10 +740,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         //Code for autocomplete medicine type selection
         ArrayList<String> listOfMedicines = new ArrayList<String>();
 
-
-
-
-
         db.collection("test medicine").document("medicines").collection(districtName)
         .get()
         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -748,11 +749,11 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         listOfMedicines.add(document.getId());
                         editMedicineUsedACTV = findViewById(R.id.medicinesUsed_ACTV);
-                        ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this, android.R.layout.simple_dropdown_item_1line, listOfMedicines);
-                        editMedicineUsedACTV.setAdapter(medicineAdapter);
-                        editMedicineUsedACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
                         //Toast.makeText(DiagnoseIllness.this, document.getId(), Toast.LENGTH_SHORT).show();
                     }
+                    ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this, android.R.layout.simple_dropdown_item_1line, listOfMedicines);
+                    editMedicineUsedACTV.setAdapter(medicineAdapter);
+                    editMedicineUsedACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
                 } else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }

@@ -10,13 +10,13 @@
         <entry key="app/src/main/res/drawable/lock_foreground.xml" value="0.174" />
         <entry key="app/src/main/res/layout/activity_admin_daily_activation.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_admin_doctors_note.xml" value="0.2296875" />
-        <entry key="app/src/main/res/layout/activity_admin_menu.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/activity_admin_menu.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_admin_patient_registration.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_admin_preset_data.xml" value="0.17699127197265627" />
         <entry key="app/src/main/res/layout/activity_admindoctor.xml" value="0.2296875" />
-        <entry key="app/src/main/res/layout/activity_adminmedicine.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_adminmedicine.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_choose_clinic.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout/activity_clinic_login.xml" value="0.2231491088867188" />
+        <entry key="app/src/main/res/layout/activity_clinic_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_daily_activation.xml" value="0.182518115942029" />
         <entry key="app/src/main/res/layout/activity_diagnose_illness.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_district_login.xml" value="0.182518115942029" />
