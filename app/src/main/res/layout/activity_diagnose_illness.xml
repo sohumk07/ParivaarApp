@@ -234,6 +234,7 @@
             android:layout_height="wrap_content"
             android:completionThreshold="-1"
             android:hint="How many times a day?"
+            android:inputType="number"
             android:completionHint="Select the medicines used"
             android:layout_marginBottom="25dp"
             />

@@ -245,9 +245,9 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     private EditText
             doctorsadvice,
             medicinesused,
-          //  clinicname,
-           // districtname,
-            daysOfDosage,
+    //  clinicname,
+    // districtname,
+    daysOfDosage,
             fullname,
             patientregistrationhusbandname,
             patientregistrationage,
@@ -282,8 +282,8 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 //TODO: possibly make a checkbox for them to indicate the first patient of the day, using this we can put in the starting value in timestamp
         //TextViews to enter text
-       // districtname = findViewById(R.id.district_name);
-      //  clinicname = findViewById(R.id.clinic_name);
+        // districtname = findViewById(R.id.district_name);
+        //  clinicname = findViewById(R.id.clinic_name);
         doctorsadvice = findViewById(R.id.dn_doctors_advice);
         medicinesused = findViewById(R.id.medicinesUsed_ACTV);
         upload = findViewById(R.id.dn_upload);
@@ -456,8 +456,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
                                 DocumentReference incrementCases = db.collection(districtName).document(varDate);
                                 //TODO: if document exists, change only the ending time, and calculate the difference between starting time and ending time.
-
-
                                 //TODO: sohum here there are 3 different if statements checking which clinic they are form, which specifies which ending time to increment
                                 //TODO: every time the ending time is changed, a new working time should be calculated, so you would do the calulation code every time here
                                 //TODO: you would have to grab the staring time from the database - stack overflow prolly help - and then you already have the ending time as a local variable
@@ -570,7 +568,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
 
 
-                               // newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), "");
+                                // newDataDocument.put("Leaving Time " + clinicname.getText().toString().trim().toUpperCase(), "");
 
 
                             }
@@ -581,7 +579,7 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Log.d(TAG, "DocumentSnapshot successfully written!");
-                                            Toast.makeText(DiagnoseIllness.this, "Uploaded to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(DiagnoseIllness.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -685,21 +683,21 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
                 //NewPatientRegistration.put("Patient Registration Info", nestedData);
 
                 db.collection("Patient Registration and-or Doctor's Notes").document(realPatientID)
-                .set(NewPatientRegistration, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        //Log.d(TAG, "DocumentSnapshot successfully written!");
-                        //Toast.makeText(DiagnoseIllness.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Log.w(TAG, "Error writing document", e);
-                        //Toast.makeText(DiagnoseIllness.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        .set(NewPatientRegistration, SetOptions.merge())
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //Log.d(TAG, "DocumentSnapshot successfully written!");
+                                //Toast.makeText(DiagnoseIllness.this, "Patient Information Uploaded to Database", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                //Log.w(TAG, "Error writing document", e);
+                                //Toast.makeText(DiagnoseIllness.this, "Error Uploading Patient Information to Database", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
@@ -743,24 +741,24 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
         ArrayList<String> listOfMedicines = new ArrayList<String>();
 
         db.collection("test medicine").document("medicines").collection(districtName)
-        .get()
-        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        listOfMedicines.add(document.getId());
-                        editMedicineUsedACTV = findViewById(R.id.medicinesUsed_ACTV);
-                        //Toast.makeText(DiagnoseIllness.this, document.getId(), Toast.LENGTH_SHORT).show();
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                listOfMedicines.add(document.getId());
+                                editMedicineUsedACTV = findViewById(R.id.medicinesUsed_ACTV);
+                                //Toast.makeText(DiagnoseIllness.this, document.getId(), Toast.LENGTH_SHORT).show();
+                            }
+                            ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this, android.R.layout.simple_dropdown_item_1line, listOfMedicines);
+                            editMedicineUsedACTV.setAdapter(medicineAdapter);
+                            editMedicineUsedACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
                     }
-                    ArrayAdapter<String> medicineAdapter = new ArrayAdapter<String>(DiagnoseIllness.this, android.R.layout.simple_dropdown_item_1line, listOfMedicines);
-                    editMedicineUsedACTV.setAdapter(medicineAdapter);
-                    editMedicineUsedACTV.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
-                } else {
-                    Log.d(TAG, "Error getting documents: ", task.getException());
-                }
-            }
-        });
+                });
     }
 
     private class PatientDataHolder extends RecyclerView.ViewHolder {
@@ -858,7 +856,6 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
 
     }
 }
-
 
 
 
