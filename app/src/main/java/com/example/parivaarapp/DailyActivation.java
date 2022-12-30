@@ -1,5 +1,207 @@
 package com.example.parivaarapp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
+
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
+
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import io.grpc.Compressor;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import android.os.Bundle;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.SetOptions;
+
+import android.app.DatePickerDialog;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
@@ -162,7 +364,9 @@ public class DailyActivation extends AppCompatActivity {
     FirebaseFirestore fStore;
     Button RegisterBtn;
 
-    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks, districtname, starttime, endtime;
+    EditText doctor, medattendant, driver, vehiclestartmileage, vehicleendmileage, villagesvisited, totaldistance, clinicname1, date, remarks, starttime, endtime;
+    private String districtName;
+    private String clinicName;
     ImageView addphoto;
     Button update, menubtn;
     String date1;
@@ -180,10 +384,21 @@ public class DailyActivation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+// intent stuff
+        Intent intent = getIntent();
+        districtName = intent.getStringExtra("DISTRICT_NAME_KEY");
+        clinicName = intent.getStringExtra("CLINIC_NAME_KEY");
+
+
+        Toast.makeText(this, "DISTRICT NAME IS: " + districtName, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "CLINIC NAME IS: " + clinicName, Toast.LENGTH_SHORT).show();
+
 
         ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setSubtitle(districtName + ", Clinic # " + clinicName);
         actionBar.setTitle("Daily Activation");
-        actionBar.setSubtitle("App Name");
+
 
 
 
@@ -270,15 +485,7 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
-                final String date1 = date.getText().toString();
-                final String clinicname2 = clinicname1.getText().toString();
-                final String doctor1 = doctor.getText().toString();
-                final String medattendant1 = medattendant.getText().toString();
-                final String driver1 = driver.getText().toString();
-                final String vehiclestartmileage1 = vehiclestartmileage.getText().toString();
-                final String districtsvisited1 = villagesvisited.getText().toString();
-                final String vehicleendmileage1 = vehicleendmileage.getText().toString();
-                final String totaldistance1 = totaldistance.getText().toString();
+
 
 
 
@@ -322,39 +529,39 @@ public class DailyActivation extends AppCompatActivity {
                     return;
                 }
 
-                if(TextUtils.isEmpty(vehicleendmileage.getText().toString())){
-                    vehicleendmileage.setError("Cannot Be Empty.");
-                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(TextUtils.isEmpty(vehicleendmileage.getText().toString())){
+//                    vehicleendmileage.setError("Cannot Be Empty.");
+//                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
-                if(TextUtils.isEmpty(totaldistance.getText().toString())){
-                    totaldistance.setError("Cannot Be Empty.");
-                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(TextUtils.isEmpty(totaldistance.getText().toString())){
+//                    totaldistance.setError("Cannot Be Empty.");
+//                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
-                if(TextUtils.isEmpty(clinicname1.getText().toString())){
-                    clinicname1.setError("Cannot Be Empty.");
-                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(TextUtils.isEmpty(clinicname1.getText().toString())){
+//                    clinicname1.setError("Cannot Be Empty.");
+//                    Toast.makeText(DailyActivation.this, "Fill Out All Fields", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
 
 
                 Map<String, Object> DailyActivation = new HashMap<>();
                 // nothing in here
 
-                DailyActivation.put("clinicName", clinicname1.getText().toString().trim().toUpperCase());
-                DailyActivation.put("date", varDate);
-                DailyActivation.put("doctorName", doctor.getText().toString().trim());
-                DailyActivation.put("attendantName", medattendant.getText().toString().trim());
-                DailyActivation.put("driverName", driver.getText().toString().trim());
-                DailyActivation.put("startMileage", vehiclestartmileage.getText().toString().trim());
-                DailyActivation.put("endMileage", vehicleendmileage.getText().toString().trim());
-                DailyActivation.put("distanceTraveled", totaldistance.getText().toString().trim());
-                DailyActivation.put("districtsVisited", villagesvisited.getText().toString().trim());
-                DailyActivation.put("remarks", remarks.getText().toString().trim());
+//  //              DailyActivation.put("clinicName", clinicname1.getText().toString().trim().toUpperCase());
+//                DailyActivation.put("date", varDate);
+//                DailyActivation.put("doctorName", doctor.getText().toString().trim());
+//                DailyActivation.put("attendantName", medattendant.getText().toString().trim());
+//                DailyActivation.put("driverName", driver.getText().toString().trim());
+//                DailyActivation.put("startMileage", vehiclestartmileage.getText().toString().trim());
+//                DailyActivation.put("endMileage", vehicleendmileage.getText().toString().trim());
+//                DailyActivation.put("distanceTraveled", totaldistance.getText().toString().trim());
+//                DailyActivation.put("districtsVisited", villagesvisited.getText().toString().trim());
+//                DailyActivation.put("remarks", remarks.getText().toString().trim());
 
 
                 // Map<String, Object> nestedData = new HashMap<>();
@@ -370,27 +577,34 @@ public class DailyActivation extends AppCompatActivity {
                 Map<String, Object> DailyActivationData = new HashMap<>();
                 //DailyActivationData.put("(a) Date", date.getText().toString().trim());
 
-                if(clinicname1.getText().toString().toUpperCase().trim().equals("1")){
-                    DailyActivationData.put("(e) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
-                    DailyActivationData.put("(b) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                    DailyActivationData.put("(p) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
-                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicname1.getText().toString().trim(),varTime);
+                if(clinicName.equals("1")){
+                    DailyActivationData.put("(e) Villages Visited " + "Clinic #" + clinicName.trim().toUpperCase(), villagesvisited.getText().toString().trim());
+                    DailyActivationData.put("(b) Distance Covered (KM) " + "Clinic #" + clinicName.trim().toUpperCase(), totaldistance.getText().toString().trim());
+                    DailyActivationData.put("(p) Starting Time " + "Clinic #" + clinicName.trim().toUpperCase(), varTime); //add clinic name to this field
+                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicName.trim().toUpperCase(),varTime);
 
                 }
 //test
-                else if(clinicname1.getText().toString().toUpperCase().trim().equals("2")) {
-                    DailyActivationData.put("(f) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
-                    DailyActivationData.put("(c) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                    DailyActivationData.put("(r) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
-                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicname1.getText().toString().trim(),varTime);
+                else if(clinicName.equals("2")) {
+                    DailyActivationData.put("(f) Villages Visited " + "Clinic #" + clinicName.trim().toUpperCase(), villagesvisited.getText().toString().trim());
+                    DailyActivationData.put("(c) Distance Covered (KM) " + "Clinic #" + clinicName.trim().toUpperCase(), totaldistance.getText().toString().trim());
+                    DailyActivationData.put("(r) Starting Time " + "Clinic #" + clinicName.trim().toUpperCase(), varTime); //add clinic name to this field
+                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicName.trim().toUpperCase(),varTime);
                 }
-                else if(clinicname1.getText().toString().toUpperCase().trim().equals("3")) {
-                    DailyActivationData.put("(g) Villages Visited " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), villagesvisited.getText().toString().trim());
-                    DailyActivationData.put("(d) Distance Covered (KM) " + "Clinic #" + clinicname1.getText().toString().trim().toUpperCase(), totaldistance.getText().toString().trim());
-                    DailyActivationData.put("(t) Starting Time " + "Clinic #" + clinicname1.getText().toString().trim(), varTime); //add clinic name to this field
-                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicname1.getText().toString().trim(),varTime);
+                else if(clinicName.equals("3")) {
+                    DailyActivationData.put("(g) Villages Visited " + "Clinic #" + clinicName.trim().toUpperCase(), villagesvisited.getText().toString().trim());
+                    DailyActivationData.put("(d) Distance Covered (KM) " + "Clinic #" + clinicName.trim().toUpperCase(), totaldistance.getText().toString().trim());
+                    DailyActivationData.put("(t) Starting Time " + "Clinic #" + clinicName.trim().toUpperCase(), varTime); //add clinic name to this field
+                    DailyActivationData.put("(q) Ending Time " + "Clinic #" + clinicName.trim().toUpperCase(),varTime);
                 }
-                DailyActivationData.put("(f) Remarks ", remarks.getText().toString());
+
+                if(remarks != null){
+                    DailyActivationData.put("(f) Remarks ", "none");
+                }
+                else{
+                    DailyActivationData.put("(f) Remarks ", remarks.getText().toString());
+
+                }
 
 
 
@@ -403,30 +617,29 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
-                //documents and collections
-                db.collection("Daily Activation").document( varDate + " " + clinicname1.getText().toString().trim().toUpperCase())
-                        .set(DailyActivation)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot successfully written!");
-                                Toast.makeText(DailyActivation.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error writing document", e);
-                                Toast.makeText(DailyActivation.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
+//                //documents and collections
+//                db.collection(districtName).document(varDate)
+//                        .set(DailyActivationData,SetOptions.merge())
+//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Log.d(TAG, "DocumentSnapshot successfully written!");
+//                                Toast.makeText(DailyActivation.this, "Daily Activation Uploaded to Database", Toast.LENGTH_SHORT).show();
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w(TAG, "Error writing document", e);
+//                                Toast.makeText(DailyActivation.this, "Error Uploading Daily Activation to Database", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
 
 
 
 
                 // new collection for exporting
-                db.collection(districtname.getText().toString().trim().toUpperCase()).document(varDate) //put it in the document called the date, in the colleciton of the district.
+                db.collection(districtName).document(varDate) //put it in the document called the date, in the colleciton of the district.
                         .set(DailyActivationData,SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -443,7 +656,7 @@ public class DailyActivation extends AppCompatActivity {
                             }
                         });
 
-                Query query = db.collection(districtname.getText().toString().trim().toUpperCase()).orderBy("Villages Visited");
+                Query query = db.collection(districtName.trim().toUpperCase()).orderBy("Villages Visited");
 
 
 

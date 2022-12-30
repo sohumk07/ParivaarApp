@@ -57,10 +57,14 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //code
-                Intent dailyActIntent = new Intent(Menu.this,DailyActivation.class);
-                dailyActIntent.putExtra("DISTRICT_NAME_KEY", districtName);
-                dailyActIntent.putExtra("CLINIC_NAME_KEY", clinicName);
-                startActivity(dailyActIntent);
+                //add sender stuff
+                Intent districtNameIntent = new Intent(Menu.this, DailyActivation.class);
+
+//
+                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtName);
+                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicName);
+                //start intermediate
+                startActivity(districtNameIntent);
 
                 //add sender stuff
                 //start intermediate
