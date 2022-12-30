@@ -682,7 +682,13 @@ public class DailyActivation extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.Menu:
-                startActivity(new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class));
+                Intent districtNameIntent = new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class);
+
+//
+                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtName);
+                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicName);
+                //start intermediate
+                startActivity(districtNameIntent);
                 break;
             case R.id.sign_out:
                 startActivity(new Intent(DailyActivation.this, MainActivity.class));

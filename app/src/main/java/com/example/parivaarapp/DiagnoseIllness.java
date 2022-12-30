@@ -846,8 +846,13 @@ public class DiagnoseIllness extends AppCompatActivity implements AdapterView.On
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.Menu:
-                startActivity(new Intent(DiagnoseIllness.this, Menu.class));
-                break;
+                Intent districtNameIntent = new Intent(DiagnoseIllness.this, com.example.parivaarapp.Menu.class);
+
+//
+                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtName);
+                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicName);
+                //start intermediate
+                startActivity(districtNameIntent);                break;
             case R.id.sign_out:
                 startActivity(new Intent(DiagnoseIllness.this, MainActivity.class));
                 break;
