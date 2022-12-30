@@ -88,7 +88,7 @@
 
         android:paddingHorizontal="40dp"
         app:endIconMode="clear_text"
-        app:helperText="Required*"
+        app:helperText="Required only for staff management*"
         app:helperTextTextColor="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

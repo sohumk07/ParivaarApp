@@ -212,7 +212,7 @@ import org.w3c.dom.Text;
 
 public class AdminMenu extends AppCompatActivity {
 
-    private Button adminmedicine, admindoctor, signout;
+    private Button adminmedicine, admindoctor;
     EditText districtname;
 
 
@@ -247,6 +247,12 @@ public class AdminMenu extends AppCompatActivity {
         adminmedicine.setOnClickListener(new View.OnClickListener() {
           @Override
          public void onClick(View view) {
+
+              if (TextUtils.isEmpty(districtname.getText())) {
+                  districtname.setError("You must enter the district to be redirected");
+                  return;
+              }
+
                Intent intent = new Intent(AdminMenu.this, adminmedicine.class);
                startActivity(intent);
 
