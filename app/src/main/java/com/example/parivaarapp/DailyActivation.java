@@ -209,21 +209,21 @@ public class DailyActivation extends AppCompatActivity {
 
 
 
-        districtname = findViewById(R.id.fstTxt2);
-        starttime = findViewById(R.id.start_time);
-        endtime = findViewById(R.id.end_time);
+//        districtname = findViewById(R.id.fstTxt2);
+//        starttime = findViewById(R.id.start_time);
+//        endtime = findViewById(R.id.end_time);
         remarks = findViewById(R.id.remarks);
-        date = findViewById(R.id.date);
-        clinicname1 = findViewById(R.id.fstTxt);
+//        date = findViewById(R.id.date);
+//        clinicname1 = findViewById(R.id.fstTxt);
         doctor = findViewById(R.id.daily_activation_doctor);
         medattendant = findViewById(R.id.daily_activation_medical_attendant);
-        vehicleendmileage = findViewById(R.id.vehicle_end_mileage);
-        totaldistance = findViewById(R.id.total_distance);
+//        vehicleendmileage = findViewById(R.id.vehicle_end_mileage);
+//        totaldistance = findViewById(R.id.total_distance);
         driver = findViewById(R.id.daily_activation_driver);
         vehiclestartmileage = findViewById(R.id.daily_activation_medical_attendant);
         villagesvisited = findViewById(R.id.villages_visited);
         RegisterBtn= findViewById(R.id.update);
-        menubtn = findViewById(R.id.update2);
+        //menubtn = findViewById(R.id.update2);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -238,13 +238,13 @@ public class DailyActivation extends AppCompatActivity {
        // int hour = c.get(Calendar.HOUR_OF_DAY);
        // int minute = c.get(Calendar.MINUTE);
 
-        menubtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class);
-                startActivity(intent);
-            }
-        });
+//        menubtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
@@ -471,7 +471,11 @@ public class DailyActivation extends AppCompatActivity {
             case R.id.Menu:
                 startActivity(new Intent(DailyActivation.this, com.example.parivaarapp.Menu.class));
                 break;
+            case R.id.sign_out:
+                startActivity(new Intent(DailyActivation.this, MainActivity.class));
+                break;
         }
+
         return super.onOptionsItemSelected(item);
 
     }

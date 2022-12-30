@@ -142,6 +142,8 @@ public class adminmedicine extends AppCompatActivity {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 String secondTimestampString = dateFormat.format(secondTimestamp.getTimeInMillis());
 
+
+
                 if (TextUtils.isEmpty(medicineACTV.getText())) {
                     medicineACTV.setError("Cannot Be Empty");
                     return;
@@ -150,54 +152,71 @@ public class adminmedicine extends AppCompatActivity {
                     medicineQuantity.setError("Cannot Be Empty");
                     return;
                 }
+
+                String quantity = medicineQuantity.getText().toString().toUpperCase().trim();
+                String medicineName = medicineACTV.getText().toString().trim();
+
                 //TODO: replace "lastRefilled" with date (DONE)
 
 
-                DocumentReference specificMedicine = firebaseFirestore.collection("test medicine").document("medicines").collection(district).document(medicineACTV.getText().toString().trim().toUpperCase());
+                DocumentReference specificMedicine = firebaseFirestore.collection("test medicine").document("medicines").collection(district).document(medicineName);
                 Map<String, Object> refillDocument = new HashMap<>();
 
                 specificMedicine.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                specificMedicine.update("quantity", FieldValue.increment(Integer.parseInt(medicineQuantity.getText().toString().trim()))); //TODO: implement something that allows you to increment if doc exist, if not create new doc
+                                specificMedicine.update("quantity", FieldValue.increment(Integer.parseInt(quantity))); //TODO: implement something that allows you to increment if doc exist, if not create new doc
                                 refillDocument.put("lastRefilled", secondTimestampString);
 
 
+
                             } else {
-                                refillDocument.put("quantity", Integer.parseInt(medicineQuantity.getText().toString().trim()));
+                                refillDocument.put("quantity", Integer.parseInt(quantity));
                                 refillDocument.put("lastRefilled", secondTimestampString);
 
                             }
 
 
-                            firebaseFirestore.collection("test medicine").document("medicines").collection(district).document(medicineACTV.getText().toString().trim().toUpperCase())
+                            firebaseFirestore.collection("test medicine").document("medicines").collection(district).document(medicineName)
                                     .set(refillDocument, SetOptions.merge())
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Log.d(medicineTag, "DocumentSnapshot successfully written!");
-
-                                            Toast.makeText(adminmedicine.this, "Refill processed to database on " + secondTimestampString, Toast.LENGTH_SHORT).show();                                        }
+                                            Toast.makeText(adminmedicine.this, "Refill processed to database on " + secondTimestampString, Toast.LENGTH_SHORT).show();
+                                            medicineQuantity.getText().clear();
+                                            medicineACTV.getText().clear();
+                                        }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Log.w(medicineTag, "Error writing document", e);
-                                            Toast.makeText(adminmedicine.this, "Refill processed to database on " + secondTimestampString, Toast.LENGTH_SHORT).show();                                        }
+                                            Toast.makeText(adminmedicine.this, "Refill processed to database on " + secondTimestampString, Toast.LENGTH_SHORT).show();
+                                        }
                                     });
+
+
 
                         }
 
+
                     }
+
 
                 });
 
 
 
+
+
             }
+
+
         });
     }
 
@@ -233,6 +252,7 @@ public class adminmedicine extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    //TODO: remove inflater so that there are no menu buttons and stuff
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){

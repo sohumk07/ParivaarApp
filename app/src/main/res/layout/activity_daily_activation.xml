@@ -6,51 +6,52 @@
     android:layout_height="wrap_content"
     android:fillViewport="false">
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:orientation="vertical"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
 
         <TextView
-            android:id="@+id/loginscrn"
+            android:id="@+id/dailyActivationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="30dp"
             android:text="Daily Activation"
             android:textSize="34dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/fstTxt"
-            android:layout_width="402dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:hint="Mobile Clinic Number:"
-            android:inputType="number"
-            android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/fstTxt2"
+        <View
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:hint="District Name:"
-            android:minHeight="48dp" />
+            android:layout_height="3dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/teal_700"
+            />
 
+
+        <TextView
+            android:textStyle="italic"
+            android:id="@+id/beginFormTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Begin form below \nuse clinic specific information ONLY"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"/>
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Choose Date in This Format: (dd-mm-yyyy)"
-            android:id="@+id/date"/>
-
-
-
-        <EditText android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:hint="Associated Doctor"
             android:id="@+id/daily_activation_doctor"/>
 
@@ -64,7 +65,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Driver"
+            android:hint="Clinic Driver"
             android:id="@+id/daily_activation_driver"/>
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -73,42 +74,12 @@
             android:hint="Vehicle Start Mileage (KM)"
             android:inputType="number"
             android:id="@+id/vehicle_start_mileage"/>
-        <EditText android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Vehicle End Mileage (KM)"
-            android:inputType="number"
-            android:id="@+id/vehicle_end_mileage"/>
-        <EditText android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Total Distance (KM)"
-            android:inputType="number"
-            android:id="@+id/total_distance"/>
-
-        <EditText
-            android:id="@+id/start_time"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Starting Time" />
-
-        <EditText
-            android:id="@+id/end_time"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:hint="Ending Time" />
 
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Villages (Cluster) Visited:"
+            android:hint="Villages (Cluster) Visited"
             android:id="@+id/villages_visited"/>
 
 
@@ -118,21 +89,25 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:hint="Remarks:" />
+            android:hint="Extra remarks"
+            android:layout_marginBottom="35dp"/>
 
         <Button
             android:id="@+id/update"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Update"
-            android:textColor="@color/white" />
+            android:layout_height="72dp"
+            android:text="Upload to database"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginVertical="10dp"
+            />
 
-        <Button
-            android:id="@+id/update2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Go To Home"
-            android:textColor="@color/white" />
+<!--        <Button-->
+<!--            android:id="@+id/update2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Go To Home"-->
+<!--            android:textColor="@color/white" />-->
 
 
     </LinearLayout>

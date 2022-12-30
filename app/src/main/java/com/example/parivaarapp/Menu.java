@@ -56,17 +56,14 @@ public class Menu extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                //code
-//                Intent intent = new Intent(Menu.this,DailyActivation.class);
-//                startActivity(intent);
-//
-//
-//                //add sender stuff
-//                Intent districtNameIntent = new Intent(Menu.this, intermediate.class);
-//                districtNameIntent.putExtra("DISTRICT_NAME_KEY", districtname.getText().toString().toUpperCase().trim());
-//                districtNameIntent.putExtra("CLINIC_NAME_KEY", clinicname.getText().toString().toUpperCase().trim());
-//                //start intermediate
-//                startActivity(districtNameIntent);
+                //code
+                Intent dailyActIntent = new Intent(Menu.this,DailyActivation.class);
+                dailyActIntent.putExtra("DISTRICT_NAME_KEY", districtName);
+                dailyActIntent.putExtra("CLINIC_NAME_KEY", clinicName);
+                startActivity(dailyActIntent);
+
+                //add sender stuff
+                //start intermediate
             }
         });
 
